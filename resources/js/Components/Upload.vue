@@ -5,7 +5,14 @@
         <form method="POST" @submit.prevent="upload" enctype="multipart/form-data">
           <div class="form-group">
             <label for="Name">Property Name:</label>
-            <input type="text" name="name" class="form-control" :class="{ err: nameerr }" v-model="name" placeholder="Unique Property Name..." />
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              :class="{ err: nameerr }"
+              v-model="name"
+              placeholder="Unique Property Name..."
+            />
             <div class="" v-if="nameerr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -85,7 +92,14 @@
 
           <div class="form-group">
             <label for="location">Location:</label>
-            <input type="text" name="location" class="form-control" :class="{ err: locationerr }" v-model="location" placeholder="District ie Kampala" />
+            <input
+              type="text"
+              name="location"
+              class="form-control"
+              :class="{ err: locationerr }"
+              v-model="location"
+              placeholder="District ie Kampala"
+            />
             <div class="" v-if="locationerr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -93,7 +107,14 @@
 
           <div class="form-group">
             <label for="address">Address:</label>
-            <input type="text" name="address" class="form-control" :class="{ err: addresserr }" v-model="address" placeholder="Town eg Bugolobi or Bwaise" />
+            <input
+              type="text"
+              name="address"
+              class="form-control"
+              :class="{ err: addresserr }"
+              v-model="address"
+              placeholder="Town eg Bugolobi or Bwaise"
+            />
             <div class="" v-if="addresserr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -101,7 +122,14 @@
 
           <div class="form-group">
             <label for="street">Street Name:</label>
-            <input type="text" name="street" class="form-control" :class="{ err: streeterr }" v-model="street" placeholder="Main Street" />
+            <input
+              type="text"
+              name="street"
+              class="form-control"
+              :class="{ err: streeterr }"
+              v-model="street"
+              placeholder="Main Street"
+            />
             <div class="" v-if="streeterr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -109,7 +137,16 @@
 
           <div class="form-group">
             <label for="description">Property Description:</label>
-            <textarea type="text" rows="5" cols="5" name="description" class="form-control" :class="{ err: descerr }" v-model="description" placeholder="Breifly describe your property qualities like Location, security, quality, standard...."></textarea>
+            <textarea
+              type="text"
+              rows="5"
+              cols="5"
+              name="description"
+              class="form-control"
+              :class="{ err: descerr }"
+              v-model="description"
+              placeholder="Breifly describe your property qualities like Location, security, quality, standard...."
+            ></textarea>
             <div class="" v-if="descerr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -117,7 +154,14 @@
 
           <div class="form-group">
             <label for="Rooms">Number of Rooms Per Floor:</label>
-            <input type="number" name="rooms" class="form-control" :class="{ err: roomserr }" v-model="rooms" placeholder="Rooms per single floor..." />
+            <input
+              type="number"
+              name="rooms"
+              class="form-control"
+              :class="{ err: roomserr }"
+              v-model="rooms"
+              placeholder="Rooms per single floor..."
+            />
             <div class="" v-if="roomserr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -125,7 +169,14 @@
 
           <div class="form-group">
             <label for="Floor">Property Floor:</label>
-            <input type="number" name="floor" class="form-control" :class="{ err: floorerr }" v-model="floor" placeholder="Number of floors..." />
+            <input
+              type="number"
+              name="floor"
+              class="form-control"
+              :class="{ err: floorerr }"
+              v-model="floor"
+              placeholder="Number of floors..."
+            />
             <div class="" v-if="floorerr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -133,7 +184,14 @@
 
           <div class="form-group">
             <label for="rent">Monthly Rent Fee:</label>
-            <input type="number" name="rent" class="form-control" :class="{ err: renterr }" v-model="rent" placeholder="Monthly Rent..." />
+            <input
+              type="number"
+              name="rent"
+              class="form-control"
+              :class="{ err: renterr }"
+              v-model="rent"
+              placeholder="Monthly Rent..."
+            />
             <div class="" v-if="renterr">
               <p class="text-danger">This field is required!</p>
             </div>
@@ -141,25 +199,71 @@
 
           <div class="form-group">
             <label for="contact">Property Manager's Contact:</label>
-            <input type="text" name="contact" class="form-control" :class="{ err: contacterr }" v-model="contact" placeholder="Property Manager's contact..." />
+            <input
+              type="text"
+              name="contact"
+              class="form-control"
+              :class="{ err: contacterr }"
+              v-model="contact"
+              placeholder="Property Manager's contact..."
+            />
             <div class="" v-if="contacterr">
               <p class="text-danger">This field is required!</p>
             </div>
           </div>
 
           <div>
-            <input type="file" name="front" ref="front" hidden class="form-control" @change="showFront" />
-            <input type="file" name="imagetwo" class="form-control" hidden ref="imagetwo" @change="showImageTwo" />
-            <input type="file" @change="photoSelected" name="photo" ref="photo" hidden class="form-control" />
-            <input type="file" @change="imageSelected" name="image" ref="image" hidden class="form-control" />
-            <input type="file" name="imageone" class="form-control" hidden ref="imageone" @change="showImageOne" />
+            <input
+              type="file"
+              name="front"
+              ref="front"
+              hidden
+              class="form-control"
+              @change="showFront"
+            />
+            <input
+              type="file"
+              name="imagetwo"
+              class="form-control"
+              hidden
+              ref="imagetwo"
+              @change="showImageTwo"
+            />
+            <input
+              type="file"
+              @change="photoSelected"
+              name="photo"
+              ref="photo"
+              hidden
+              class="form-control"
+            />
+            <input
+              type="file"
+              @change="imageSelected"
+              name="image"
+              ref="image"
+              hidden
+              class="form-control"
+            />
+            <input
+              type="file"
+              name="imageone"
+              class="form-control"
+              hidden
+              ref="imageone"
+              @change="showImageOne"
+            />
           </div>
 
           <div class="square">
             <div class="upper">
               <div class="photoPreview bg-light m-1" @click="$refs.front.click()">
                 <div v-if="frontImage">
-                  <img :src="frontImage" alt="Second Image" style="height: 100px; width: 150px" />
+                  <img
+                    :src="frontImage"
+                    alt="Second Image"
+                    style="height: 100px; width: 150px"
+                  />
                 </div>
                 <div class="items" v-else>
                   <p>FACE PIC</p>
@@ -169,7 +273,11 @@
 
               <div class="photoPreview bg-light mt-1" @click="$refs.image.click()">
                 <div v-if="imagePreview">
-                  <img :src="imagePreview" alt="Second Image" style="height: 100px; width: 150px" />
+                  <img
+                    :src="imagePreview"
+                    alt="Second Image"
+                    style="height: 100px; width: 150px"
+                  />
                 </div>
                 <div class="items" v-else>
                   <p>IMAGE</p>
@@ -180,7 +288,11 @@
             <div class="lower">
               <div class="photoPreview bg-light mt-1" @click="$refs.photo.click()">
                 <div v-if="photoPreview">
-                  <img :src="photoPreview" alt="Second Image" style="height: 100px; width: 150px" />
+                  <img
+                    :src="photoPreview"
+                    alt="Second Image"
+                    style="height: 100px; width: 150px"
+                  />
                 </div>
                 <div class="items" v-else>
                   <p>IMAGE</p>
@@ -190,7 +302,11 @@
 
               <div class="photoPreview bg-light mt-1" @click="$refs.imageone.click()">
                 <div v-if="ImageOne">
-                  <img :src="ImageOne" alt="Second Image" style="height: 100px; width: 150px" />
+                  <img
+                    :src="ImageOne"
+                    alt="Second Image"
+                    style="height: 100px; width: 150px"
+                  />
                 </div>
                 <div class="items" v-else>
                   <p>IMAGE</p>
@@ -200,7 +316,11 @@
 
               <div class="photoPreview bg-light mt-1" @click="$refs.imagetwo.click()">
                 <div v-if="ImageTwo">
-                  <img :src="ImageTwo" alt="Some Image" style="height: 100px; width: 150px" />
+                  <img
+                    :src="ImageTwo"
+                    alt="Some Image"
+                    style="height: 100px; width: 150px"
+                  />
                 </div>
                 <div class="items" v-else>
                   <p>IMAGE</p>
@@ -211,7 +331,9 @@
           </div>
 
           <div class="my-2 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary"><b-icon icon="cloud-upload" scale="0.7"></b-icon>List</button>
+            <button type="submit" class="btn btn-primary">
+              <b-icon icon="cloud-upload" scale="0.7"></b-icon>List
+            </button>
           </div>
         </form>
       </div>
@@ -406,7 +528,22 @@ export default {
       console.log(this.hstatus);
       console.log(this.amount);
       this.validatename();
-      if (this.nameerr || this.typeerr || this.hstatuserr || this.statuserr || this.astatuserr || this.descerr || this.categoryerr || this.locationerr || this.addresserr || this.streeterr || this.renterr || this.floorerr || this.roomserr || this.contacterr) {
+      if (
+        this.nameerr ||
+        this.typeerr ||
+        this.hstatuserr ||
+        this.statuserr ||
+        this.astatuserr ||
+        this.descerr ||
+        this.categoryerr ||
+        this.locationerr ||
+        this.addresserr ||
+        this.streeterr ||
+        this.renterr ||
+        this.floorerr ||
+        this.roomserr ||
+        this.contacterr
+      ) {
         console.log("ERRORS");
         setTimeout(this.removeerrs, 4000);
         return;
@@ -436,7 +573,7 @@ export default {
         .post("/api/upload", data)
         .then((success) => {
           console.log(success);
-          // this.$router.push("/pay");
+          this.$router.push("/pay");
           //this.$router.push('/afupload')
         })
         .catch((err) => {

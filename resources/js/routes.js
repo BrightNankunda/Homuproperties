@@ -32,15 +32,9 @@ export default {
 
     routes: [
         {
-            path: '/home',
-            component: Dashboard
-        },
-        {
             path: '/',
             component: Dashboard,
-            meta: {
-                requiresAuth: true
-            }
+            
         },
         {
             path: '/mid',

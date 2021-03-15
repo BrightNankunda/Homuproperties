@@ -37,6 +37,7 @@ Route::get('/rental', 'App\Http\Controllers\ImageController@rental');
 
 Route::get('kampalahostels', 'App\Http\Controllers\ImageController@kampalahostels');
 Route::get('/show/{id}', 'App\Http\Controllers\ImageController@show');
+Route::get('/countofproperties', 'App\Http\Controllers\ImageController@count');
 
 Route::post('upload', 'App\Http\Controllers\ImageController@upload')->middleware('auth:api');
 Route::get('/see', 'App\Http\Controllers\ImageController@see')->middleware('auth:api');

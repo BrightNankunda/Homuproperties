@@ -14,6 +14,9 @@ let getters = {
     ftwo: state => {
         return state.ftwo
     },
+    countofproperties: state => {
+        return state.countofproperties
+    },
     kira: state => {
         return state.kira
     },

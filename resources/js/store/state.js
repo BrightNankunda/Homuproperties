@@ -18,6 +18,7 @@ let state = {
         }
     ],
     fone: {},
+    countofproperties: 0,
     ftwo: {},
     kira: {},
     mukono: {},

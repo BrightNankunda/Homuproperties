@@ -26,19 +26,44 @@
           <div class="col-md-8 my-3">
             <form @submit.prevent="mtn">
               <div class="form-group">
-                <input type="text" name="phone" class="form-control" v-model="details.phone" @keyup.enter="mtn" />
+                <input
+                  type="text"
+                  name="phone"
+                  class="form-control"
+                  v-model="details.phone"
+                  @keyup.enter="mtn"
+                />
               </div>
               <div class="form-group">
-                <input type="text" name="name" hidden class="form-control" v-model="details.name" />
+                <input
+                  type="text"
+                  name="name"
+                  hidden
+                  class="form-control"
+                  v-model="details.name"
+                />
               </div>
               <div class="form-group">
-                <input type="text" name="amount" hidden class="form-control" v-model="details.amount" />
+                <input
+                  type="text"
+                  name="amount"
+                  hidden
+                  class="form-control"
+                  v-model="details.amount"
+                />
               </div>
               <div class="name justify-content-center text-primary">
                 {{ details.name }}
               </div>
               <div class="col-lg-1">
-                <img :src="'mtn/' + 'mtn.jpg'" alt="mtn" type="submit" class="m-3" @click="getStatus" style="max-height: 30px; width: 60px" />
+                <img
+                  :src="'mtn/' + 'mtn.jpg'"
+                  alt="mtn"
+                  type="submit"
+                  class="m-3"
+                  @click="getStatus"
+                  style="max-height: 30px; width: 60px"
+                />
               </div>
             </form>
           </div>
@@ -58,14 +83,22 @@
 
         <!--SUUCCESSFUL-->
         <div class="row alert alert-success m-2 px-2" v-if="status === 'SUCCESSFUL'">
-          <p class="text-success text-center">Congrats!, Transaction Complete. <b-icon icon="cloud-check"></b-icon></p>
+          <p class="text-success text-center">
+            Congrats!, Transaction Complete. <b-icon icon="cloud-check"></b-icon>
+          </p>
         </div>
         <!--TRANSACTION-->
         <!--<div class="alert alert-success" v-if="transaction">
       {{ transaction }}
     </div>-->
         <div class="form-group">
-          <input type="text" name="transaction" hidden class="form-control" v-model="transaction" />
+          <input
+            type="text"
+            name="transaction"
+            hidden
+            class="form-control"
+            v-model="transaction"
+          />
         </div>
         <!--PENDING-->
         <div class="row alert alert-success px-2" v-if="status === 'PENDING'">
@@ -82,18 +115,25 @@
         </div>
         <div class="alert alert-success" v-if="info.length != '' && paymentstatus === 0">
           <p class="lead">
-            Hi, Your payment status is <b>false</b>, your payment secret is <b>{{ info.secret }}</b
+            Hi, Your payment status is <b>false</b>, your payment secret is
+            <b>{{ info.secret }}</b
             >.
           </p>
           <p>
-            Please pay Ugx: <b>{{ info.amount }}</b> for <b>{{ info.name }}</b> property to comlete listing.
+            Please pay Ugx: <b>{{ info.amount }}</b> for <b>{{ info.name }}</b> property
+            to comlete listing.
           </p>
         </div>
 
         <div class="row my-4" v-if="!ps">
-          <div class="mx-auto">Allow Clients to contact you: <input type="checkbox" name="contact" id="contact" /></div>
+          <div class="mx-auto">
+            Allow Clients to contact you:
+            <input type="checkbox" name="contact" id="contact" />
+          </div>
 
-          <h3 class="lead text-center text-primary">Allow Clients to pay to your accounts:</h3>
+          <h3 class="lead text-center text-primary">
+            Allow Clients to pay to your accounts:
+          </h3>
           <div>
             <div class="check row my-4 bg-light">
               <div class="my-1">
@@ -110,7 +150,9 @@
               {{ err }}
             </div>
             <div class="d-flex justify-content-center my-4 p-2">
-              <button class="btn btn-primary mx-auto" type="submit" @click="submit">Submit</button>
+              <button class="btn btn-primary mx-auto" type="submit" @click="submit">
+                Submit
+              </button>
             </div>
           </div>
         </div>
@@ -270,6 +312,7 @@ export default {
       if (this.airtel_no.length === 10 && this.mtn_no.length === 10) {
         this.error();
         this.pyt();
+        this.$router.push("/");
       } else {
         return (this.err = "Please Enter Both or Valid mobile numbers!");
       }

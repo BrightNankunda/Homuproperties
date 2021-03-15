@@ -4,6 +4,9 @@ let mutations = {
         state.user = [],
         state.clients = []
     },
+    countofproperties(state, count) {
+        state.countofproperties = count
+    },
     loginUser(state, token) {
         state.token = token
     },

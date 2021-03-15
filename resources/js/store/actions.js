@@ -22,6 +22,16 @@ let actions = {
             })
         }
     },
+    countofproperties({commit}) {
+        axios.get('/api/countofproperties')
+        .then(response => {
+            let count = response.data.length;
+            commit('countofproperties', count)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },
     loginUser(context, user) {
 
         return new Promise((resolve, reject) => {

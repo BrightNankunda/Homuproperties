@@ -179,6 +179,11 @@ class ImageController extends Controller
         ]);
         
     }
+    public function count() 
+    {
+        $images = Image::get()->all();
+        return response()->json($images);
+    }
 
     public function show($id)
     {
