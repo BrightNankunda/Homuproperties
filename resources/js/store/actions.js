@@ -2,6 +2,25 @@ let actions = {
     clearData(context) {
         context.commit('ClearData')
     },
+    uploadProfileImage(context, data) {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+        if(context.getters.loggedIn) {
+        return new Promise((resolve, reject) => {
+        axios
+        .post("/api/pic", {
+            pic: data.pic
+        })
+                .then((response) => {
+                    console.log(response);
+                    resolve(response)
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                    reject(err)
+                });
+            })
+        }
+    },
     logout(context) {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
 
@@ -47,7 +66,7 @@ let actions = {
                 resolve(response)
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 reject(err)
             })
         })
@@ -95,15 +114,19 @@ let actions = {
     },
 
         getUser(context) {
+            return new Promise((resolve, reject) => {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             axios.get('api/dashboard')
             .then(response => {
                 
                 context.commit('getUsa', response.data)
+                resolve(response)
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.message)
+                reject(err)
             })
+            });
         },
         get() {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token

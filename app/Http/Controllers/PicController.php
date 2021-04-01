@@ -30,5 +30,6 @@ class PicController extends Controller
         $pic->save();
 
         return response()->json($pic);
+        // return response()->json($request);
     }
 }

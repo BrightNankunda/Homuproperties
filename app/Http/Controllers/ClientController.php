@@ -51,6 +51,9 @@ class ClientController extends Controller
 
     public function update(Request $request, Client $client)
     {
+        if($client->user_id !== auth()->user()->id) {
+            return response()->json('You are Unauthorized');
+        }
         $data = $request->validate([
             'clientName' => 'required|string',
             'clientContact' => 'required|string',
@@ -71,9 +74,25 @@ class ClientController extends Controller
 
     }
 
-    public function delete(Client $client)
+    public function delete(Request $request, Client $client)
     {
-        $client->delete();
-        return response()->json('Client Deleted');
+        // $clientsToDelete = $request->client;
+        // $userClientsIds = auth()->user()->clients->map(function ($c) {
+        //     return $c->id;
+        // });
+
+        // $valid = collect($clientsToDelete)->every(function($value, $key) use ($userClientsIds) {
+        //     return $userClientsIds->contains($value);
+        // });
+        if($client->user_id !== auth()->user()->id) {
+            return response()->json('You are Unauthorized');
+        } else {
+            $client->delete();
+            return response()->json('Client Deleted');
+
+        }
+        // return response()->json($request->client->user_id);
+
+
     }
 }

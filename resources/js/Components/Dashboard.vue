@@ -1,4 +1,3 @@
-4
 <template>
   <div>
     <div v-if="countofavailableproperties > 0" class="dashboard w-100">
@@ -18,7 +17,7 @@
     -->
 
       <!--BEGINNING OF CAROUSEL-->
-      <div>
+      <!-- <div>
         <div v-if="loading" class="text-center loader my-5">
           <div class="spinner-border text-primary text-center" role="status">
             <span class="sr-only">Loading...</span>
@@ -39,7 +38,7 @@
           @sliding-start="onSlideStart"
           @sliding-end="onSlideEnd"
         >
-          <!-- Text slides with image -->
+          
 
           <b-carousel-slide
             :img-src="'images/' + fone.front"
@@ -163,7 +162,6 @@
               </div>
             </div>
           </b-carousel-slide>
-          <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
           <b-carousel-slide
             :img-src="'images/' + mukono.front"
             style="max-height: calc(100vh - 60px)"
@@ -205,7 +203,6 @@
             </div>
           </b-carousel-slide>
 
-          <!-- Slide with blank fluid image to maintain slide aspect ratio -->
           <b-carousel-slide
             :img-src="'images/' + kira.image"
             style="max-height: calc(100vh - 60px)"
@@ -247,8 +244,51 @@
             </div>
           </b-carousel-slide>
         </b-carousel>
-      </div>
+      </div> -->
       <!--END OF CAROUSEL -->
+      <!-- BANNER -->
+      <div class="banner">
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+          ></textarea>
+          <label for="floatingTextarea2">Comments</label>
+        </div>
+        <div class="search-container py-5">
+          <div class="location-search">
+            <h1 class="searchoneheader text-primary text-center">
+              Search By location and Property type
+            </h1>
+            <div class="input-group search-bars d-flex justify-content-center">
+              <input type="text" class="form-control col-3 mr-2" placeholder="Location" />
+              <input type="text" class="form-control col-3" placeholder="Property Type" />
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+          </div>
+          <div class="rental-search mt-2">
+            <h1 class="searchoneheader text-primary text-center">
+              Search By Rental Range
+            </h1>
+            <div class="search-bars d-flex justify-content-center">
+              <input type="number" value="100000" class="form-control col-3 mr-2" />
+              <input type="number" value="10000000" class="form-control col-3" />
+              <button class="btn btn-outline-secondary" type="button">Button</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="shadow second bg-light my-5 pb-2">
         <div class="icons row d-flex my-3">
           <div class="col-lg-4">
@@ -453,7 +493,7 @@
         </div>
       </div>
       <div id="horizontalarcades" class="d-flex" v-else>
-        <div v-if="coountofarcades > 4" class="left">
+        <div v-if="countofarcades > 4" class="left">
           <p class="btn btn-hero" @click="swipeLeftArcades">
             <b-icon icon="chevron-left" scale="2"></b-icon>
           </p>
@@ -678,15 +718,6 @@ export default {
     this.officespace();
   },
   computed: {
-    // fone() {
-    //   return this.$store.getters.fone;
-    // },
-    // ftwo() {
-    //   return this.$store.getters.ftwo;
-    // },
-    // kira() {
-    //   return this.$store.getters.kira;
-    // },
     mukono() {
       return this.$store.getters.mukono;
     },
@@ -699,24 +730,6 @@ export default {
     countofavailableproperties() {
       return this.$store.getters.countofproperties;
     },
-    // apartments() {
-    //   return this.$store.getters.apartments;
-    // },
-    // hostels() {
-    //   return this.$store.getters.hostels;
-    // },
-    // arcades() {
-    //   return this.$store.getters.arcades;
-    // },
-    // malls() {
-    //   return this.$store.getters.malls;
-    // },
-    // rentals() {
-    //   return this.$store.getters.rentals;
-    // },
-    // officespace() {
-    //   return this.$store.getters.officespace;
-    // },
     profile() {
       return this.$store.getters.profile;
     },
@@ -918,6 +931,21 @@ export default {
 .dashboard {
   font-family: sans-serif;
   box-sizing: border-box;
+}
+.banner {
+  min-height: 90vh;
+  background-image: url("/images/1617080487.banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.search-container {
+  margin: auto 0;
+}
+.location-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #horizontal,
 #horizontalhostels,

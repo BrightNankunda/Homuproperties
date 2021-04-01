@@ -213,14 +213,7 @@
           </div>
 
           <div>
-            <input
-              type="file"
-              name="front"
-              ref="front"
-              hidden
-              class="form-control"
-              @change="showFront"
-            />
+            <input type="file" name="front" ref="front" hidden @change="showFront" />
             <input
               type="file"
               name="imagetwo"
@@ -574,7 +567,6 @@ export default {
         .then((success) => {
           console.log(success);
           this.$router.push("/pay");
-          //this.$router.push('/afupload')
         })
         .catch((err) => {
           console.log(err);

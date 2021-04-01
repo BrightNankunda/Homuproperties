@@ -25,7 +25,7 @@ Route::get('/mukono', 'App\Http\Controllers\ImageController@fmukono');
 Route::get('/kira', 'App\Http\Controllers\ImageController@fkira');
 Route::get('uploads', 'App\Http\Controllers\ImageController@uploads');
 Route::post('/signup', 'App\Http\Controllers\loginController@signup');
-Route::post('login', 'App\Http\Controllers\loginController@login');
+Route::post('/login', 'App\Http\Controllers\loginController@login');
 Route::get('/late', 'App\Http\Controllers\ImageController@late');
 
 Route::get('/arcade', 'App\Http\Controllers\ImageController@arcade');
@@ -65,7 +65,7 @@ Route::post('status', 'App\Http\Controllers\PaymentController@status')->middlewa
 Route::get('/dashboard', 'App\Http\Controllers\loginController@dashboard')->middleware('auth:api');
 
 Route::get('/pic', 'App\Http\Controllers\PicController@index')->middleware('auth:api');
-Route::post('/pic', 'App\Http\Controllers\PicController@pic')->middleware('auth:api');
+Route::post('pic', 'App\Http\Controllers\PicController@pic')->middleware('auth:api');
 
 Route::get('/index', 'App\Http\Controllers\ProductController@index')->middleware('auth:api');
 Route::post('/store', 'App\Http\Controllers\ProductController@store')->middleware('auth:api');

@@ -18,7 +18,7 @@ export default {
   created() {
     this.$store.dispatch("clearData");
     this.$store.dispatch("logout").then((response) => {
-      this.$router.push("/home");
+      this.$router.push("/");
       loading: false;
     });
   },

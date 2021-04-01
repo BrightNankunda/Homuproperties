@@ -28,23 +28,84 @@
         <tbody>
           <tr v-for="client in clients" :key="client.id">
             <td v-if="clientId != client.id">{{ client.clientName }}</td>
-            <td v-else><input type="text" class="input" @keyup.enter="submitUpdate(client)" v-model="client.clientName" /></td>
+            <td v-else>
+              <input
+                type="text"
+                class="input"
+                @keyup.enter="submitUpdate(client)"
+                v-model="client.clientName"
+              />
+            </td>
 
             <td v-if="clientId != client.id">{{ client.propertyName }}</td>
-            <td v-else><input type="text" class="input" @keyup.enter="submitUpdate(client)" v-model="client.propertyName" /></td>
+            <td v-else>
+              <input
+                type="text"
+                class="input"
+                @keyup.enter="submitUpdate(client)"
+                v-model="client.propertyName"
+              />
+            </td>
 
             <td v-if="clientId != client.id">{{ client.clientContact }}</td>
 
-            <td v-else><input type="text" class="input" @keyup.enter="submitUpdate(client)" v-model="client.clientContact" /></td>
+            <td v-else>
+              <input
+                type="text"
+                class="input"
+                @keyup.enter="submitUpdate(client)"
+                v-model="client.clientContact"
+              />
+            </td>
             <td v-if="clientId != client.id">{{ client.monthsPaid }}</td>
-            <td v-else><input type="text" class="input" @keyup.enter="submitUpdate(client)" v-model="client.monthsPaid" /></td>
+            <td v-else>
+              <input
+                type="text"
+                class="input"
+                @keyup.enter="submitUpdate(client)"
+                v-model="client.monthsPaid"
+              />
+            </td>
             <td v-if="clientId != client.id">{{ client.roomNumber }}</td>
-            <td v-else><input type="text" class="input" @keyup.enter="submitUpdate(client)" v-model="client.roomNumber" /></td>
+            <td v-else>
+              <input
+                type="text"
+                class="input"
+                @keyup.enter="submitUpdate(client)"
+                v-model="client.roomNumber"
+              />
+            </td>
             <td>
-              <button class="btn btn-info" @click="updateClient(client)" v-if="clientId != client.id">Edit</button>
-              <button class="btn btn-warning" @click="submitUpdate(client)" title="Edit" v-else>Update</button>
-              <button class="btn btn-danger" @click="deleteClient(client)" v-if="clientId != client.id"><b-icon icon="trash"></b-icon></button>
-              <button class="btn btn-danger" @click="cancelEdit(client)" title="Cancel" v-else><b-icon icon="backspace"></b-icon></button>
+              <button
+                class="btn btn-info"
+                @click="updateClient(client)"
+                v-if="clientId != client.id"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-warning"
+                @click="submitUpdate(client)"
+                title="Edit"
+                v-else
+              >
+                Update
+              </button>
+              <button
+                class="btn btn-danger"
+                @click="deleteClient(client)"
+                v-if="clientId != client.id"
+              >
+                <b-icon icon="trash"></b-icon>
+              </button>
+              <button
+                class="btn btn-danger"
+                @click="cancelEdit(client)"
+                title="Cancel"
+                v-else
+              >
+                <b-icon icon="backspace"></b-icon>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -80,7 +141,14 @@ export default {
       editing: false,
       //client.editing = false,
       //client.id = false capture and a clients id
-      fields: [{ key: "clientName", sortable: true }, { key: "propertyName", sortable: true }, "clientContact", "monthsPaid", { key: "roomNumber", sortable: true }, "actions"],
+      fields: [
+        { key: "clientName", sortable: true },
+        { key: "propertyName", sortable: true },
+        "clientContact",
+        "monthsPaid",
+        { key: "roomNumber", sortable: true },
+        "actions",
+      ],
       clientId: 0,
       loading: true,
       isBusy: false,
@@ -112,7 +180,7 @@ export default {
     deleteClient(client) {
       this.loading = true;
       this.$store.dispatch("deleteClient", client).then((res) => {
-        this.$store.dispatch("fetchClients");
+        // this.$store.dispatch("fetchClients");
         this.fetchClients();
         this.loading = false;
       });

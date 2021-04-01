@@ -19,7 +19,7 @@
                   <router-link class="nav-link text-white lead px-3" to="/hostels" active-class="active">Hostels</router-link>
                   
                     
-              </b-navbar-nav>
+              <!-- </b-navbar-nav>
               <b-navbar-nav class="mx-auto">
                 <b-nav-form @submit.prevent="fetch">
                 <b-input-group size="sm" class="mb-2 inp">
@@ -29,7 +29,7 @@
                     </span>
                     
                   </b-input-group>
-                </b-nav-form>
+                </b-nav-form>-->
               </b-navbar-nav>
 
               <!-- Right aligned nav items -->

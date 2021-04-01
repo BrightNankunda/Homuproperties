@@ -74,8 +74,6 @@ class ImageController extends Controller
         return response()->json($fkira);
     }
     
-   
-    
 
     public function uploads()
     {

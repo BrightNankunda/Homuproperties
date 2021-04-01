@@ -12,7 +12,7 @@ import officialpost from './components/officialpost.vue';
 import Createofficialpost from './components/Createofficialpost.vue';
 import Client from './components/Client.vue';
 import Clients from './components/Clients.vue';
-import profile from './components/profile.vue';
+import NewProfile from './components/NewProfile.vue';
 import Property from './components/Property.vue';
 import Boss from './components/Boss.vue';
 import Arcades from './components/Masters/Arcades.vue';
@@ -169,7 +169,7 @@ export default {
         },
         {
             path: '/profile',
-            component: profile,
+            component: NewProfile,
             meta: {
                 requiresAuth: true
             }

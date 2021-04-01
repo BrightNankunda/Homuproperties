@@ -5,9 +5,13 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <div class="row justify-content-center" v-else>
-      <div class="col-lg-5 my-5">
-        <div class="card my-5">
+    <div class="row form-container" v-else>
+      <div v-if="loginerr" class="alert alert-danger">
+        <h3 class="text-center text-danger">{{ loginerr }}</h3>
+      </div>
+
+      <div class="col-lg-5 my-4">
+        <div class="card my-2">
           <div class="card-header">
             <h1 class="lead">Login</h1>
           </div>
@@ -15,7 +19,13 @@
             <form method="POST" @submit.prevent="login">
               <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" name="email" class="form-control" :class="{ err: emptyemail || emailerr }" v-model="user.email" />
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  :class="{ err: emptyemail || emailerr }"
+                  v-model="user.email"
+                />
                 <span class="icon"><b-icon icon="exaclamation"></b-icon></span>
                 <div class="" v-if="emailerr">
                   <p class="text-danger">Enter Correct Email Format</p>
@@ -27,7 +37,13 @@
 
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" :class="{ err: passwordlength }" class="form-control" v-model="user.password" />
+                <input
+                  type="password"
+                  name="password"
+                  :class="{ err: passwordlength }"
+                  class="form-control"
+                  v-model="user.password"
+                />
                 <div class="" v-if="passwordlength">
                   <p class="text-danger">Atleast 6 Characters for the password!</p>
                 </div>
@@ -54,6 +70,7 @@ export default {
       email: "",
       password: "",
     },
+    loginerr: null,
     emailerr: false,
     emptyemail: false,
     passwordlength: false,
@@ -98,10 +115,20 @@ export default {
         return;
       }
       this.loading = true;
-      this.$store.dispatch("loginUser", this.user).then((response) => {
-        this.$router.push("/");
-        this.loading = false;
-      });
+      this.$store
+        .dispatch("loginUser", this.user)
+        .then((response) => {
+          this.$router.push("/");
+          this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err.message);
+          if ((err.message = "Request failed with status code 404")) {
+            this.loginerr = "Invalid Entries";
+          }
+          this.loading = false;
+          return;
+        });
     },
   },
 };
@@ -110,6 +137,12 @@ export default {
 <style scoped>
 .form-group {
   margin: 20px;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
 }
 .err {
   border: 2px solid red;

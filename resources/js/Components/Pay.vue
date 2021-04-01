@@ -23,7 +23,7 @@
             >
           </div>
           <!--Form-->
-          <div class="col-md-8 my-3">
+          <!-- <div class="col-md-8 my-3">
             <form @submit.prevent="mtn">
               <div class="form-group">
                 <input
@@ -66,104 +66,101 @@
                 />
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
-
         <!--PAY-->
-        <div class="text-center m-1" v-if="status === 'null'">
+        <!-- <div class="text-center m-1" v-if="status === 'null'">
           <button class="btn btn-primary" @click="pay">Pay</button>
-        </div>
-
+        </div> -->
         <!--LOADING-->
-        <div v-if="status === 'PENDING'" class="loader text-center">
+        <!-- <div v-if="status === 'PENDING'" class="loader text-center">
           <div class="spinner-border text-primary text-center" role="status">
             <span class="sr-only">Loading...</span>
           </div>
-        </div>
+        </div> -->
 
         <!--SUUCCESSFUL-->
-        <div class="row alert alert-success m-2 px-2" v-if="status === 'SUCCESSFUL'">
+        <!-- <div class="row alert alert-success m-2 px-2" v-if="status === 'SUCCESSFUL'">
           <p class="text-success text-center">
             Congrats!, Transaction Complete. <b-icon icon="cloud-check"></b-icon>
           </p>
-        </div>
+        </div> -->
         <!--TRANSACTION-->
         <!--<div class="alert alert-success" v-if="transaction">
       {{ transaction }}
     </div>-->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <input
             type="text"
             name="transaction"
             hidden
             class="form-control"
             v-model="transaction"
-          />
-        </div>
-        <!--PENDING-->
-        <div class="row alert alert-success px-2" v-if="status === 'PENDING'">
+          /> -->
+      </div>
+      <!--PENDING-->
+      <!-- <div class="row alert alert-success px-2" v-if="status === 'PENDING'">
           <div class="col-md-8 text-center">
             <h3 class="lead">Enter Pin To Complete Payment!</h3>
           </div>
-        </div>
+        </div> -->
 
-        <!--FAILURE-->
-        <div class="alert alert-danger" v-if="status === 'FAILED'">
+      <!--FAILURE-->
+      <!-- <div class="alert alert-danger" v-if="status === 'FAILED'">
           <div class="px-2">
             <p class="text-danger text-center">Transaction Failed Please, Try again...</p>
           </div>
-        </div>
-        <div class="alert alert-success" v-if="info.length != '' && paymentstatus === 0">
-          <p class="lead">
-            Hi, Your payment status is <b>false</b>, your payment secret is
-            <b>{{ info.secret }}</b
-            >.
-          </p>
-          <p>
-            Please pay Ugx: <b>{{ info.amount }}</b> for <b>{{ info.name }}</b> property
-            to comlete listing.
-          </p>
-        </div>
+        </div> -->
+      <div class="alert alert-success" v-if="info.length != '' && paymentstatus === 0">
+        <p class="lead">
+          Hi, Your payment status is <b>false</b>, your payment secret is
+          <b>{{ info.secret }}</b
+          >.
+        </p>
+        <p>
+          Please pay Ugx: <b>{{ info.amount }}</b> for <b>{{ info.name }}</b> property to
+          comlete listing.
+        </p>
+      </div>
 
-        <div class="row my-4" v-if="!ps">
-          <div class="mx-auto">
+      <div class="row my-4" v-if="!ps">
+        <!-- <div class="mx-auto">
             Allow Clients to contact you:
             <input type="checkbox" name="contact" id="contact" />
+          </div> -->
+
+        <h3 class="lead text-center text-primary">
+          Allow Clients to pay to your mobile accounts:
+        </h3>
+        <div>
+          <div class="check row my-4 bg-light">
+            <div class="my-1">
+              MTN:
+              <input type="text" name="mtn_acc" v-model="mtn_no" />
+            </div>
+
+            <div class="my-1">
+              Airtel:
+              <input type="text" name="airtel_acc" v-model="airtel_no" />
+            </div>
           </div>
-
-          <h3 class="lead text-center text-primary">
-            Allow Clients to pay to your accounts:
-          </h3>
-          <div>
-            <div class="check row my-4 bg-light">
-              <div class="my-1">
-                MTN:
-                <input type="text" name="mtn_acc" v-model="mtn_no" />
-              </div>
-
-              <div class="my-1">
-                Airtel:
-                <input type="text" name="airtel_acc" v-model="airtel_no" />
-              </div>
-            </div>
-            <div class="alert alert-warning my-2" v-if="err">
-              {{ err }}
-            </div>
-            <div class="d-flex justify-content-center my-4 p-2">
-              <button class="btn btn-primary mx-auto" type="submit" @click="submit">
-                Submit
-              </button>
-            </div>
+          <div class="alert alert-warning my-2" v-if="err">
+            {{ err }}
+          </div>
+          <div class="d-flex justify-content-center my-4 p-2">
+            <button class="btn btn-primary mx-auto" type="submit" @click="submit">
+              Submit
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "Afupload",
   data() {
     return {
       loading: true,
@@ -363,6 +360,7 @@ export default {
 <style scoped>
 .container {
   max-width: 400px;
+  min-height: 80vh;
   margin: 0 auto;
   padding: 20px;
   border-radius: 2px;
