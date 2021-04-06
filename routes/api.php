@@ -64,6 +64,17 @@ Route::post('/pay', 'App\Http\Controllers\PaymentController@pay')->middleware('a
 Route::post('status', 'App\Http\Controllers\PaymentController@status')->middleware('auth:api');
 Route::get('/dashboard', 'App\Http\Controllers\loginController@dashboard')->middleware('auth:api');
 
+Route::get('/allAdverts', 'App\Http\Controllers\HomuAdvertController@allAdverts')->middleware('auth:api');
+Route::get('/oneAdvert', 'App\Http\Controllers\HomuAdvertController@oneAdvert')->middleware('auth:api');
+Route::post('/allAdverts', 'App\Http\Controllers\HomuAdvertController@store')->middleware('auth:api');
+Route::patch('/allAdverts/{id}', 'App\Http\Controllers\HomuAdvertController@update')->middleware('auth:api');
+Route::delete('/allAdverts/{id}', 'App\Http\Controllers\HomuAdvertController@delete')->middleware('auth:api');
+
+Route::get('/person', 'App\Http\Controllers\PersonalDataController@getUserData')->middleware('auth:api');
+Route::post('/person', 'App\Http\Controllers\PersonalDataController@store')->middleware('auth:api');
+Route::patch('/person/{id}', 'App\Http\Controllers\PersonalDataController@update')->middleware('auth:api');
+Route::delete('/person/{id}', 'App\Http\Controllers\PersonalDataController@delete')->middleware('auth:api');
+
 Route::get('/pic', 'App\Http\Controllers\PicController@index')->middleware('auth:api');
 Route::post('pic', 'App\Http\Controllers\PicController@pic')->middleware('auth:api');
 

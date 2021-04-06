@@ -319,7 +319,6 @@ let actions = {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             axios.get('api/clients')
             .then(response => {
-
                 context.commit('fetchClients', response.data)
             })
             .catch(err => {

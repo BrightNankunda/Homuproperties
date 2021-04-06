@@ -9,23 +9,52 @@
       <!--BEGINNING OF CAROUSEL-->
 
       <div class="col-lg-9 shadow my-1">
-        <b-carousel id="carousel-1" v-model="slide" :interval="8000" controls indicators background="#ababab" @sliding-start="onSlideStart" @sliding-end="onSlideEnd">
+        <b-carousel
+          id="carousel-1"
+          v-model="slide"
+          :interval="8000"
+          controls
+          indicators
+          background="#ababab"
+          @sliding-start="onSlideStart"
+          @sliding-end="onSlideEnd"
+        >
           <!-- Slides with custom text -->
 
-          <b-carousel-slide :img-src="'images/' + apartment.front" style="max-height: 480px"> </b-carousel-slide>
-          <b-carousel-slide :img-src="'images/' + apartment.image" style="max-height: 480px"> </b-carousel-slide>
+          <b-carousel-slide
+            :img-src="'images/' + apartment.front"
+            style="max-height: 480px"
+          >
+          </b-carousel-slide>
+          <b-carousel-slide
+            :img-src="'images/' + apartment.image"
+            style="max-height: 480px"
+          >
+          </b-carousel-slide>
 
-          <b-carousel-slide :img-src="'images/' + apartment.photo" style="max-height: 480px"> </b-carousel-slide>
+          <b-carousel-slide
+            :img-src="'images/' + apartment.photo"
+            style="max-height: 480px"
+          >
+          </b-carousel-slide>
           <!-- Slides with img slot -->
           <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
           <b-carousel-slide>
             <template #img>
-              <img class="d-block img-fluid w-100" :src="'images/' + apartment.imageone" style="max-height: 480px" />
+              <img
+                class="d-block img-fluid w-100"
+                :src="'images/' + apartment.imageone"
+                style="max-height: 480px"
+              />
             </template>
           </b-carousel-slide>
           <b-carousel-slide>
             <template #img>
-              <img class="d-block img-fluid w-100" :src="'images/' + apartment.imagetwo" style="max-height: 480px" />
+              <img
+                class="d-block img-fluid w-100"
+                :src="'images/' + apartment.imagetwo"
+                style="max-height: 480px"
+              />
             </template>
           </b-carousel-slide>
 
@@ -50,40 +79,46 @@
 export default {
   data() {
     return {
-      id: 0,
       apartment: null,
       loadingDetails: true,
       slide: 0,
       sliding: null,
+      id: this.$route.params.id,
     };
   },
   created() {
-    this.id = this.$route.params.id;
+    // this.id = this.$route.params.id;
   },
   mounted() {
-    //this.details();
-    axios
-      .get("api/show/" + this.id)
-      .then((response) => {
-        console.log(response.data);
-        this.apartment = response.data;
-        this.loadingDetails = false;
-      })
-      .catch((err) => {
-        //console.log(err);
-      });
+    this.details();
+    // axios
+    //   .get("api/show/" + this.id)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     this.apartment = response.data;
+    //     this.loadingDetails = false;
+    //   })
+    //   .catch((err) => {
+    //     //console.log(err);
+    //   });
+  },
+  watch: {
+    $route(to, from) {
+      this.details();
+    },
   },
   methods: {
     details() {
-      // axios
-      //   .get("api/show/" + this.id)
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     this.apartment = response.data;
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios
+        .get("api/show/" + this.id)
+        .then((response) => {
+          console.log(response.data);
+          this.apartment = response.data;
+          this.loadingDetails = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     onSlideStart(slide) {

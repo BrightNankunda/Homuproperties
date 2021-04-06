@@ -18,20 +18,25 @@ class loginController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ]);
-        $user = new User([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();
+        try {
 
-        return response()->json([
-            'user' => $user,
-            'token' => $user->createToken('Token')->accessToken,
-            'Message' => 'User created successfully'
-        ]); 
+            $user = new User([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+                ]);
+                $user->save();
+                
+                return response()->json([
+                    'user' => $user,
+                    'token' => $user->createToken('Token')->accessToken,
+                    'Message' => 'User created successfully'
+                    ]); 
+                } catch(Throwable $e) {
+                    return response()->json($e->getMessage());
+                }
     }
     public function login(Request $request) 
     {

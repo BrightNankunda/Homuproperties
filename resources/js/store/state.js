@@ -1,5 +1,6 @@
 let state = {
     user: {},
+    isAdmin: true,
     cats: [
         {
             'id': 1,

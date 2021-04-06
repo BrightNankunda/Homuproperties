@@ -155,6 +155,11 @@
         </div>
       </div>
     </div>
+    <div class="mt-auto justify-content-center">
+      <div class="bg-primary text-white rounded py-1">
+        <h4 class="text-center">Homu Properties</h4>
+      </div>
+    </div>
     <!-- </div> -->
   </div>
 </template>

@@ -1,292 +1,32 @@
 <template>
   <div>
     <div v-if="countofavailableproperties > 0" class="dashboard w-100">
-      <!--
-    <div class="col-md-2 bg-light">
-    <h4 class="lead">Kampala Cats</h4>
-    <div v-for="cat in bigcats" :key="cat.id">
-        <p>{{cat.size}}</p>
-    </div>
-    </div>
-    <div class="col-md-2 bg-light">
-    <h4 class="lead">Kawempe Cats</h4>
-    <div v-for="cat in smallcats" :key="cat.id">
-        <p>{{cat.size}}</p>
-    </div>
-    </div>
-    -->
-
-      <!--BEGINNING OF CAROUSEL-->
-      <!-- <div>
-        <div v-if="loading" class="text-center loader my-5">
-          <div class="spinner-border text-primary text-center" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <b-carousel
-          class="carousel"
-          v-else
-          id="carousel-1"
-          v-model="slide"
-          :interval="80000"
-          controls
-          indicators
-          background="#ababab"
-          img-width="1024"
-          img-height="480px"
-          style="text-shadow: 1px 1px 2px #333"
-          @sliding-start="onSlideStart"
-          @sliding-end="onSlideEnd"
-        >
-          
-
-          <b-carousel-slide
-            :img-src="'images/' + fone.front"
-            class="image d-block"
-            style="max-height: calc(100vh - 60px); position: center; width: 100%"
-          >
-            <div class="col-lg-5 bg-dark d-fex justify-content-center p-1">
-              <div class="">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="geo-alt" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.name }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.location }}</h5>
-                  </div>
-                  <div class="px-2 d-none d-md-block">
-                    <h5 class="lead">{{ fone.address }}</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-1">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="bar-chart" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.rent }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.status }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.hstatus }}</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-carousel-slide>
-          <b-carousel-slide
-            :img-src="'images/' + fone.image"
-            class="image"
-            style="max-height: calc(100vh - 60px)"
-          >
-            <div class="col-lg-5 bg-dark d-fex justify-content-center p-1">
-              <div class="">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="geo-alt" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.name }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.location }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.address }}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-1">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="bar-chart" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.rent }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.status }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ fone.hstatus }}</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-carousel-slide>
-
-          <b-carousel-slide
-            :img-src="'images/' + kira.photo"
-            class="image"
-            style="max-height: calc(100vh - 60px)"
-          >
-            <div class="col-lg-5 bg-dark d-fex justify-content-center p-1">
-              <div class="">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="geo-alt" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.name }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.location }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.address }}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-1">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="bar-chart" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.rent }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.status }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.hstatus }}</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-carousel-slide>
-          <b-carousel-slide
-            :img-src="'images/' + mukono.front"
-            style="max-height: calc(100vh - 60px)"
-            class="image"
-          >
-            <div class="col-lg-5 bg-dark d-fex justify-content-center p-1">
-              <div class="">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="geo-alt" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.name }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.location }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.address }}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-1">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="bar-chart" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.rent }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.status }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ mukono.hstatus }}</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-carousel-slide>
-
-          <b-carousel-slide
-            :img-src="'images/' + kira.image"
-            style="max-height: calc(100vh - 60px)"
-            class="image"
-          >
-            <div class="col-lg-5 bg-dark d-fex justify-content-center p-1">
-              <div class="">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="geo-alt" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.name }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.location }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.address }}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-1">
-                <div class="icon text-success d-flex justify-content-around my-4">
-                  <b-icon icon="bar-chart" scale="2"></b-icon>
-                </div>
-                <div class="row d-flex justify-content-center">
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.rent }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.status }}</h5>
-                  </div>
-                  <div class="px-2">
-                    <h5 class="lead">{{ kira.hstatus }}</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-carousel-slide>
-        </b-carousel>
-      </div> -->
-      <!--END OF CAROUSEL -->
       <!-- BANNER -->
       <div class="banner">
-        <div class="form-floating">
-          <textarea
-            class="form-control"
-            placeholder="Leave a comment here"
-            id="floatingTextarea2"
-            style="height: 100px"
-          ></textarea>
-          <label for="floatingTextarea2">Comments</label>
+        <div class="row search-container py-5 d-flex justify-content-center">
+          <h1 class="text-primary text-center col-md-12 col-lg-8">
+            <span class="d-md-inline-block d-none">Advertise with us & remove</span>
+            <span class="d-md-none">Remove</span> the information gap about property with
+            <span class="headeroff"><b>20% OFF</b></span>
+          </h1>
+          <div class="search-bars d-flex justify-content-center align-content-center">
+            <input
+              type="text"
+              class="form-control col-lg-5 mr-2"
+              placeholder="Location"
+            />
+            <!-- <span class="input-group"> -->
+            <input
+              type="text"
+              class="form-control col-lg-5"
+              placeholder="Property Type"
+            />
+            <button class="btn btn-defualt mx-2">Search</button>
+            <!-- </span> -->
+          </div>
         </div>
-        <div class="search-container py-5">
-          <div class="location-search">
-            <h1 class="searchoneheader text-primary text-center">
-              Search By location and Property type
-            </h1>
-            <div class="input-group search-bars d-flex justify-content-center">
-              <input type="text" class="form-control col-3 mr-2" placeholder="Location" />
-              <input type="text" class="form-control col-3" placeholder="Property Type" />
-              <span class="input-group-text" id="basic-addon1">@</span>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                type="email"
-                class="form-control"
-                id="floatingInput"
-                placeholder="name@example.com"
-              />
-              <label for="floatingInput">Email address</label>
-            </div>
-          </div>
-          <div class="rental-search mt-2">
-            <h1 class="searchoneheader text-primary text-center">
-              Search By Rental Range
-            </h1>
-            <div class="search-bars d-flex justify-content-center">
-              <input type="number" value="100000" class="form-control col-3 mr-2" />
-              <input type="number" value="10000000" class="form-control col-3" />
-              <button class="btn btn-outline-secondary" type="button">Button</button>
-            </div>
-          </div>
+        <div class="d-flex justify-content-center">
+          <router-link to="read" class="btn btn-primary">Get Started</router-link>
         </div>
       </div>
       <div class="shadow second bg-light my-5 pb-2">
@@ -297,10 +37,6 @@
             </div>
             <div class="">
               <h3 class="lead text-center">Real Estate Online Advertising</h3>
-              <!--<b-col md="6" class="mb-3">
-              <p>Cylon animation:</p>
-              <b-icon icon="three-dots" animation="cylon" variant="success" font-scale="4"></b-icon>
-            </b-col>-->
             </div>
           </div>
 
@@ -939,14 +675,9 @@ export default {
   background-position: center;
   background-size: 100% 100%;
 }
-.search-container {
+/* .search-container {
   margin: auto 0;
-}
-.location-search {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+} */
 #horizontal,
 #horizontalhostels,
 #horizontalRentals,

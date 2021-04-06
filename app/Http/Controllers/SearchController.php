@@ -17,7 +17,7 @@ class SearchController extends Controller
 
         $results = Image::where('location', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->orWhere('street', 'like', "%$query%")->orWhere('name', 'like', "%$query%")->get();
         
-             return response()->json($results);
+        return response()->json($results);
         
        
         

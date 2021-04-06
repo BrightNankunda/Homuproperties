@@ -13,7 +13,7 @@
           <h3 class="lead">You currently have no Registered Client!s</h3>
         </div>
       </div>
-      <table class="table table-responsive table-hover table-sm table-bordered" v-else>
+      <table class="table table-responsive table-condensed table-hover table-sm table-bordered" v-else>
         <thead class="thead-dark">
           <tr>
             <th scope="col">Client Name</th>
@@ -180,7 +180,7 @@ export default {
     deleteClient(client) {
       this.loading = true;
       this.$store.dispatch("deleteClient", client).then((res) => {
-        // this.$store.dispatch("fetchClients");
+        this.$store.dispatch("fetchClients");
         this.fetchClients();
         this.loading = false;
       });

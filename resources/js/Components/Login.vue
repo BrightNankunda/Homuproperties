@@ -16,7 +16,11 @@
             <h1 class="lead">Login</h1>
           </div>
           <div class="card-body">
-            <form method="POST" @submit.prevent="login">
+            <form
+              method="POST"
+              @submit.prevent="login"
+              class="form-horizontal has-success"
+            >
               <div class="form-group">
                 <label for="Email">Email</label>
                 <input

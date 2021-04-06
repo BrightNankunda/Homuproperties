@@ -37,7 +37,7 @@
               <router-link to="/read" class="nav-link text-white lead px-3 d-none d-lg-block " active-class="active">List a Property</router-link>
                <router-link to="/read" class="nav-link text-white px-3  d-none" active-class="active">List Property</router-link> 
 
-                <router-link to="/login" v-if="!loggedIn" class="text-white login my-2 px-2 border-right" active-class="active"><b-icon icon="power" scale="1.1" style="padding-left:1px; padding-right:1px:" aria-hidden="true"></b-icon>Login</router-link>
+                <router-link to="/login" v-if="!loggedIn" class="text-white login my-2 px-2 border-right" active-class="active">Login</router-link>
                 <router-link to="/register" v-if="!loggedIn" class="text-white signin btn btn-success  mx-2 px-2" active-class="active">SignIn</router-link>
 
                 <b-nav-item-dropdown right v-if="loggedIn">
@@ -47,7 +47,7 @@
                   </template>
                   <div class="loop">
                   <router-link to="/profile" class="pl-2" v-if="loggedIn"><b-icon icon="person"></b-icon>Profile</router-link>
-                  <router-link to="/boss/clients" class="pl-2"  v-if="loggedIn"><b-icon icon="list" ></b-icon>Property Details</router-link>
+                  <router-link to="/boss/home" class="pl-2"  v-if="loggedIn"><b-icon icon="list" ></b-icon>Property Details</router-link>
                   <router-link to="/logout" class="pl-2" v-if="loggedIn"><b-icon icon="power"></b-icon>Logout</router-link>
                   </div>
                 </b-nav-item-dropdown>
@@ -143,7 +143,9 @@
         },
          created() {
           axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token")
-         
+          if(this.loggedIn) {
+            this.$store.dispatch('getUser')
+          }
         },
         watch: {
           '$route' (to, from) {
@@ -174,6 +176,11 @@
               return this.results = ''
             }
           },
+          '$route' (to, from) {
+            if(this.loggedIn) {
+              this.$store.dispatch('getUser');
+            }
+          },
           loggedIn(newval, oldval) {
             if(newval === true) {
               this.$store.dispatch('getUser')
@@ -201,6 +208,7 @@
             return this.$store.getters.user;
           }
         },
+        
         methods: {
           fetch() {
             axios('api/search', {params: {query: this.keywords}})

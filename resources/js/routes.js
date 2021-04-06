@@ -1,3 +1,4 @@
+import store  from './store/index';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Upload from './components/Upload.vue';
@@ -25,7 +26,10 @@ import Master from './components/Master.vue';
 import Mid from './components/Mid.vue';
 import Details from './components/Details.vue';
 import Payments from './components/Payments.vue';
-import Admin from './components/Admin.vue'
+import Admin from './components/Admin.vue';
+import BossHome from './components/BossHome.vue';
+import AfterSignup from './components/AfterSignup.vue';
+import { Store } from 'vuex';
 
 
 export default {
@@ -82,6 +86,10 @@ export default {
             },
             children: [
                 {
+                    path: 'home',
+                    component: BossHome
+                },
+                {
                     path: 'clients',
                     component: Clients,
                     
@@ -102,15 +110,41 @@ export default {
             ]
         },
         {
-            path: 'Admin',
+            path: '/Admin',
             component: Admin,
+            beforeEnter(to, from, next) {
+                if(store.state.isAdmin && from.path === '/') {
+                    next()
+                } else {
+                    next({path: '/finish'})
+                }
+            },
+            children: [
+                {
+                    path: 'allAdverts',
+                },
+                {
+                    path: 'createAdvert'
+                },
+                {
+                    path: 'oneAdvert/:id'
+                }
+            ]
+        },
+        {
+            path: '/finish',
+            component: AfterSignup,
             meta: {
-                requiresAdmin: true,
+                requiresAuth: true
             }
         },
         {
             path: '/apartments',
-            component: Apartments
+            component: Apartments,
+            beforeEnter: (to, from, next) => {
+                console.log(`${from.path} to ${to.path}?`);
+                next();
+            }
         },
         { 
             path: '/details/:id', 
