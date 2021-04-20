@@ -15,7 +15,14 @@
             <form method="POST" @submit.prevent="register">
               <div class="form-group">
                 <label for="firstname">First Name:</label>
-                <input type="text" name="firstname" class="form-control" :class="{ err: fnameserr || flnameserr }" v-model="user.firstname" placeholder="First Name..." />
+                <input
+                  type="text"
+                  name="firstname"
+                  class="form-control"
+                  :class="{ err: fnameserr || flnameserr }"
+                  v-model="user.firstname"
+                  placeholder="First Name..."
+                />
                 <div class="" v-if="fnameserr">
                   <p class="text-danger">First Name is required!</p>
                 </div>
@@ -26,7 +33,14 @@
 
               <div class="form-group">
                 <label for="lastname">Last Name:</label>
-                <input type="text" name="lastname" class="form-control" :class="{ err: lnameserr || llnameserr }" v-model="user.lastname" placeholder="Last Name..." />
+                <input
+                  type="text"
+                  name="lastname"
+                  class="form-control"
+                  :class="{ err: lnameserr || llnameserr }"
+                  v-model="user.lastname"
+                  placeholder="Last Name..."
+                />
                 <div class="" v-if="lnameserr">
                   <p class="text-danger">Last Name is required!</p>
                 </div>
@@ -37,7 +51,14 @@
 
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="text" name="phone" class="form-control" :class="{ err: phoneerr }" v-model="user.phone" placeholder="Phone Number..." />
+                <input
+                  type="text"
+                  name="phone"
+                  class="form-control"
+                  :class="{ err: phoneerr }"
+                  v-model="user.phone"
+                  placeholder="Phone Number..."
+                />
                 <div class="" v-if="phoneerr">
                   <p class="text-danger">Enter a Valid Mobile Number!</p>
                 </div>
@@ -45,7 +66,13 @@
 
               <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" name="email" class="form-control" :class="{ err: emptyemail || emailerr }" v-model="user.email" />
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  :class="{ err: emptyemail || emailerr }"
+                  v-model="user.email"
+                />
                 <span class="icon"><b-icon icon="exaclamation"></b-icon></span>
                 <div class="" v-if="emailerr">
                   <p class="text-danger">Enter Correct Email Format</p>
@@ -57,7 +84,13 @@
 
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" :class="{ err: passwordlength }" class="form-control" v-model="user.password" />
+                <input
+                  type="password"
+                  name="password"
+                  :class="{ err: passwordlength }"
+                  class="form-control"
+                  v-model="user.password"
+                />
                 <div class="" v-if="passwordlength">
                   <p class="text-danger">Atleast 6 Characters for the password!</p>
                 </div>

@@ -13,121 +13,53 @@
           <h3 class="lead">You currently have no Registered Client!s</h3>
         </div>
       </div>
-      <table class="table table-responsive table-condensed table-hover table-sm table-bordered" v-else>
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Client Name</th>
-            <th scope="col">Property Name</th>
-            <th scope="col">Client Contact</th>
-            <th scope="col">Months Paid</th>
-            <th scope="col">Room Number</th>
+      <div class="table-wrapper bg-light rounded-sm py-2 px-4 mr-1" v-else>
+        <table class="table table-hover border rounded mx-auto">
+          <thead class="bg-light border-collapse">
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>CONTACT</th>
+              <th class=""></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(client, index) in clients" :key="client.id">
+              <td>{{ index + 1 }}</td>
 
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="client in clients" :key="client.id">
-            <td v-if="clientId != client.id">{{ client.clientName }}</td>
-            <td v-else>
-              <input
-                type="text"
-                class="input"
-                @keyup.enter="submitUpdate(client)"
-                v-model="client.clientName"
-              />
-            </td>
+              <td class="mx-4" @click="showClient(client)">
+                <router-link :to="`/boss/clients/${client.id}`">
+                  {{ client.clientName | capitalize }}
+                </router-link>
+              </td>
+              <td @click="showClient(client)">
+                {{ client.clientContact }}
+              </td>
 
-            <td v-if="clientId != client.id">{{ client.propertyName }}</td>
-            <td v-else>
-              <input
-                type="text"
-                class="input"
-                @keyup.enter="submitUpdate(client)"
-                v-model="client.propertyName"
-              />
-            </td>
+              <td>
+                <router-link :to="`/boss/clients/${client.id}`" class="mx-1"
+                  ><b-icon icon="eye" title="View"></b-icon>
+                </router-link>
 
-            <td v-if="clientId != client.id">{{ client.clientContact }}</td>
+                <router-link
+                  :to="`/boss/updateClient/${client.id}`"
+                  class="mx-1 text-dark"
+                  ><b-icon icon="pencil-square" title="Update"></b-icon
+                ></router-link>
 
-            <td v-else>
-              <input
-                type="text"
-                class="input"
-                @keyup.enter="submitUpdate(client)"
-                v-model="client.clientContact"
-              />
-            </td>
-            <td v-if="clientId != client.id">{{ client.monthsPaid }}</td>
-            <td v-else>
-              <input
-                type="text"
-                class="input"
-                @keyup.enter="submitUpdate(client)"
-                v-model="client.monthsPaid"
-              />
-            </td>
-            <td v-if="clientId != client.id">{{ client.roomNumber }}</td>
-            <td v-else>
-              <input
-                type="text"
-                class="input"
-                @keyup.enter="submitUpdate(client)"
-                v-model="client.roomNumber"
-              />
-            </td>
-            <td>
-              <button
-                class="btn btn-info"
-                @click="updateClient(client)"
-                v-if="clientId != client.id"
-              >
-                Edit
-              </button>
-              <button
-                class="btn btn-warning"
-                @click="submitUpdate(client)"
-                title="Edit"
-                v-else
-              >
-                Update
-              </button>
-              <button
-                class="btn btn-danger"
-                @click="deleteClient(client)"
-                v-if="clientId != client.id"
-              >
-                <b-icon icon="trash"></b-icon>
-              </button>
-              <button
-                class="btn btn-danger"
-                @click="cancelEdit(client)"
-                title="Cancel"
-                v-else
-              >
-                <b-icon icon="backspace"></b-icon>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                <span class="text-dark mx-1">
+                  <b-icon
+                    icon="trash"
+                    title="Delete"
+                    @click="deleteClient(client)"
+                  ></b-icon>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <!--<div>
-      <b-button @click="toggleBusy">Toggle Busy State</b-button>
-      <b-table responsive :items="clients" head-variant="primary" bordered hover dark :fields="fields">
-        <template #table-colgroup="scope">
-          <col v-for="field in scope.fields" :key="field.key" :style="{ width: field.key === 'roomNumber' ? '40px' : '70px' }" />
-        </template>
-        <template #table-busy>
-          <div class="text-center text-danger my-2">
-            <b-spinner class="align-middle"></b-spinner>
-            <strong>Loading...</strong>
-          </div>
-        </template>
-        <template #cell(actions)>
-          <button class="btn btn-info" @click="updateClient(client)" v-if="clientId != client.id">Edit</button>
-        </template>
-      </b-table>
-    </div>-->
   </div>
 </template>
 
@@ -136,31 +68,7 @@ export default {
   name: "Clients",
   data() {
     return {
-      beforeEditCache: "",
-      count: 0,
-      editing: false,
-      //client.editing = false,
-      //client.id = false capture and a clients id
-      fields: [
-        { key: "clientName", sortable: true },
-        { key: "propertyName", sortable: true },
-        "clientContact",
-        "monthsPaid",
-        { key: "roomNumber", sortable: true },
-        "actions",
-      ],
-      clientId: 0,
       loading: true,
-      isBusy: false,
-      client: {
-        clientName: "",
-        clinetContact: "",
-        monthsPaid: "",
-        roomNumber: "",
-        accessNumber: "",
-        paid: false,
-        verified: false,
-      },
     };
   },
   created() {
@@ -169,14 +77,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchClients");
-
-    // this.fetchClients();
   },
 
   methods: {
-    toggleBusy() {
-      this.isBusy = !this.isBusy;
-    },
     deleteClient(client) {
       this.loading = true;
       this.$store.dispatch("deleteClient", client).then((res) => {
@@ -186,40 +89,14 @@ export default {
       });
     },
 
-    // updateClient(client) {
-    //   //this.beforeEditCache = client.clientName;
-    //   //this.client.editing = true
-    //   //currentlyediting = 2 way selected event and capture selected id ie like the index down
-    //   //currentlyediting == client.id
-    //   this.editing = true;
-    // },
-    updateClient(client) {
-      //this.beforeEditCache = client.clientName;
-      this.clientId = client.id;
-      console.log(client.id);
+    addClient() {
+      this.$router.push("/boss/client");
     },
-    submitUpdate(client) {
-      this.loading = true;
-      axios
-        .patch("/api/clients/" + client.id, client)
-        .then((success) => {
-          this.$store.dispatch("fetchClients");
-          console.log(success);
-          this.clientId = 0;
-          this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
 
-      this.editing = false;
+    showClient(client) {
+      this.$router.push("/boss/clients/" + client.id);
     },
-    cancelEdit(client) {
-      //client.clientName = this.beforeEditCache;
-      this.clientId = 0;
-    },
-    fetchClients(context) {
-      //axios.defaults.headers.common["Authorization"] = "Bearer " + context.this.$store.state.token;
+    fetchClients() {
       this.loading = true;
       axios
         .get("api/clients")
@@ -242,5 +119,28 @@ export default {
       return this.$store.getters.clients;
     },
   },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+  },
 };
 </script>
+<style scoped>
+.fluid-container {
+  position: relative;
+  z-index: 10;
+}
+td {
+  cursor: pointer;
+}
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.rounded-sm {
+  border-radius: 20px !important;
+}
+</style>

@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div v-if="countofavailableproperties > 0" class="dashboard w-100">
+    <div class="dashboard w-100">
       <!-- BANNER -->
       <div class="banner">
         <div class="row search-container py-5 d-flex justify-content-center">
           <h1 class="text-primary text-center col-md-12 col-lg-8">
             <span class="d-md-inline-block d-none">Advertise with us & remove</span>
-            <span class="d-md-none">Remove</span> the information gap about property with
+            <span class="d-md-none">Remove</span> the information gap about your property
+            with
             <span class="headeroff"><b>20% OFF</b></span>
           </h1>
           <div class="search-bars d-flex justify-content-center align-content-center">
@@ -261,17 +262,7 @@
           </p>
         </div>
       </div>
-
-      <div class="my-5 bg-primary">
-        <div class="row d-flex justify-content-around text-success py-4">
-          <h4 class="lead text-center py-2">Why we are the best?</h4>
-        </div>
-        <div class="row d-flex my-4">
-          <div class="col-lg-4 py-3">Professional Expertise and advice</div>
-          <div class="col-lg-4 py-3">Adequate Marketing on all Online platforms</div>
-          <div class="col-lg-4 py-3">Organized and Online Booking and tours</div>
-        </div>
-      </div>
+      <ThirdComponent />
       <!--MALLS-->
       <div v-if="countofmalls > 1" class="text-center my-5">
         <router-link to="/malls" class="btn btn-primary px-4 lead"
@@ -407,16 +398,17 @@
         </div>
       </div>
     </div>
-    <div v-else>
+    <!-- <div v-else>
       <conditional-body />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import ConditionalBody from "./SubComponents/ConditionalBody.vue";
+import ThirdComponent from "./SubComponents/ThirdComponent.vue";
 export default {
-  components: { ConditionalBody },
+  components: { ConditionalBody, ThirdComponent },
   name: "Dashboard",
   data() {
     return {

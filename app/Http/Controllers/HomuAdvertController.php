@@ -38,31 +38,21 @@ class HomuAdvertController extends Controller
 
         return response()->json($newAdvert);
     }
-    public function show()
-    {
-        
+    public function show($id) {
+        $advert = HomuAdvert::findOrFail($id);
+        return response()->json($advert);
     }
 
     public function update(Request $request, $id)
     {
         $advert = HomuAdvert::findOrFail($id);
-        // if(!empty($advert)) {
-        //     
-        // }
-        // $advert->advert_header = $request->advert_header;
-        // $advert->advert_body = $request->advert_body;
-        
-        // if($request->hasFile('advert_image')) {
-        //     $advert_image_name = time().".".$request->file('advert_image')->getClientOriginalName();
-        //     $request->file('advert_image')->move(public_path('adverts'), $advert_image_name);
-        // };
-        // $newAdvert->advert_image = $advert_image_name;
-        $advert->update();
+        $advert->update($request->all());
 
         return response()->json($advert);
     }
-    public function delete(HomuAdvert $advert)
+    public function delete($id)
     {
+        $advert = HomuAdvert::findOrFail($id);
         $advert->delete();
         return response()->json('Deleted');
         // if($client->user_id !== auth()->user()->id) {

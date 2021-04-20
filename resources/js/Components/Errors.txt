@@ -1,0 +1,1 @@
+Click Error => click method not defined ie that doesn't exist

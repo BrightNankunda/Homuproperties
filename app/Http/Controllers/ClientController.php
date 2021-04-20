@@ -49,6 +49,11 @@ class ClientController extends Controller
         
         }
 
+        public function show($id)
+        {
+            $client = Client::findOrFail($id);
+            return response()->json($client);
+        }
     public function update(Request $request, Client $client)
     {
         if($client->user_id !== auth()->user()->id) {

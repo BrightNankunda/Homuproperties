@@ -25,6 +25,7 @@ class CreateClientsTable extends Migration
             $table->boolean('paid')->default(true);
             $table->boolean('verified')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

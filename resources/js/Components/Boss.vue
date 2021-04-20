@@ -8,49 +8,52 @@
           v-if="loggedIn"
           active-class="active"
           exact
-          >Home</router-link
+          >HOME</router-link
+        >
+        <div class="border-top my-1"></div>
+
+        <router-link
+          to="/boss/clients"
+          class="nav-link text-white"
+          v-if="loggedIn"
+          active-class="active"
+          >CLIENTS</router-link
         >
         <router-link
           to="/boss/client"
           class="nav-link text-white"
           v-if="loggedIn"
           active-class="active"
-          >Add a Client</router-link
+          >ADD A CLIENT</router-link
         >
-        <router-link
-          to="/boss/clients"
-          class="nav-link text-white"
-          v-if="loggedIn"
-          active-class="active"
-          >Clients</router-link
-        >
+        <div class="border-top my-1"></div>
         <router-link
           to="/boss/payment"
           class="nav-link text-white"
           v-if="loggedIn"
           active-class="active"
-          >Payment Methods</router-link
+          >PAYMENT METHODS</router-link
         >
         <router-link
           to="/boss/property"
           class="nav-link text-white"
           v-if="loggedIn"
           active-class="active"
-          >Details</router-link
+          >DETAILS</router-link
         >
         <router-link
           to="#"
           v-if="loggedIn"
           active-class="active"
           class="nav-link text-white"
-          >Notifications</router-link
+          >NOTIFICATIONS</router-link
         >
         <router-link
           to="/logout"
-          class="nav-link text-white ml-auto"
+          class="nav-link text-white mt-auto logout"
           v-if="loggedIn"
           active-class="active"
-          >Log out</router-link
+          >LOG OUT</router-link
         >
         <!--<div class="c" v-if="length">There is!</div>-->
       </div>
@@ -58,17 +61,26 @@
         <div class="row d-flex justify-content-center">
           <h4 class="lead text-center text-success">Get Started</h4>
         </div>
-        <router-view></router-view>
+        <div class="view">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
     <div class="row else" v-else>
-      <div class="alert alert-danger col-lg-6">
-        <h3 class="lead">
+      <div class="alert alert-danger col-lg-6 my-5">
+        <h4 class="text-center m-2">
+          <b-icon icon="house" class="mx-auto" scale="3"></b-icon>
+        </h4>
+        <h3 class="lead text-center my-3">
           You currently don't have any Listed Property, Please list one!
         </h3>
-      </div>
-      <div class="my-2">
-        <router-link to="/read" class="lead">List a Property</router-link>
+        <div class="my-4 d-flex justify-content-center">
+          <router-link
+            to="/read"
+            class="lead list-link text-center rounded border-primary px-2"
+            >List a Property</router-link
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -113,23 +125,38 @@ export default {
 .active {
   font-size: 1.1em;
   padding-left: 20px;
-  color: rgb(6, 247, 6) !important;
-  background: white;
-  border: none;
-  border-radius: 25px;
+  color: white !important;
+  border: 1px solid gray;
+  border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .left {
-  background: rgb(2, 2, 70);
+  background: rgb(49, 49, 212);
+}
+.list-link {
+  background: white !important;
+}
+.view {
+  min-height: 85vh;
 }
 .nav-link {
   margin-right: 0;
+  color: gray;
+  margin: 5px;
+  font-size: 80%;
 }
 .nav-link:hover {
-  background: rgb(100, 194, 100);
+  border: 1px solid white;
   opacity: 0.8;
-  border-radius: 25px;
+  border-radius: 6px;
+}
+.logout {
+  color: red !important;
+}
+.logout:hover {
+  border: 1px solid red;
+  background: none;
 }
 .else {
   display: flex;

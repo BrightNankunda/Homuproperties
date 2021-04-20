@@ -29,6 +29,12 @@ import Payments from './components/Payments.vue';
 import Admin from './components/Admin.vue';
 import BossHome from './components/BossHome.vue';
 import AfterSignup from './components/AfterSignup.vue';
+import Advert from './components/Advert.vue';
+import Adverts from './components/Adverts.vue';
+import AdvertUpdate from './components/AdvertUpdate.vue';
+import UpdateClient from './components/SubComponents/UpdateClient.vue';
+import ViewClient from './components/SubComponents/ViewClient.vue';
+import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import { Store } from 'vuex';
 
 
@@ -106,29 +112,62 @@ export default {
                 {
                     path: 'property',
                     component: Property
+                },
+                {
+                    path: 'updateClient/:id',
+                    component: UpdateClient
+                },
+                {
+                    path: 'clients/:id',
+                    component: ViewClient
                 }
             ]
         },
         {
+            path: '/createAdvert',
+            component: Advert,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/adverts',
+            component: Adverts,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/adverts/:id',
+            component: AdvertUpdate,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path: '/Admin',
             component: Admin,
-            beforeEnter(to, from, next) {
-                if(store.state.isAdmin && from.path === '/') {
-                    next()
-                } else {
-                    next({path: '/finish'})
-                }
+            meta: {
+                requiresAuth: true
             },
+            // beforeEnter(to, from, next) {
+            //     if(store.state.isAdmin && from.path === '/') {
+            //         next()
+            //     } else {
+            //         next({path: '/finish'})
+            //     }
+            // },
             children: [
-                {
-                    path: 'allAdverts',
-                },
-                {
-                    path: 'createAdvert'
-                },
-                {
-                    path: 'oneAdvert/:id'
-                }
+                // {
+                //     path: 'allAdverts',
+                // },
+                // {
+                //     path: 'createAdvert',
+                //     component: Advert
+                // },
+                // {
+                //     path: 'oneAdvert/:id'
+                // }
             ]
         },
         {
@@ -206,8 +245,14 @@ export default {
             component: NewProfile,
             meta: {
                 requiresAuth: true
-            }
+            },
+            
         },
+                {
+                    path: '/profile/update',
+                    component: UpdateProfile,
+                }
+            ,        
         {
             path: '/logout',
             component: Logout,

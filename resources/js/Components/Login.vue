@@ -10,10 +10,10 @@
         <h3 class="text-center text-danger">{{ loginerr }}</h3>
       </div>
 
-      <div class="col-lg-5 my-4">
+      <div class="col-lg-6 my-4">
         <div class="card my-2">
           <div class="card-header">
-            <h1 class="lead">Login</h1>
+            <h1 class="lead">Welcome back, Login</h1>
           </div>
           <div class="card-body">
             <form
@@ -56,7 +56,11 @@
                 </div>
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary m-auto">Login</button>
+                <button type="submit" class="btn btn-primary m-auto px-4">Login</button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <span>New? Create an account, </span>
+                <router-link to="/register" class="mx-2"> Sign Up</router-link>
               </div>
             </form>
           </div>
@@ -147,6 +151,16 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-content: center;
+}
+.btn-primary {
+  /* background: white !important;
+  border: 2px solid blue !important;
+  border-radius: 10px;
+  color: blue !important; */
+  border-radius: 12px !important;
+}
+.btn-primary:hover {
+  opacity: 0.8 !important;
 }
 .err {
   border: 2px solid red;
