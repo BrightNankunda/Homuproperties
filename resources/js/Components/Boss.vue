@@ -68,8 +68,8 @@
     </div>
     <div class="row else" v-else>
       <div class="alert alert-danger col-lg-6 my-5">
-        <h4 class="text-center m-2">
-          <b-icon icon="house" class="mx-auto" scale="3"></b-icon>
+        <h4 class="text-center m-4">
+          <b-icon icon="calendar-plus" class="mx-auto" scale="3"></b-icon>
         </h4>
         <h3 class="lead text-center my-3">
           You currently don't have any Listed Property, Please list one!

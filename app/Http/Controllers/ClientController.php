@@ -59,6 +59,8 @@ class ClientController extends Controller
         if($client->user_id !== auth()->user()->id) {
             return response()->json('You are Unauthorized');
         }
+        // return response()->json($client);
+
         $data = $request->validate([
             'clientName' => 'required|string',
             'clientContact' => 'required|string',

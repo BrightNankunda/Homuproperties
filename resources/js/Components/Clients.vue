@@ -14,7 +14,10 @@
         </div>
       </div>
       <div class="table-wrapper bg-light rounded-sm py-2 px-4 mr-1" v-else>
-        <table class="table table-hover border rounded mx-auto">
+        <table
+          class="table table-hover rounded mx-auto"
+          :class="{ 'table-sm': tableProperties }"
+        >
           <thead class="bg-light border-collapse">
             <tr>
               <th>ID</th>
@@ -74,7 +77,9 @@ export default {
   created() {
     this.loading = true;
     this.fetchClients();
+    count: 0;
   },
+
   mounted() {
     this.$store.dispatch("fetchClients");
   },
@@ -117,6 +122,9 @@ export default {
   computed: {
     clients() {
       return this.$store.getters.clients;
+    },
+    tableProperties() {
+      return true ? this.count > 10 : "";
     },
   },
   filters: {

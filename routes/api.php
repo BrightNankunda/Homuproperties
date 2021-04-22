@@ -63,7 +63,7 @@ Route::get('/later', 'App\Http\Controllers\ImageController@later')->middleware('
 Route::get('/clients', 'App\Http\Controllers\ClientController@clients')->middleware('auth:api');
 Route::post('/clients', 'App\Http\Controllers\ClientController@register')->middleware('auth:api');
 Route::get('/clients/{id}','App\Http\Controllers\ClientController@show')->middleware('auth:api');
-Route::patch('/clients/{id}', 'App\Http\Controllers\ClientController@update')->middleware('auth:api');
+Route::patch('/clients/{client}', 'App\Http\Controllers\ClientController@update')->middleware('auth:api');
 Route::delete('/clients/{client}', 'App\Http\Controllers\ClientController@delete')->middleware('auth:api');
 
 Route::get('/admin', 'App\Http\Controllers\PaymentController@admin')->middleware('auth:api');
