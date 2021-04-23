@@ -1,16 +1,25 @@
 <template>
-  <div class="container mx-auto my-2">
-    <h5 class="border-bottom my-2 text-center w-100">
+  <div class="container mx-auto my-3">
+    <h5 class="border-bottom my-3 text-center w-100">
       <span class="mx-1"><b-icon icon="person-fill" variant="danger"></b-icon></span
       >Update Account Information
     </h5>
-
-    <div v-if="!loadingData" class="d-flex justify-content-center bg-light mt-2">
+    <div
+      class="row border d-flex justify-content-center bg-light mt-2 rounded w-100"
+      style="min-height: 60vh"
+      v-if="loadingData"
+    >
+      <div class="w-100 d-flex justify-content-center flex-col m-auto">
+        <page-loader />
+      </div>
+    </div>
+    <div class="d-flex justify-content-center bg-light mt-2" v-else>
       <form
         action="PUT"
         @submit.prevent="updateProfileData"
         class="form border rounded w-100 p-4"
         enctype="x-www-form-urlencoded"
+        style="min-height: 60vh"
       >
         <div class="form-group">
           <label for="status">Status</label>
@@ -52,12 +61,15 @@
   </div>
 </template>
 <script>
+import PageLoader from "../Loaders/PageLoader.vue";
 export default {
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       pic: null,
-      loadingAdvert: true,
-      loadingData: true,
+      loadingData: false,
       advertData: null,
       personalData: null,
       preferredProperty: null,
@@ -84,6 +96,7 @@ export default {
     },
 
     getPersonalData() {
+      this.loadingData = true;
       axios
         .get("/api/person")
         .then((res) => {

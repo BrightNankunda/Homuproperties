@@ -63,8 +63,8 @@
           <input type="file" @change="picImage" id="pic" name="pic" />
         </div>
         <div class="buttons d-flex justify-content-between my-2">
-          <button class="btn btn-default">Skip</button
-          ><button class="btn btn-primary">Finish</button>
+          <button class="btn btn-default" @click="skip">Skip</button
+          ><button class="btn btn-primary" type="submit">Finish</button>
         </div>
       </div>
     </form>
@@ -78,10 +78,12 @@ export default {
       gender: null,
       preferredLocation: null,
       pic: null,
+      loading: false,
     };
   },
   methods: {
     uploadData() {
+      this.loading = true;
       let data = new FormData();
       data.append("status", this.status);
       data.append("gender", this.gender);
@@ -91,9 +93,31 @@ export default {
         .post("/api/person", data)
         .then((response) => {
           console.log(response.data);
+          this.loading = false;
+          this.$router.push("/profile");
         })
         .catch((err) => {
           console.log(err.message);
+          this.loading = false;
+        });
+    },
+    skip() {
+      this.loading = true;
+      let data = new FormData();
+      data.append("status", "_");
+      data.append("gender", "_");
+      data.append("preferredLocation", "_");
+      data.append("profileImage", "_");
+      axios
+        .post("/api/person", data)
+        .then((response) => {
+          console.log(response.data);
+          this.loading = false;
+          this.$router.push("/profile");
+        })
+        .catch((err) => {
+          console.log(err.message);
+          this.loading = false;
         });
     },
     picImage(e) {

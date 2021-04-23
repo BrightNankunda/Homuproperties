@@ -11,6 +11,11 @@
           <div class="card-header">
             <h1 class="lead">Register</h1>
           </div>
+          <div class="d-flex justify-content-center m-2" v-if="error">
+            <div class="alert alert-danger">
+              <p>{{ error }}</p>
+            </div>
+          </div>
           <div class="card-body">
             <form method="POST" @submit.prevent="register">
               <div class="form-group">
@@ -121,6 +126,7 @@ export default {
       email: "",
       password: "",
     },
+    error: null,
     emailerr: false,
     emptyemail: false,
     passwordlength: false,
@@ -133,6 +139,11 @@ export default {
     llnameserr: false,
   }),
   methods: {
+    removeError() {
+      setTimeout(() => {
+        return (this.error = null);
+      }, 4000);
+    },
     validatefnames() {
       if (this.user.firstname.trim().length === 0) {
         this.fnameserr = true;
@@ -199,10 +210,23 @@ export default {
         return;
       }
       this.loading = true;
-      this.$store.dispatch("registerUser", this.user).then((response) => {
-        this.$router.push("/");
-        this.loading = false;
-      });
+      this.$store
+        .dispatch("registerUser", this.user)
+        .then((response) => {
+          this.$router.push("/");
+          this.loading = false;
+        })
+        .catch((err) => {
+          const errors = err.response.data.errors;
+          if (errors != "") {
+            Object.values(errors).map(function (value) {
+              console.log(value[0]);
+            });
+          }
+          if ((err.status = 422)) this.error = "Phone or Email is already in use";
+          this.removeError();
+          this.loading = false;
+        });
     },
   },
 };

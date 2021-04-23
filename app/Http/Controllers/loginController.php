@@ -34,9 +34,9 @@ class loginController extends Controller
                     'token' => $user->createToken('Token')->accessToken,
                     'Message' => 'User created successfully'
                     ]); 
-                } catch(Throwable $e) {
-                    return response()->json($e->getMessage());
-                }
+        } catch(Throwable $e) {
+            throw new Exception('Invalid Data');
+        }
     }
     public function login(Request $request) 
     {

@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="row form-container" v-else>
-      <div v-if="loginerr" class="alert alert-danger">
-        <h3 class="text-center text-danger">{{ loginerr }}</h3>
+      <div v-if="loginerr" class="col-lg-6 mx-auto alert alert-danger">
+        <p class="text-center text-danger">{{ loginerr }}</p>
       </div>
 
       <div class="col-lg-6 my-4">
@@ -128,11 +128,11 @@ export default {
         .then((response) => {
           this.$router.push("/");
           this.loading = false;
+          return;
         })
         .catch((err) => {
-          console.log(err.message);
-          if ((err.message = "Request failed with status code 404")) {
-            this.loginerr = "Invalid Entries";
+          if ((err.response.status = 404)) {
+            this.loginerr = "Invalid Password or Email!";
           }
           this.loading = false;
           return;
@@ -177,5 +177,9 @@ export default {
 .center {
   display: flex;
   align-items: center;
+}
+.alert-danger {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 </style>

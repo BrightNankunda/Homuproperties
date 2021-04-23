@@ -26,6 +26,8 @@ class PersonalDataController extends Controller
         if($request->hasFile('profileImage')) {
             $profileImage = time().".".$request->file('profileImage')->getClientOriginalName();
             $request->file('profileImage')->move(public_path('PersonalData'), $profileImage);
+        } else {
+            $profileImage = '_';
         }
         $data->profileImage = $profileImage;
         $data->save();

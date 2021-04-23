@@ -62,9 +62,14 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .user-link {
   cursor: pointer;
+}
+.fluid-container {
+  color: #141414;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
 }
 .user-link:hover {
   background: rgb(218, 216, 216);

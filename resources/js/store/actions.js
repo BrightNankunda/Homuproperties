@@ -6,7 +6,7 @@ let actions = {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
         if(context.getters.loggedIn) {
         return new Promise((resolve, reject) => {
-        axios
+        axiosf
         .post("/api/pic", {
             pic: data.pic
         })
@@ -90,7 +90,6 @@ let actions = {
                 resolve(response)
             })
             .catch(err => {
-                console.log(err)
                 reject(err)
             })
         })
