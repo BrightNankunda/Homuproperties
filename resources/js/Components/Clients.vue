@@ -1,6 +1,9 @@
 <template>
   <div>
     <h4 class="text-center lead">Your Clients</h4>
+
+    <success-alert :alertMessage="alertMessage" v-if="alertMessage" />
+
     <div v-if="loading" class="text-center my-5">
       <div class="spinner-border text-primary text-center" role="status">
         <span class="sr-only">Loading...</span>
@@ -67,11 +70,17 @@
 </template>
 
 <script>
+import SuccessAlert from "./Alerts/SuccessAlert";
+
 export default {
   name: "Clients",
+  components: {
+    SuccessAlert,
+  },
   data() {
     return {
       loading: true,
+      alertMessage: null,
     };
   },
   created() {
@@ -85,13 +94,26 @@ export default {
   },
 
   methods: {
+    removeAlertMessage() {
+      this.alertMessage = null;
+    },
     deleteClient(client) {
       this.loading = true;
-      this.$store.dispatch("deleteClient", client).then((res) => {
-        this.$store.dispatch("fetchClients");
-        this.fetchClients();
-        this.loading = false;
-      });
+      this.$store
+        .dispatch("deleteClient", client)
+        .then((res) => {
+          this.$store.dispatch("fetchClients");
+          this.fetchClients();
+          this.alertMessage = "Client Deleted Successfully";
+          this.loading = false;
+        })
+        .then((res) => {
+          setTimeout(this.removeAlertMessage, 5000);
+          return;
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
     },
 
     addClient() {

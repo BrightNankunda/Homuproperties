@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <success-alert :alert-message="alertMessage" v-if="alertMessage" class="mt-2" />
     <div class="d-flex justify-content-center">
       <h4 class="my-2">Finish Sign up!</h4>
     </div>
@@ -71,15 +72,25 @@
   </div>
 </template>
 <script>
+import SuccessAlert from "./Alerts/SuccessAlert";
 export default {
+  components: {
+    SuccessAlert,
+  },
   data() {
     return {
       status: null,
       gender: null,
       preferredLocation: null,
+      alertMessage: "Please fill the feilds to finish sign Up!",
       pic: null,
       loading: false,
     };
+  },
+  watch: {
+    $route(to, from) {
+      if (from.path != "/") console.log(from.path);
+    },
   },
   methods: {
     uploadData() {

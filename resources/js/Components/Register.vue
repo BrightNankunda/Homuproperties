@@ -118,6 +118,7 @@
 <script>
 export default {
   name: "Register",
+
   data: () => ({
     user: {
       firstname: "",
@@ -126,6 +127,7 @@ export default {
       email: "",
       password: "",
     },
+
     error: null,
     emailerr: false,
     emptyemail: false,
@@ -213,7 +215,7 @@ export default {
       this.$store
         .dispatch("registerUser", this.user)
         .then((response) => {
-          this.$router.push("/");
+          this.$router.push({ path: "/finish", query: { id: response.data.id } });
           this.loading = false;
         })
         .catch((err) => {

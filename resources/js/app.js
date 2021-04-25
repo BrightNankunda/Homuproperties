@@ -16,7 +16,9 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VueRouter);
 
 const router = new VueRouter(
-      routes,
+
+
+      routes
 )
 
 router.beforeEach((to, from, next) => {

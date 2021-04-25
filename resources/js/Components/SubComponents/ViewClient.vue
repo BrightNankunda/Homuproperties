@@ -31,85 +31,90 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center" v-if="loading">
+      <!-- style="width: 100%; min-height: 50vh" -->
+      <!-- class="d-flex justify-content-center" -->
+      <div v-if="loading">
         <page-loader />
       </div>
-      <div class="col-12 d-flex justify-content-center flex-col mb-1" v-else>
-        <div class="w-100 bg-white rounded px-2">
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Client Name:</p>
+      <div v-else class="col-12">
+        <danger-alert :alertMessage="errorText" v-if="isError" class="w-100" />
+        <div class="col-12 d-flex justify-content-center flex-col mb-1" v-else>
+          <div class="w-100 bg-white rounded px-2">
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Client Name:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.clientName }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.clientName }}</p>
+            <div class="border-top px-5 mb-1"></div>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Client Contact:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.clientContact }}</p>
+              </div>
             </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Client Contact:</p>
-            </div>
-            <div class="col-9">
-              <p class="">{{ client.clientContact }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
+            <div class="border-top px-5 mb-1"></div>
 
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Months Paid:</p>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Months Paid:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.monthsPaid }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.monthsPaid }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
+            <div class="border-top px-5 mb-1"></div>
 
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Room Number:</p>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Room Number:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.roomNumber }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.roomNumber }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
+            <div class="border-top px-5 mb-1"></div>
 
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Access Number:</p>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Access Number:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.accessNumber }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.accessNumber }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
+            <div class="border-top px-5 mb-1"></div>
 
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Property Name:</p>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Property Name:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.propertyName }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.propertyName }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
+            <div class="border-top px-5 mb-1"></div>
 
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Verify Client:</p>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Verify Client:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.verified }}</p>
+              </div>
             </div>
-            <div class="col-9">
-              <p class="">{{ client.verified }}</p>
-            </div>
-          </div>
-          <div class="border-top px-5 mb-1"></div>
-          <div class="row d-flex my-1 row">
-            <div class="col-3">
-              <p>Client Paid:</p>
-            </div>
-            <div class="col-9">
-              <p class="">{{ client.paid }}</p>
+            <div class="border-top px-5 mb-1"></div>
+            <div class="row d-flex my-1 row">
+              <div class="col-3">
+                <p>Client Paid:</p>
+              </div>
+              <div class="col-9">
+                <p class="">{{ client.paid }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -119,30 +124,68 @@
 </template>
 <script>
 import PageLoader from "../Loaders/PageLoader";
+import DangerAlert from "../Alerts/DangerAlert";
 export default {
   components: {
     PageLoader,
+    DangerAlert,
   },
   data() {
     return {
       id: this.$route.params.id,
-      loading: false,
+      loading: true,
+      errorText: null,
+      errorStatus: null,
+      isError: false,
       client: {},
     };
   },
   created() {
     this.getClient();
   },
+  watch: {
+    $route() {
+      let id = this.$route.params.id;
+      this.loading = true;
+      this.isError = false;
+      this.client = {};
+      axios
+        .get("api/clients/" + id)
+        .then((res) => {
+          return (this.client = res.data);
+        })
+        .catch((err) => {
+          this.isError = true;
+          let status = err.response.status;
+          let errorText = err.response.statusText;
+          this.errorStatus = status;
+          this.errorText = errorText;
+          console.log(this.errorText, this.errorStatus);
+          console.log(err.response.status, err.response.statusText);
+          return;
+        });
+      this.loading = false;
+    },
+  },
   methods: {
     getClient() {
       this.loading = true;
+      this.isError = false;
+      this.client = {};
       axios
         .get("api/clients/" + this.id)
         .then((res) => {
           return (this.client = res.data);
         })
         .catch((err) => {
-          console.log(err.message);
+          this.isError = true;
+          let status = err.response.status;
+          let errorText = err.response.statusText;
+          this.errorStatus = status;
+          this.errorText = errorText;
+          console.log(this.errorText, this.errorStatus);
+          console.log(err.response.status, err.response.statusText);
+          return;
         });
       this.loading = false;
     },

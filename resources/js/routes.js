@@ -39,7 +39,7 @@ import { Store } from 'vuex';
 
 
 export default {
-
+    mode: 'history',
     routes: [
         {
             path: '/',
