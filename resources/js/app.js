@@ -49,6 +49,17 @@ router.beforeEach((to, from, next) => {
     next() // make sure to always call next()!
   }
 })
+Vue.filter('capitalize', function(value) {
+  if(!value) return ''
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+Vue.filter('toUpperCase', function(value) {
+  if(!value) return ''
+  value = value.toString();
+  return value.toUpperCase()
+})
 
 const app = new Vue({
       router,

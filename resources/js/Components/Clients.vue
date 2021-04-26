@@ -81,12 +81,17 @@ export default {
     return {
       loading: true,
       alertMessage: null,
+      count: 0,
+      addedClient: this.$route.query.addedClient || null,
+      updatedClient: this.$route.query.updatedClient || null,
+      deletedClient: this.$route.query.deletedClient || null,
     };
   },
   created() {
     this.loading = true;
     this.fetchClients();
-    count: 0;
+    this.addClientAlert();
+    this.updatedClientAlert();
   },
 
   mounted() {
@@ -94,6 +99,18 @@ export default {
   },
 
   methods: {
+    addClientAlert() {
+      if (this.addedClient !== null)
+        this.alertMessage = `Client ${this.addedClient} Has Been Added Successfully!`;
+      else console.log("NO ADDED CLIENT QUERY");
+    },
+    updatedClientAlert() {
+      if (this.updatedClient !== null) {
+        this.alertMessage = `Client ${this.updatedClient} Has Been Updated Successfully`;
+      } else {
+        console.log("No UPDATED CLIENT");
+      }
+    },
     removeAlertMessage() {
       this.alertMessage = null;
     },

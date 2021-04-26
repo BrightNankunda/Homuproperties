@@ -215,7 +215,8 @@ export default {
       this.$store
         .dispatch("registerUser", this.user)
         .then((response) => {
-          this.$router.push({ path: "/finish", query: { id: response.data.id } });
+          let id = response.data.user.id;
+          this.$router.push({ path: "/finish", query: { id: id } });
           this.loading = false;
         })
         .catch((err) => {

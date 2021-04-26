@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h4>{{ $route.query.id }}</h4>
     <success-alert :alert-message="alertMessage" v-if="alertMessage" class="mt-2" />
     <div class="d-flex justify-content-center">
       <h4 class="my-2">Finish Sign up!</h4>

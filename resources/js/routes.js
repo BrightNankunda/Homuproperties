@@ -35,11 +35,12 @@ import AdvertUpdate from './components/AdvertUpdate.vue';
 import UpdateClient from './components/SubComponents/UpdateClient.vue';
 import ViewClient from './components/SubComponents/ViewClient.vue';
 import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
+import PreferredProperties from './components/SubComponents/PreferredProperties';
 import { Store } from 'vuex';
 
 
 export default {
-    mode: 'history',
+    // mode: 'history',
     routes: [
         {
             path: '/',
@@ -122,6 +123,10 @@ export default {
                     component: ViewClient
                 }
             ]
+        },
+        {
+            path: '/preferredlocation',
+            component: PreferredProperties
         },
         {
             path: '/createAdvert',

@@ -48,6 +48,7 @@ Route::get('/countofproperties', 'App\Http\Controllers\ImageController@count');
 
 Route::post('upload', 'App\Http\Controllers\ImageController@upload')->middleware('auth:api');
 Route::get('/see', 'App\Http\Controllers\ImageController@see')->middleware('auth:api');
+Route::get('/preferredlocation/{location}', 'App\Http\Controllers\ImageController@preferredlocation')->middleware('auth:api');
 
 Route::get('/methods', 'App\Http\Controllers\MethodsController@index')->middleware('auth:api');
 Route::post('/methods', 'App\Http\Controllers\MethodsController@store')->middleware('auth:api');

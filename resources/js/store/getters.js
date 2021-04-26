@@ -11,6 +11,9 @@ let getters = {
     fone: state => {
         return state.fone
     },
+    personalData: state => {
+        return state.personalData
+    },
     ftwo: state => {
         return state.ftwo
     },

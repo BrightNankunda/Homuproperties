@@ -16,6 +16,9 @@ let mutations = {
     getUsa(state, user) {
         return state.user = user
     },
+    personalData(state, personalData) {
+        return state.personalData = personalData
+    },
     apartments(state, apartments) {
         return state.apartments = apartments
     },

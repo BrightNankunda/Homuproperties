@@ -13,7 +13,7 @@ class HomuAdvertController extends Controller
         return response()->json($allAdverts);
     }
     public function oneAdvert() {
-        $oneAdvert  = HomuAdvert::get()->first();
+        $oneAdvert  = HomuAdvert::get()->random();
         return response()->json($oneAdvert);
     }
     public function store(Request $request)

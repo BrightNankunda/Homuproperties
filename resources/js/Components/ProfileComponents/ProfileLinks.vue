@@ -8,8 +8,11 @@
     <router-link to="/boss/clients" class="nav-link text-white" active-class="active"
       >EDIT PROFILE</router-link
     >
-    <router-link to="/boss/payment" class="nav-link text-white" active-class="active"
-      >MESSAGES</router-link
+    <router-link
+      :to="`/preferredlocation?location=${location}`"
+      class="nav-link text-white"
+      active-class="active"
+      >{{ location | toUpperCase }} PROPERTIES</router-link
     >
     <router-link to="#" active-class="active" class="nav-link text-white"
       >NOTIFICATIONS</router-link
@@ -28,6 +31,22 @@
 <script>
 export default {
   name: "ProfileLinks",
+  data() {
+    return {
+      location: null,
+    };
+  },
+  created() {
+    this.$store
+      .dispatch("getPersonalData")
+      .then((res) => {
+        this.location = res.data.preferredLocation;
+        this.loadingData = false;
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  },
 };
 </script>
 <style scoped>

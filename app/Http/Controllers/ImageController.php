@@ -13,6 +13,17 @@ class ImageController extends Controller
         $images = Image::where('boss_id', auth()->user()->id)->get();
         return response()->json($images);
     }
+    public function preferredlocation(Request $request, $location) {
+        // $properties = Image::where('location', '=', $location)->get();
+        $properties = Image::where('location', 'like', "%$location%")->orWhere('address', 'like', "%$location%")->orWhere('street', 'like', "%$location%")->orWhere('name', 'like', "%$location%")->get();
+        $count = $properties->count();
+        // return response($count);
+        if($count > 0) {
+            return response()->json($properties);
+        } else {
+            return $this->uploads();
+        }
+    }
     public function late() {
         $image = Image::whereLocationAndType('Kawempe', 'Apartment')->limit(1)->get();
         return response()->json($image);

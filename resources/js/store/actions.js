@@ -94,6 +94,20 @@ let actions = {
             })
         })
     },
+    getPersonalData(context) {
+        return new Promise((resolve, reject) => {
+        axios
+        .get("/api/person")
+        .then((res) => {
+          context.commit('personalData', res.data)
+            resolve(res)
+        })
+        .catch((err) => {
+          console.log(err.response);
+          reject(err)
+        });
+        })
+    },
     upload(context, data) {
         console.log(data)
 

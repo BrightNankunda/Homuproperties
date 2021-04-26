@@ -138,8 +138,9 @@ export default {
       axios
         .post("/api/clients", client)
         .then((success) => {
+          let clientName = success.data.clientName;
           console.log(success);
-          this.$router.push("clients");
+          this.$router.push({ path: "clients", query: { addedClient: clientName } });
         })
         .catch((err) => {
           console.log(err);

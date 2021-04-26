@@ -158,7 +158,12 @@ export default {
         .then((res) => {
           // this.client = res.data;
           this.loading = false;
-          return this.$router.push("/boss/clients/" + this.id);
+
+          let updatedClient = res.data.Updated.clientName;
+          return this.$router.push({
+            path: "/boss/clients",
+            query: { updatedClient: updatedClient },
+          });
         })
         .catch((err) => {
           console.log(err);

@@ -114,34 +114,35 @@ export default {
     DataLoader;
     return {
       loadingData: true,
-      personalData: null,
       loadingUpdate: false,
-      loadingData: true,
-      personalData: null,
     };
   },
   created() {
-    this.getPersonalData();
+    this.$store
+      .dispatch("getPersonalData")
+      .then((res) => {
+        this.loadingData = false;
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   },
 
-  filters: {
-    capitalize(value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    },
-  },
   computed: {
     user() {
       return this.$store.getters.user;
     },
+    personalData() {
+      return this.$store.getters.personalData;
+    },
   },
   methods: {
+    // STILL NEEDED
     getPersonalData() {
       axios
         .get("/api/person")
         .then((res) => {
-          this.personalData = res.data;
+          // this.personalData = res.data;
           console.log(res.data);
           this.loadingData = false;
         })

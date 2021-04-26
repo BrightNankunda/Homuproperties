@@ -18,6 +18,7 @@ let state = {
             'location': 'Kawempe',
         }
     ],
+    personalData: {},
     fone: {},
     countofproperties: 0,
     ftwo: {},
