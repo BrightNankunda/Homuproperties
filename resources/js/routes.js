@@ -9,7 +9,6 @@ import NotFound from './components/NotFound.vue';
 import Read from './components/Read.vue';
 import Aupload from './components/Aupload.vue';
 import Pay from './components/Pay.vue';
-import officialpost from './components/officialpost.vue';
 import Createofficialpost from './components/Createofficialpost.vue';
 import Client from './components/Client.vue';
 import Clients from './components/Clients.vue';
@@ -46,6 +45,9 @@ export default {
             path: '/',
             component: Dashboard,
             
+            meta: {
+                title: 'Dashboard'
+            }
         },
         {
             path: '/mid',
@@ -63,23 +65,15 @@ export default {
         {
             path: '/login',
             component: Login,
-            meta: {
-                requiresVisitor: true
-            }
         },
         {
             path: '/register',
             component: Register,
-            meta: {
-                requiresVisitor: true
-            }
         },
         {
             path: '/dashboard',
             component: Dashboard,
-            meta: {
-                requiresAuth: true
-            }
+            
         },
         {
             path: '/read',
@@ -126,7 +120,11 @@ export default {
         },
         {
             path: '/preferredlocation',
-            component: PreferredProperties
+            component: PreferredProperties,
+            meta: {
+                requiresAuth: true
+        
+            }
         },
         {
             path: '/createAdvert',

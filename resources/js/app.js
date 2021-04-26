@@ -23,8 +23,6 @@ const router = new VueRouter(
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (!store.getters.loggedIn) {
       next({
         path: '/login',
@@ -34,19 +32,26 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (store.getters.loggedIn) {
-      next({
-        replace: true,
-        path: '/'
-      })
-    } else {
-      next()
-    }
+  // }  else if (to.matched.some(record => record.meta.requiresVisitor)) {
+  //   if (store.getters.loggedIn) {
+  //     next({
+  //       replace: true,
+  //       path: '/'
+  //     })
+  //   } else {
+  //     next()
+  //   }
   } else {
     next() // make sure to always call next()!
+  }
+})
+router.afterEach(to => {
+  if(to.meta.title !== undefined) {
+    let documentTitle = document.title
+    let routeTitle = to.meta.title
+    document.title = documentTitle + ' | ' + routeTitle
+  } else {
+    console.log("Has no Document title")
   }
 })
 Vue.filter('capitalize', function(value) {
