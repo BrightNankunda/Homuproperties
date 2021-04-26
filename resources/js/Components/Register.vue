@@ -216,7 +216,7 @@ export default {
         .dispatch("registerUser", this.user)
         .then((response) => {
           let id = response.data.user.id;
-          this.$router.push({ path: "/finish", query: { id: id } });
+          this.$router.replace({ path: "/finish", query: { id: id } });
           this.loading = false;
         })
         .catch((err) => {

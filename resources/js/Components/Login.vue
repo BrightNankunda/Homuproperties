@@ -126,7 +126,7 @@ export default {
       this.$store
         .dispatch("loginUser", this.user)
         .then((response) => {
-          this.$router.push("/");
+          this.$router.replace("/");
           this.loading = false;
           return;
         })
