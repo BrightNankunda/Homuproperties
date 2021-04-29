@@ -2,7 +2,7 @@
   <div>
     <h4 class="text-center lead">Your Clients</h4>
 
-    <success-alert :alertMessage="alertMessage" v-if="alertMessage" />
+    <success-alert :alertMessage="alertMessage" v-if="alertMessage !== null" />
 
     <div v-if="loading" class="text-center my-5">
       <div class="spinner-border text-primary text-center" role="status">
@@ -96,6 +96,20 @@ export default {
 
   mounted() {
     this.$store.dispatch("fetchClients");
+    if (
+      this.addedClient != null ||
+      this.updatedClient != null ||
+      this.deletedClient != null
+    ) {
+      // setTimeout(this.removeAlertMessage, 2000);
+      // console.log(this.addedClient);
+    }
+    // if (
+    //   (this.addedClient != null || this.updatedClient != null, this.deletedClient != null)
+    // ) {
+    //   // this.removeAlertMessage()
+    //   console.log("THERE ALERT MESSAGE");
+    // }
   },
 
   methods: {
@@ -112,7 +126,11 @@ export default {
       }
     },
     removeAlertMessage() {
-      this.alertMessage = null;
+      return (
+        this.addedClient == null &&
+        this.updatedClient == null &&
+        this.deletedClient == null
+      );
     },
     deleteClient(client) {
       this.loading = true;
@@ -164,13 +182,6 @@ export default {
     },
     tableProperties() {
       return true ? this.count > 10 : "";
-    },
-  },
-  filters: {
-    capitalize: function (value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
     },
   },
 };

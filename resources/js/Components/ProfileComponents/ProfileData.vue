@@ -81,8 +81,25 @@
           <div class="col-5">
             <h5 class="m-3">Preferred Residence</h5>
           </div>
-          <div class="col-7">
-            <h5 class="m-3">{{ personalData.preferredLocation }}</h5>
+          <div class="col-7 d-flex" v-if="personalData.preferredLocation !== '_'">
+            <router-link
+              :to="`/preferredlocation?location=${personalData.preferredLocation}`"
+              class="nav-link text-primary my-2"
+              active-class="active"
+              ><span
+                >{{ personalData.preferredLocation | toUpperCase }}
+                <b-icon icon="arrow-right" scale="1.4"></b-icon> CHECK THEM OUT</span
+              >
+            </router-link>
+          </div>
+
+          <div class="col-7 d-flex" v-else>
+            <router-link
+              :to="`/preferredlocation?location=allproperties`"
+              class="nav-link text-primary my-2"
+              active-class="active"
+              ><span>CHECK OUT ALL PROPERTIES</span>
+            </router-link>
           </div>
         </div>
       </div>

@@ -3,9 +3,25 @@
     <div class="my-5" v-if="loadingProperties">
       <page-loader />
     </div>
-    <div class="container">
-      <div class="mx-auto w-100" v-for="property in properties" :key="property.id">
-        <h4>{{ property.name }}</h4>
+    <div class="container" v-else>
+      <div class="col-lg-4 mx-auto" v-for="property in properties" :key="property.id">
+        <div class="card w-100 my-2 shadow">
+          <router-link :to="`/details/${property.id}`">
+            <img
+              :src="'images/' + property.front"
+              alt="some photo"
+              style="height: 200px"
+              class="w-100"
+            />
+          </router-link>
+          <div class="card-body">
+            <h6 class="card-title">{{ property.name }}</h6>
+            <p class="lead">{{ property.location + "," + " " + property.street }}</p>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center text-success">Ugx:{{ " " + property.rent }}</h6>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,9 +51,11 @@ export default {
             this.properties = res.data;
           }
           console.log(res.data);
+          this.loadingProperties = false;
         })
         .catch((err) => {
           console.log(err.response);
+          this.loadingProperties = false;
         });
     },
   },

@@ -6,9 +6,9 @@
           <div class="mt-1">
             <h4>Client Details</h4>
           </div>
-          <div class="d-flex">
+          <div class="d-flex" v-if="!loading">
             <div class="bg-white rounded p-2 m-1">
-              <router-link :to="`/boss/updateClient/${client.id}`" class="mx-1 text-dark"
+              <router-link :to="`/boss/updateClient/${id}`" class="mx-1 text-dark"
                 ><b-icon
                   icon="pencil-square"
                   scale="2"
@@ -17,6 +17,7 @@
                 ></b-icon
               ></router-link>
             </div>
+
             <div class="bg-danger rounded p-2 m-1">
               <span class="text-dark mx-1">
                 <b-icon
@@ -33,7 +34,7 @@
       </div>
       <!-- style="width: 100%; min-height: 50vh" -->
       <!-- class="d-flex justify-content-center" -->
-      <div v-if="loading">
+      <div v-if="loading" class="row">
         <page-loader />
       </div>
       <div v-else class="col-12">
@@ -133,7 +134,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      loading: true,
+      loading: false,
       errorText: null,
       errorStatus: null,
       isError: false,

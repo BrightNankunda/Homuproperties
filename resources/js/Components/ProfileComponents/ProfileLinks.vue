@@ -9,10 +9,19 @@
       >EDIT PROFILE</router-link
     >
     <router-link
+      v-if="location !== '_'"
       :to="`/preferredlocation?location=${location}`"
       class="nav-link text-white"
       active-class="active"
-      >{{ location | toUpperCase }} PROPERTIES</router-link
+      ><span>{{ location | toUpperCase }} PROPERTIES</span>
+    </router-link>
+    <router-link
+      v-else
+      :to="`/preferredlocation?location=allproperties`"
+      class="nav-link text-white"
+      active-class="active"
+    >
+      <span> ALL PROPERTIES</span></router-link
     >
     <router-link to="#" active-class="active" class="nav-link text-white"
       >NOTIFICATIONS</router-link

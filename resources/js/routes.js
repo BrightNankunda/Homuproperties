@@ -264,7 +264,7 @@ export default {
             }
         },
         {
-            path: '/NotFound',
+            path: '*',
             component: NotFound
         } 
         

@@ -16,9 +16,7 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VueRouter);
 
 const router = new VueRouter(
-
-
-      routes
+  routes
 )
 
 router.beforeEach((to, from, next) => {
@@ -32,19 +30,11 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  // }  else if (to.matched.some(record => record.meta.requiresVisitor)) {
-  //   if (store.getters.loggedIn) {
-  //     next({
-  //       replace: true,
-  //       path: '/'
-  //     })
-  //   } else {
-  //     next()
-  //   }
   } else {
-    next() // make sure to always call next()!
+    next()
   }
 })
+
 router.afterEach(to => {
   if(to.meta.title !== undefined) {
     let documentTitle = document.title
@@ -54,6 +44,7 @@ router.afterEach(to => {
     console.log("Has no Document title")
   }
 })
+
 Vue.filter('capitalize', function(value) {
   if(!value) return ''
   value = value.toString();

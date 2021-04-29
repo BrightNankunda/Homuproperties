@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\PersonalData;
 use App\Models\Client;
 
 class ClientController extends Controller
@@ -56,7 +58,9 @@ class ClientController extends Controller
         }
     public function update(Request $request, Client $client)
     {
-        if($client->user_id !== auth()->user()->id) {
+        $loggedInUserId = auth()->user()->id;
+
+        if($client->user_id !== $loggedInUserId) {
             return response()->json('You are Unauthorized');
         }
         // return response()->json($client);
@@ -71,11 +75,25 @@ class ClientController extends Controller
             'paid' => 'boolean',
             'verified' => 'boolean'
         ]);
+        //PERSONAL DATA
+        // $personaldata = PersonalData::findOrFail($loggedInUserId);
+        
+        
+        // return response()->json($data);
+        // $transanction = DB::transaction(function () {
+            $client->update($data);
+            // $personaldata->update([
+                // 'status' => 'Updated',
+                // 'gender' => $request->gender,
+                // 'preferredLocation' => $request->preferredLocation,
+                // 'profileImage' => $profileImage
+            // ]);
 
-        $client->update($data);
+        // });
 
         return response()->json([
             'Updated' => $data,
+            // 'personaldata' => $personaldata,
             'Message' => 'Client Data updated'
         ]);
 

@@ -42,13 +42,6 @@
           >DETAILS</router-link
         >
         <router-link
-          to="#"
-          v-if="loggedIn"
-          active-class="active"
-          class="nav-link text-white"
-          >NOTIFICATIONS</router-link
-        >
-        <router-link
           to="/logout"
           class="nav-link text-white mt-auto logout"
           v-if="loggedIn"
@@ -133,6 +126,7 @@ export default {
 }
 .left {
   background: rgb(49, 49, 212);
+  min-height: 90%;
 }
 .list-link {
   background: white !important;
