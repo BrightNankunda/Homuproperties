@@ -17,10 +17,13 @@
               placeholder="Location"
             />
             <!-- <span class="input-group"> -->
+
             <input
               type="text"
+              v-model="keywords"
               class="form-control col-lg-5"
-              placeholder="Property Type"
+              @keyup.enter="fetch"
+              placeholder="Search by location"
             />
             <button class="btn btn-defualt mx-2">Search</button>
             <!-- </span> -->
@@ -462,6 +465,7 @@ export default {
       return this.$store.getters.profile;
     },
   },
+  
   methods: {
     scrollTo(element, scrollPixels, duration) {
       const scrollPos = element.scrollLeft;
@@ -553,6 +557,7 @@ export default {
           console.log(err);
         });
     },
+    
     ftwo() {
       axios
         .get("api/ftwo")
@@ -662,7 +667,7 @@ export default {
 }
 .banner {
   min-height: 90vh;
-  background-image: url("/images/1617080487.banner.jpg");
+  background-image: url("/front/house2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;

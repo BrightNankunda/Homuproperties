@@ -56,6 +56,11 @@ Vue.filter('toUpperCase', function(value) {
   value = value.toString();
   return value.toUpperCase()
 })
+Vue.filter('shillings', function(value) {
+  if(!value) return ''
+  value = value.toString();
+  return 'Ugx: ' + value
+})
 
 const app = new Vue({
       router,

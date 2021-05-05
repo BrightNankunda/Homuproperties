@@ -35,6 +35,7 @@ import UpdateClient from './components/SubComponents/UpdateClient.vue';
 import ViewClient from './components/SubComponents/ViewClient.vue';
 import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import PreferredProperties from './components/SubComponents/PreferredProperties';
+import Search from './Components/Search/search';
 import { Store } from 'vuex';
 
 
@@ -47,6 +48,13 @@ export default {
             
             meta: {
                 title: 'Dashboard'
+            }
+        },
+        {
+            path: '/search',
+            component: Search,
+            meta: {
+                title: 'Search'
             }
         },
         {
@@ -65,19 +73,23 @@ export default {
         {
             path: '/login',
             component: Login,
+            meta: {
+                title: 'tLogin'
+            }
         },
         {
             path: '/register',
             component: Register,
-        },
-        {
-            path: '/dashboard',
-            component: Dashboard,
-            
+            meta: {
+                title: 'Register'
+            }
         },
         {
             path: '/read',
-            component: Read
+            component: Read,
+            meta: {
+                title: 'Upload Property'
+            }
         },
         { 
             path: '/boss', 
@@ -130,7 +142,8 @@ export default {
             path: '/createAdvert',
             component: Advert,
             meta: {
-                requiresAuth: true
+                requiresAuth: true,
+                title: 'Create An Advert'
             }
         },
         {
@@ -191,6 +204,9 @@ export default {
         { 
             path: '/details/:id', 
             component: Details,
+            meta: {
+                title: 'Details'
+            }
             
         },
         { 

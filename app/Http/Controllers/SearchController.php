@@ -9,13 +9,16 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        $request->validate([
-            'query' => 'required'
-        ]);
+        // $request->validate([
+        //     'query' => 'required'
+        // ]);
+        $queryName = $request->input('name');
+        $queryLocation = $request->input('Location');
 
-        $query = $request->input('query');
-
-        $results = Image::where('location', 'like', "%$query%")->orWhere('address', 'like', "%$query%")->orWhere('street', 'like', "%$query%")->orWhere('name', 'like', "%$query%")->get();
+        $results = Image::where('location', 'like', "%$queryLocation%")
+        ->orWhere('address', 'like', "%$queryLocation%")
+        ->orWhere('street', 'like', "%$queryLocation%")
+        ->orWhere('name', 'like', "%$queryName%")->get();
         
         return response()->json($results);
         
