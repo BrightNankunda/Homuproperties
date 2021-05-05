@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 
 class ImageController extends Controller
@@ -91,27 +92,27 @@ class ImageController extends Controller
         $uploads = Image::all();
         return response()->json(["uploads" => $uploads]);
     }
-    public function upload(Request $request)
+    public function upload(ImageRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required|string',
-            'type' => 'required|string',
-            'category' => 'required|string',
-            'location' => 'required|string',
-            'address' => 'required|string',
-            'street' => 'required|string',
-            'description' => 'required|string',
-            'rooms' => 'required|string',
-            'floor' => 'required|string',
-            'rent' => 'required|string',
-            //'amount' => 'reqiured|string',
-            'contact' => 'required|string',
-            'front' => 'required|image|mimes:jpg,jpeg',
-            'image' => 'required|image|mimes:jpg,jpeg',
-            'photo' => 'required|image|mimes:jpg,jpeg',
-            'imageone' => 'required|image|mimes:jpg,jpeg',
-            'imagetwo' => 'required|image|mimes:jpg,jpeg',
-        ]);
+        // $this->validate($request,[
+        //     'name' => 'required|string',
+        //     'type' => 'required|string',
+        //     'category' => 'required|string',
+        //     'location' => 'required|string',
+        //     'address' => 'required|string',
+        //     'street' => 'required|string',
+        //     'description' => 'required|string',
+        //     'rooms' => 'required|string',
+        //     'floor' => 'required|string',
+        //     'rent' => 'required|string',
+        //     //'amount' => 'reqiured|string',
+        //     'contact' => 'required|string',
+        //     'front' => 'required|image|mimes:jpg,jpeg',
+        //     'image' => 'required|image|mimes:jpg,jpeg',
+        //     'photo' => 'required|image|mimes:jpg,jpeg',
+        //     'imageone' => 'required|image|mimes:jpg,jpeg',
+        //     'imagetwo' => 'required|image|mimes:jpg,jpeg',
+        // ]);
 
     
         // if($request->hasFile('image')){
