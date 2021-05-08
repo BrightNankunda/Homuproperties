@@ -20,6 +20,7 @@
     "dependencies": {
         "bootstrap": "^4    .5.3",
         "bootstrap-vue": "^2.18.0",
+        "laravel-vue-pagination": "^2.3.1",
         "vue": "^2.6.12",
         "vue-horizontal-list": "^1.2.0",
         "vue-router": "^3.4.7",

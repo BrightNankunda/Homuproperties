@@ -63,7 +63,8 @@
 </template>
 <script>
 export default {
-  name: "Search",
+  name: "SearchComponent",
+
   data() {
     return {
       keyword_Location: null,
@@ -92,7 +93,7 @@ export default {
         this.searching = true;
         let Location = this.keyword_Location || "Uganda";
         let name = this.keyword_name || "All";
-        this.$router.push(`/search?location=${Location}&&name=${name}`);
+        // this.$router.push(`/search?location=${Location}&&name=${name}`);
         axios(
           "api/search",
           { params: { Location: Location, name: name } },

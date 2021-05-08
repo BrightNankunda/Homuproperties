@@ -10,6 +10,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
  
 Vue.component('Home', require('./components/Home.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('PageLoader', require('./components/Loaders/PageLoader'));
+Vue.component('SearchComponent', require('./components/Search/SearchComponent'));
+
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
@@ -37,7 +41,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(to => {
   if(to.meta.title !== undefined) {
-    let documentTitle = document.title
+    let documentTitle = 'HomuProperties'
     let routeTitle = to.meta.title
     document.title = documentTitle + ' | ' + routeTitle
   } else {

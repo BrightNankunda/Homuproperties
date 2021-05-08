@@ -27,6 +27,7 @@ let state = {
     status: null,
     transaction: null,
     clients: [],
+    laravelData: {},
     official: {},
     hostels: [],
     apartments: [],

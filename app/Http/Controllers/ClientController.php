@@ -11,7 +11,7 @@ class ClientController extends Controller
 {
     public function clients()
     {
-        $clients = Client::where('user_id', Auth()->user()->id)->get();
+        $clients = Client::where('user_id', Auth()->user()->id)->paginate(3);
         if($clients) {
             return response()->json($clients);
         } else {

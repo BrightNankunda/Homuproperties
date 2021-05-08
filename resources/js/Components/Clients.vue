@@ -62,6 +62,12 @@
                 </span>
               </td>
             </tr>
+            <tr v-if="clients.length > 3">
+              <pagination
+                :data="laravelData"
+                @pagination-change-page="fetchClients"
+              ></pagination>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -101,15 +107,15 @@ export default {
       this.updatedClient != null ||
       this.deletedClient != null
     ) {
-      // setTimeout(this.removeAlertMessage, 2000);
-      // console.log(this.addedClient);
+      setTimeout(this.removeAlertMessage, 2000);
+      console.log(this.addedClient);
     }
-    // if (
-    //   (this.addedClient != null || this.updatedClient != null, this.deletedClient != null)
-    // ) {
-    //   // this.removeAlertMessage()
-    //   console.log("THERE ALERT MESSAGE");
-    // }
+    if (
+      (this.addedClient != null || this.updatedClient != null, this.deletedClient != null)
+    ) {
+      this.removeAlertMessage();
+      console.log("THERE ALERT MESSAGE");
+    }
   },
 
   methods: {
@@ -158,12 +164,12 @@ export default {
     showClient(client) {
       this.$router.push("/boss/clients/" + client.id);
     },
-    fetchClients() {
+    fetchClients(page = 1) {
       this.loading = true;
       axios
         .get("api/clients")
         .then((response) => {
-          let pc = response.data.length;
+          let pc = response.data.data.length;
           this.count = pc;
           console.log(pc);
           if (this.count === 0) {
@@ -177,6 +183,9 @@ export default {
     },
   },
   computed: {
+    laravelData() {
+      return this.$store.getters.laravelData;
+    },
     clients() {
       return this.$store.getters.clients;
     },

@@ -124,11 +124,9 @@
   </div>
 </template>
 <script>
-import PageLoader from "../Loaders/PageLoader";
 import DangerAlert from "../Alerts/DangerAlert";
 export default {
   components: {
-    PageLoader,
     DangerAlert,
   },
   data() {

@@ -46,20 +46,8 @@
               class="nav-link text-white lead px-3"
               to="/hostels"
               active-class="active"
-              >Hostels</router-link
+              >Hostel</router-link
             >
-
-            <!-- </b-navbar-nav>
-              <b-navbar-nav class="mx-auto">
-                <b-nav-form @submit.prevent="fetch">
-                <b-input-group size="sm" class="mb-2 inp">
-                    <input type="text" v-model.lazy="keywords" class="form-control" @keyup.enter="fetch" placeholder="Search by location"/>
-                    <span class="icon">
-                    <b-icon icon="search"></b-icon>
-                    </span>
-                    
-                  </b-input-group>
-                </b-nav-form>-->
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto">
@@ -116,32 +104,7 @@
       <span class="sr-only">Loading...</span>
     </div>
 
-    <div class="row result my-4" v-if="results.length > 0">
-      <div v-for="result in results" :key="result.id" class="col-lg-3">
-        <div class="card my-4 shadow">
-          <router-link :to="`/details/${result.id}`">
-            <img
-              :src="'images/' + result.image"
-              alt="some photo"
-              style="height: 220px"
-              class="w-100"
-            />
-          </router-link>
-          <div class="card-body">
-            <h5 class="card-title">{{ result.name }}</h5>
-
-            <h5 class="lead">{{ result.location + "," + " " + result.street }}</h5>
-
-            <h6 class="lead">{{ result.type }}</h6>
-          </div>
-          <div class="card-footer">
-            <h4 class="lead text-center">{{ result.rent }}</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <router-view v-else></router-view>
+    <router-view></router-view>
 
     <!--===FOOTER==-->
     <footer class="container-fluid bg-dark border-top border-primary">
@@ -194,10 +157,7 @@
 <script>
 export default {
   data() {
-    return {
-      keywords: null,
-      results: [],
-    };
+    return {};
   },
   created() {
     axios.defaults.headers.common["Authorization"] =
@@ -214,11 +174,6 @@ export default {
       }
     },
     $route(to, from) {
-      if (this.results != "") {
-        return (this.results = "");
-      }
-    },
-    $route(to, from) {
       if (this.loggedIn) {
         this.$store.dispatch("getUser");
       }
@@ -229,10 +184,6 @@ export default {
         console.log("Logged in");
       }
       console.log(newval);
-    },
-    keywords(after, before) {
-      this.fetch();
-      console.log(after);
     },
   },
 
@@ -245,15 +196,7 @@ export default {
     },
   },
 
-  methods: {
-    fetch() {
-      axios("api/search", { params: { query: this.keywords } })
-        .then((response) => (this.results = response.data))
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -285,9 +228,6 @@ export default {
   flex-direction: column;
 }
 
-.signin,
-.login {
-}
 .search {
   border: none !important;
   border-radius: 10px;

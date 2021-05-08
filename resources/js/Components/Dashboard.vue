@@ -10,24 +10,10 @@
             with
             <span class="headeroff"><b>20% OFF</b></span>
           </h1>
-          <div class="search-bars d-flex justify-content-center align-content-center">
-            <input
-              type="text"
-              class="form-control col-lg-5 mr-2"
-              placeholder="Location"
-            />
-            <!-- <span class="input-group"> -->
-
-            <input
-              type="text"
-              v-model="keywords"
-              class="form-control col-lg-5"
-              @keyup.enter="fetch"
-              placeholder="Search by location"
-            />
-            <button class="btn btn-defualt mx-2">Search</button>
-            <!-- </span> -->
-          </div>
+        </div>
+        <div class="search-bars d-flex justify-content-center align-content-center">
+          <!-- SEARCH -->
+          <search-component></search-component>
         </div>
         <div class="d-flex justify-content-center">
           <router-link to="read" class="btn btn-primary">Get Started</router-link>
@@ -401,17 +387,15 @@
         </div>
       </div>
     </div>
-    <!-- <div v-else>
-      <conditional-body />
-    </div> -->
   </div>
 </template>
 
 <script>
-import ConditionalBody from "./SubComponents/ConditionalBody.vue";
+import SearchComponent from "./Search/SearchComponent.vue";
 import ThirdComponent from "./SubComponents/ThirdComponent.vue";
+
 export default {
-  components: { ConditionalBody, ThirdComponent },
+  components: { ThirdComponent, SearchComponent },
   name: "Dashboard",
   data() {
     return {
@@ -465,7 +449,7 @@ export default {
       return this.$store.getters.profile;
     },
   },
-  
+
   methods: {
     scrollTo(element, scrollPixels, duration) {
       const scrollPos = element.scrollLeft;
@@ -557,7 +541,7 @@ export default {
           console.log(err);
         });
     },
-    
+
     ftwo() {
       axios
         .get("api/ftwo")

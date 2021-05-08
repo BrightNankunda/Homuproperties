@@ -35,7 +35,6 @@ import UpdateClient from './components/SubComponents/UpdateClient.vue';
 import ViewClient from './components/SubComponents/ViewClient.vue';
 import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import PreferredProperties from './components/SubComponents/PreferredProperties';
-import Search from './Components/Search/search';
 import { Store } from 'vuex';
 
 
@@ -48,13 +47,6 @@ export default {
             
             meta: {
                 title: 'Dashboard'
-            }
-        },
-        {
-            path: '/search',
-            component: Search,
-            meta: {
-                title: 'Search'
             }
         },
         {
@@ -74,7 +66,7 @@ export default {
             path: '/login',
             component: Login,
             meta: {
-                title: 'tLogin'
+                title: 'Login'
             }
         },
         {
@@ -127,6 +119,10 @@ export default {
                 {
                     path: 'clients/:id',
                     component: ViewClient
+                },
+                {
+                    path: '*',
+                    component: NotFound
                 }
             ]
         },

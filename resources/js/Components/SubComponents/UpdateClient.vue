@@ -123,9 +123,7 @@
   </div>
 </template>
 <script>
-import PageLoader from "../Loaders/PageLoader.vue";
 export default {
-  components: { PageLoader },
   data() {
     return {
       id: this.$route.params.id,
