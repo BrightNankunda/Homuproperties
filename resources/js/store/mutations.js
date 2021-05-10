@@ -52,6 +52,11 @@ let mutations = {
     fetchOfficial(state, official) {
         return state.official = official
     },
+    SearchResults(state, results) {
+        
+        console.log(results);
+        return state.SearchResults = results
+    },
     fetchClients(state, data) {
         state.clients = data.data
         state.laravelData = data

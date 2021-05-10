@@ -13,7 +13,10 @@
         </div>
         <div class="search-bars d-flex justify-content-center align-content-center">
           <!-- SEARCH -->
-          <search-component></search-component>
+          <search-component
+            :loadingSearches="resultStyles"
+            :EmptyResults="NoResultStyles"
+          ></search-component>
         </div>
         <div class="d-flex justify-content-center">
           <router-link to="read" class="btn btn-primary">Get Started</router-link>
@@ -552,6 +555,12 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    resultStyles() {
+      console.log("New Results");
+    },
+    NoResultStyles() {
+      console.log("No Results");
     },
     kira() {
       axios

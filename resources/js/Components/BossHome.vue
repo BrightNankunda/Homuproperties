@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     numberofclients() {
-      return this.$store.getters.clients.length;
+      return this.$store.getters.laravelData.total;
     },
   },
   methods: {

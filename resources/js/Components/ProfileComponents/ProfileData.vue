@@ -128,7 +128,6 @@ export default {
     DataLoader,
   },
   data() {
-    DataLoader;
     return {
       loadingData: true,
       loadingUpdate: false,

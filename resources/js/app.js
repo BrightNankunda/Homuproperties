@@ -11,8 +11,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
  
 Vue.component('Home', require('./components/Home.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('Card', require('./components/Card'));
 Vue.component('PageLoader', require('./components/Loaders/PageLoader'));
-Vue.component('SearchComponent', require('./components/Search/SearchComponent'));
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

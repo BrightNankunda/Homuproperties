@@ -10,13 +10,13 @@
       </div>
     </div>
 
-    <div v-else>
+    <div class="row" v-else>
       <div v-if="count === 0" class="text-center my-5">
         <div class="alert alert-primary">
           <h3 class="lead">You currently have no Registered Client!s</h3>
         </div>
       </div>
-      <div class="table-wrapper bg-light rounded-sm py-2 px-4 mr-1" v-else>
+      <div class="w-100 table-wrapper bg-light rounded-sm py-2 px-4 mr-1" v-else>
         <table
           class="table table-hover rounded mx-auto"
           :class="{ 'table-sm': tableProperties }"
@@ -33,12 +33,12 @@
             <tr v-for="(client, index) in clients" :key="client.id">
               <td>{{ index + 1 }}</td>
 
-              <td class="mx-4" @click="showClient(client)">
+              <td class="mx-4">
                 <router-link :to="`/boss/clients/${client.id}`">
                   {{ client.clientName | capitalize }}
                 </router-link>
               </td>
-              <td @click="showClient(client)">
+              <td>
                 {{ client.clientContact }}
               </td>
 
@@ -62,14 +62,18 @@
                 </span>
               </td>
             </tr>
-            <tr v-if="clients.length > 3">
-              <pagination
-                :data="laravelData"
-                @pagination-change-page="fetchClients"
-              ></pagination>
-            </tr>
+            <tr></tr>
           </tbody>
         </table>
+        <div
+          v-if="clients.length >= 1"
+          class="rounded bg-light my-1 d-flex justify-content-center"
+        >
+          <pagination :data="laravelData" @pagination-change-page="fetchClients">
+            <span slot="prev-nav">&lt; Previous</span>
+            <span slot="next-nav">Next &gt;</span>
+          </pagination>
+        </div>
       </div>
     </div>
   </div>
@@ -161,14 +165,15 @@ export default {
       this.$router.push("/boss/client");
     },
 
-    showClient(client) {
-      this.$router.push("/boss/clients/" + client.id);
-    },
+    // showClient(client) {
+    //   this.$router.push("/boss/clients/" + client.id);
+    // },
     fetchClients(page = 1) {
       this.loading = true;
-      axios
-        .get("api/clients")
+      this.$store
+        .dispatch("fetchClients", page)
         .then((response) => {
+          console.log(response);
           let pc = response.data.data.length;
           this.count = pc;
           console.log(pc);
@@ -205,6 +210,7 @@ td {
 }
 .table-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .rounded-sm {

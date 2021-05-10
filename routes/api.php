@@ -19,79 +19,82 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/bright', 'Controllers\BrightController@index');
-Route::post('/bright', 'Controllers\BrightController@store');
+Route::get('/bright', 'App\Http\Controllers\BrightController@index');
+Route::post('/bright', 'App\Http\Controllers\BrightController@store');
 
-Route::get('/laptop', 'Controllers\LaptopController@index');
-Route::post('/laptop', 'Controllers\LaptopController@store');
+Route::get('/laptop', 'App\Http\Controllers\LaptopController@index');
+Route::post('/laptop', 'App\Http\Controllers\LaptopController@store');
 
 
-Route::get('/search', 'Controllers\SearchController@index');
-Route::get('/fone', 'Controllers\ImageController@fone');
-Route::get('/ftwo', 'Controllers\ImageController@ftwo');
-Route::get('/mukono', 'Controllers\ImageController@fmukono');
-Route::get('/kira', 'Controllers\ImageController@fkira');
-Route::get('uploads', 'Controllers\ImageController@uploads');
-Route::post('/signup', 'Controllers\loginController@signup');
-Route::post('/login', 'Controllers\loginController@login');
-Route::get('/late', 'Controllers\ImageController@late');
+Route::get('/search', 'App\Http\Controllers\SearchController@index');
+Route::get('/fone', 'App\Http\Controllers\ImageController@fone');
+Route::get('/ftwo', 'App\Http\Controllers\ImageController@ftwo');
+Route::get('/mukono', 'App\Http\Controllers\ImageController@fmukono');
+Route::get('/kira', 'App\Http\Controllers\ImageController@fkira');
+Route::get('uploads', 'App\Http\Controllers\ImageController@uploads');
+Route::post('/signup', 'App\Http\Controllers\loginController@signup');
+Route::post('/login', 'App\Http\Controllers\loginController@login');
+Route::get('/late', 'App\Http\Controllers\ImageController@late');
 
-Route::get('/arcade', 'Controllers\ImageController@arcade');
-Route::get('/hostel', 'Controllers\ImageController@hostel');
-Route::get('/mall', 'Controllers\ImageController@mall');
-Route::get('/officespace', 'Controllers\ImageController@officespace');
-Route::get('/apartment', 'Controllers\ImageController@apartment');
-Route::get('/rental', 'Controllers\ImageController@rental');
+Route::get('/arcade', 'App\Http\Controllers\ImageController@arcade');
+Route::get('/hostel', 'App\Http\Controllers\ImageController@hostel');
+Route::get('/mall', 'App\Http\Controllers\ImageController@mall');
+Route::get('/officespace', 'App\Http\Controllers\ImageController@officespace');
+Route::get('/apartment', 'App\Http\Controllers\ImageController@apartment');
+Route::get('/rental', 'App\Http\Controllers\ImageController@rental');
 
-Route::get('kampalahostels', 'Controllers\ImageController@kampalahostels');
-Route::get('/show/{id}', 'Controllers\ImageController@show');
-Route::get('/countofproperties', 'Controllers\ImageController@count');
+Route::get('kampalahostels', 'App\Http\Controllers\ImageController@kampalahostels');
+Route::get('/show/{id}', 'App\Http\Controllers\ImageController@show');
+Route::get('/countofproperties', 'App\Http\Controllers\ImageController@count');
 
-Route::post('upload', 'Controllers\ImageController@upload')->middleware('auth:api');
-Route::get('/see', 'Controllers\ImageController@see')->middleware('auth:api');
-Route::get('/preferredlocation/{location}', 'Controllers\ImageController@preferredlocation')->middleware('auth:api');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('upload', 'App\Http\Controllers\ImageController@upload');
+    Route::get('/see', 'App\Http\Controllers\ImageController@see');
+    Route::get('/preferredlocation/{location}', 'App\Http\Controllers\ImageController@preferredlocation');
+    
+    Route::get('/methods', 'App\Http\Controllers\MethodsController@index');
+    Route::post('/methods', 'App\Http\Controllers\MethodsController@store');
+    Route::patch('/methods/{methods}', 'App\Http\Controllers\MethodsController@update');
+    
+    Route::get('/official', 'App\Http\Controllers\OfficialpostController@official');
+    Route::post('/official', 'App\Http\Controllers\OfficialpostController@storepost');
+    Route::patch('/official/{officialpost}', 'App\Http\Controllers\OfficialpostController@update');
+    Route::delete('/official/{officialpost}', 'App\Http\Controllers\OfficialpostController@delete');
+    Route::post('/profile', 'App\Http\Controllers\OfficialpostController@profile');
+    Route::get('/later', 'App\Http\Controllers\ImageController@later');
+    
+    Route::get('/clients', 'App\Http\Controllers\ClientController@clients');
+    Route::post('/clients', 'App\Http\Controllers\ClientController@register');
+    Route::get('/clients/{id}', 'App\Http\Controllers\ClientController@show');
+    Route::patch('/clients/{client}', 'App\Http\Controllers\ClientController@update');
+    Route::delete('/clients/{client}', 'App\Http\Controllers\ClientController@delete');
+    
+    Route::get('/admin', 'App\Http\Controllers\PaymentController@admin');
+    Route::get('/userpay', 'App\Http\Controllers\PaymentController@user');
+    Route::post('/pay', 'App\Http\Controllers\PaymentController@pay');
+    Route::post('status', 'App\Http\Controllers\PaymentController@status');
+    Route::get('/dashboard', 'App\Http\Controllers\loginController@dashboard');
+    
+    Route::get('/adverts', 'App\Http\Controllers\HomuAdvertController@allAdverts');
+    Route::get('/oneAdvert', 'App\Http\Controllers\HomuAdvertController@oneAdvert');
+    Route::post('/adverts', 'App\Http\Controllers\HomuAdvertController@store');
+    Route::get('/adverts/{id}', 'App\Http\Controllers\HomuAdvertController@show');
+    Route::patch('/adverts/{id}', 'App\Http\Controllers\HomuAdvertController@update');
+    Route::delete('/adverts/{id}', 'App\Http\Controllers\HomuAdvertController@delete');
+    
+    Route::get('/person', 'App\Http\Controllers\PersonalDataController@getUserData');
+    Route::post('/person', 'App\Http\Controllers\PersonalDataController@store');
+    Route::patch('/person/{id}', 'App\Http\Controllers\PersonalDataController@update');
+    Route::delete('/person/{id}', 'App\Http\Controllers\PersonalDataController@delete');
+    
+    Route::get('/pic', 'App\Http\Controllers\PicController@index');
+    Route::post('pic', 'App\Http\Controllers\PicController@pic');
+    
+    Route::get('/index', 'App\Http\Controllers\ProductController@index');
+    Route::post('/store', 'App\Http\Controllers\ProductController@store');
+    Route::get('/show', 'App\Http\Controllers\ProductController@show');
+    Route::put('/update', 'App\Http\Controllers\ProductController@update');
+    Route::delete('/destroy', 'App\Http\Controllers\ProductController@destroy');
+    Route::post('/logout', 'App\Http\Controllers\loginController@logout');
 
-Route::get('/methods', 'Controllers\MethodsController@index')->middleware('auth:api');
-Route::post('/methods', 'Controllers\MethodsController@store')->middleware('auth:api');
-Route::patch('/methods/{methods}', 'Controllers\MethodsController@update')->middleware('auth:api');
-
-Route::get('/official', 'Controllers\OfficialpostController@official')->middleware('auth:api');
-Route::post('/official', 'Controllers\OfficialpostController@storepost')->middleware('auth:api');
-Route::patch('/official/{officialpost}', 'Controllers\OfficialpostController@update')->middleware('auth:api');
-Route::delete('/official/{officialpost}', 'Controllers\OfficialpostController@delete')->middleware('auth:api');
-Route::post('/profile', 'Controllers\OfficialpostController@profile')->middleware('auth:api');
-Route::get('/later', 'Controllers\ImageController@later')->middleware('auth:api');
-
-Route::get('/clients', 'Controllers\ClientController@clients')->middleware('auth:api');
-Route::post('/clients', 'Controllers\ClientController@register')->middleware('auth:api');
-Route::get('/clients/{id}','Controllers\ClientController@show')->middleware('auth:api');
-Route::patch('/clients/{client}', 'Controllers\ClientController@update')->middleware('auth:api');
-Route::delete('/clients/{client}', 'Controllers\ClientController@delete')->middleware('auth:api');
-
-Route::get('/admin', 'Controllers\PaymentController@admin')->middleware('auth:api');
-Route::get('/userpay', 'Controllers\PaymentController@user')->middleware('auth:api');
-Route::post('/pay', 'Controllers\PaymentController@pay')->middleware('auth:api');
-Route::post('status', 'Controllers\PaymentController@status')->middleware('auth:api');
-Route::get('/dashboard', 'Controllers\loginController@dashboard')->middleware('auth:api');
-
-Route::get('/adverts', 'Controllers\HomuAdvertController@allAdverts')->middleware('auth:api');
-Route::get('/oneAdvert', 'Controllers\HomuAdvertController@oneAdvert')->middleware('auth:api');
-Route::post('/adverts', 'Controllers\HomuAdvertController@store')->middleware('auth:api');
-Route::get('/adverts/{id}', 'Controllers\HomuAdvertController@show')->middleware('auth:api');
-Route::patch('/adverts/{id}', 'Controllers\HomuAdvertController@update')->middleware('auth:api');
-Route::delete('/adverts/{id}', 'Controllers\HomuAdvertController@delete')->middleware('auth:api');
-
-Route::get('/person', 'Controllers\PersonalDataController@getUserData')->middleware('auth:api');
-Route::post('/person', 'Controllers\PersonalDataController@store')->middleware('auth:api');
-Route::patch('/person/{id}', 'Controllers\PersonalDataController@update')->middleware('auth:api');
-Route::delete('/person/{id}', 'Controllers\PersonalDataController@delete')->middleware('auth:api');
-
-Route::get('/pic', 'Controllers\PicController@index')->middleware('auth:api');
-Route::post('pic', 'Controllers\PicController@pic')->middleware('auth:api');
-
-Route::get('/index', 'Controllers\ProductController@index')->middleware('auth:api');
-Route::post('/store', 'Controllers\ProductController@store')->middleware('auth:api');
-Route::get('/show', 'Controllers\ProductController@show')->middleware('auth:api');
-Route::put('/update', 'Controllers\ProductController@update')->middleware('auth:api');
-Route::delete('/destroy', 'Controllers\ProductController@destroy')->middleware('auth:api');
-Route::post('/logout', 'Controllers\loginController@logout')->middleware('auth:api');
+});

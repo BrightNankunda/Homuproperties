@@ -25,10 +25,10 @@
         </div>
       </div>
     </div>
-    <div class="results" v-if="results">
+    <div class="results" v-if="results !== null">
       <div class="row mb-1" style="min-height: 10vh">
         <div class="w-100 d-flex justify-content-center">
-          <div class="col-lg-10 border rounded">
+          <div class="col-lg-10 border rounded bg-white">
             <div v-for="result in results" :key="result.id">
               <router-link :to="`/details/${result.id}`">
                 <div
@@ -70,42 +70,50 @@ export default {
       keyword_Location: null,
       keyword_name: null,
       searching: null,
-      results: null,
-      loadingSearches: null,
     };
   },
   watch: {
     keyword_Location(after, before) {
-      console.log("after" + after, "before" + before);
+      // console.log("after" + after, "before" + before);
       this.fetch();
     },
     keyword_name(after, before) {
-      console.log("after" + after, "before" + before);
+      // console.log("after" + after, "before" + before);
       this.fetch();
+    },
+    results(after, before) {
+      if (after === null) {
+        this.$emit("EmptyResults");
+      }
+      console.log(after, "results", before, "No Results");
+    },
+  },
+  computed: {
+    results() {
+      return this.$store.getters.SearchResults;
     },
   },
   methods: {
     fetch() {
       if (this.keyword_name === null && this.keyword_Location === null) {
+        this.searching = false;
         this.results = null;
         return;
       } else {
         this.searching = true;
+        this.$emit("loadingSearches");
         let Location = this.keyword_Location || "Uganda";
         let name = this.keyword_name || "All";
-        // this.$router.push(`/search?location=${Location}&&name=${name}`);
-        axios(
-          "api/search",
-          { params: { Location: Location, name: name } },
-          { headers: { "Content-ype": "application/Json" } }
-        )
+        this.$store
+          .dispatch({
+            type: "fetchSearchResults",
+            payload: { Location: Location, name: name },
+          })
           .then((res) => {
-            this.results = res.data;
-            console.log(res.data);
             this.searching = false;
           })
           .catch((err) => {
-            console.log(err);
+            this.searching = false;
           });
       }
     },

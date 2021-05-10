@@ -13,7 +13,14 @@
         >
           <div class="row w-100" style="min-height: 60vh" v-if="loading">
             <div class="m-auto">
-              <page-loader />
+              <div
+                class="w-100 d-flex justify-content-center align-content-center rounded-container-image my-5"
+                style="width: 50%; height: 50vh"
+              >
+                <div class="spinner-border text-primary text-center" role="status">
+                  <span class="sr-only text-center">Loading...</span>
+                </div>
+              </div>
             </div>
           </div>
           <div v-else>
@@ -127,7 +134,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      loading: false,
+      loading: true,
       client: {},
     };
   },
@@ -140,6 +147,7 @@ export default {
       axios
         .get("api/clients/" + this.id)
         .then((res) => {
+          console.log(res.data);
           this.client = res.data;
           this.loading = false;
           return;

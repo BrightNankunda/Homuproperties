@@ -327,15 +327,35 @@ let actions = {
             })
             
         },
-        
-        fetchClients(context) {
+        fetchSearchResults({commit}, params) {
+            return new Promise((resolve, reject) => {
+            axios(
+            "api/search",
+            { params: { Location: params.payload.Location, name: params.payload.name } },
+            { headers: { "Content-ype": "application/Json" } }
+            )
+          .then((res) => {
+            commit('SearchResults', res.data)
+            resolve(res)
+          })
+          .catch((err) => {
+            console.log('Search Error',err);
+            reject(err)
+          });
+          })
+        },
+        fetchClients(context, page) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
-            axios.get('api/clients')
-            .then(response => {
-                context.commit('fetchClients', response.data)
-            })
-            .catch(err => {
-                console.log(err)
+            return new Promise((resolve, reject) => {
+                axios.get("api/clients?page=" + page)
+                .then(response => {
+                    context.commit('fetchClients', response.data)
+                    resolve(response)
+                })
+                .catch(err => {
+                    console.log(err.response)
+                    reject(err)
+                })
             })
         },
 

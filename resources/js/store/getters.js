@@ -47,6 +47,9 @@ let getters = {
     officespace: state=> {
         return state.officespace
     },
+    SearchResults: state=> {
+        return state.SearchResults
+    },
 
     // hostels: state => {
     //     return state.images.filter(image => image.type === 'hostel')
@@ -57,23 +60,11 @@ let getters = {
     apartmentsKira: state => {
         return state.apartments.filter(apartment => apartment.type === 'Kira')
     },
-    // malls: state => {
-    //     return state.images.filter(image => image.type === 'malls')
-    // },
-    // rentals: state => {
-    //     return state.images.filter(image => image.type === 'rental')
-    // },
-    // officespace: state => {
-    //     return state.images.filter(image => image.type === 'officespace')
-    // },
-    // bigcats: state => {
-    //     return state.cats.filter(cat => cat.location === 'kampala')
-    // },
-    // smallcats: state => {
-    //     return state.cats.filter(cat => cat.location === 'Kawempe')
-    // },
     clients: state => {
         return state.clients
+    },
+    laravelData: state => {
+        return state.laravelData
     },
     official: state => {
         return state.official
