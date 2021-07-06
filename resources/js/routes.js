@@ -16,6 +16,7 @@ import NewProfile from './components/NewProfile.vue';
 import Property from './components/Property.vue';
 import Boss from './components/Boss.vue';
 import Arcades from './components/Masters/Arcades.vue';
+import Card from './components/Card'
 import Malls from './components/Masters/Malls.vue';
 import Rentals from './components/Masters/Rentals.vue';
 import Officespace from './components/Masters/Officespace.vue';
@@ -82,6 +83,10 @@ export default {
             meta: {
                 title: 'Upload Property'
             }
+        },
+        {
+            path: '/card',
+            component: Card
         },
         { 
             path: '/boss', 

@@ -74,26 +74,7 @@
         </div>
         <div class="center my-5 d-flex" id="content" ref="content">
           <div v-for="image in apartments" :key="image.id" class="col-md-6 col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  class="w-100"
-                  alt="some photo"
-                  style="height: 200px"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title text-primary">{{ image.name }}, Self Contained</h6>
-                <p class="lead text-primary">
-                  {{ image.location + "," + " " + image.street }}
-                </p>
-              </div>
-              <div class="card-footer d-flex flex-col">
-                <h6 class="text-success">{{ image.astatus }}</h6>
-                <h6 class="text-center text-success">Ugx:{{ " " + image.rent }}</h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofapartments > 4" class="right">
@@ -183,24 +164,7 @@
 
         <div class="center d-flex my-5" id="contentHostels" ref="contentHostels">
           <div v-for="image in hostels" :key="image.id" class="col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  alt="some photo"
-                  style="height: 200px"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title">{{ image.name }}, {{ image.hstatus }}</h6>
-                <p class="lead">{{ image.location + "," + " " + image.street }}</p>
-              </div>
-              <div class="card-footer">
-                <h6 class="text-center text-success">
-                  {{ image.hstatus }}, Ugx:{{ " " + image.rent }}
-                </h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofhostels > 4" class="right">
@@ -229,23 +193,7 @@
         </div>
         <div class="center d-flex my-5" id="contentarcades" ref="contentarcades">
           <div v-for="image in arcades" :key="image.id" class="col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  alt="some photo"
-                  class="w-100"
-                  style="height: 200px"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title">{{ image.name }}</h6>
-                <p class="lead">{{ image.location + "," + " " + image.street }}</p>
-              </div>
-              <div class="card-footer">
-                <h6 class="text-center text-success">Ugx:{{ " " + image.rent }}</h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofarcades > 4" class="right">
@@ -274,24 +222,7 @@
         </div>
         <div class="center d-flex my-5" id="contentMalls" ref="contentmalls">
           <div v-for="image in malls" :key="image.id" class="col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  alt="some photo"
-                  style="height: 200px"
-                  class="w-100"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title">{{ image.name }}</h6>
-
-                <p class="lead">{{ image.location + "," + " " + image.street }}</p>
-              </div>
-              <div class="card-footer">
-                <h6 class="text-center text-success">Ugx:{{ " " + image.rent }}</h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofmalls > 4" class="right">
@@ -301,6 +232,7 @@
         </div>
       </div>
 
+      <!-- CARD TESTING COMPONENT -->
       <!--RENTALS-->
       <div v-if="countofrentals > 0" class="text-center my-4">
         <router-link to="/rentals" class="btn btn-primary lead px-4"
@@ -320,26 +252,7 @@
         </div>
         <div class="center my-5 d-flex" id="contentRentals" ref="contentRentals">
           <div v-for="image in rentals" :key="image.id" class="col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  alt="some photo"
-                  style="height: 200px"
-                  class="w-100"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title">{{ image.name }}</h6>
-
-                <p class="lead">{{ image.location + "," + " " + image.street }}</p>
-
-                <h6 class="lead">{{ image.type }}</h6>
-              </div>
-              <div class="card-footer">
-                <h6 class="text-center text-success">Ugx:{{ " " + image.rent }}</h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofrentals > 4" class="right">
@@ -366,23 +279,7 @@
         </div>
         <div class="center my-5 d-flex" id="contentOffice" ref="contentOffice">
           <div v-for="image in officespace" :key="image.id" class="col-lg-3">
-            <div class="card my-4 shadow">
-              <router-link :to="`/details/${image.id}`">
-                <img
-                  :src="'images/' + image.front"
-                  alt="some photo"
-                  style="height: 200px"
-                  class="w-100"
-                />
-              </router-link>
-              <div class="card-body">
-                <h6 class="card-title">{{ image.name }}</h6>
-                <p class="lead">{{ image.location + "," + " " + image.street }}</p>
-              </div>
-              <div class="card-footer">
-                <h6 class="text-center text-success">Ugx:{{ " " + image.rent }}</h6>
-              </div>
-            </div>
+            <Card v-bind="image" />
           </div>
         </div>
         <div v-if="countofoffices > 4" class="right">
@@ -396,9 +293,10 @@
 <script>
 import SearchComponent from "./Search/SearchComponent.vue";
 import ThirdComponent from "./SubComponents/ThirdComponent.vue";
+import Card from "./Card";
 
 export default {
-  components: { ThirdComponent, SearchComponent },
+  components: { ThirdComponent, SearchComponent, Card },
   name: "Dashboard",
   data() {
     return {
