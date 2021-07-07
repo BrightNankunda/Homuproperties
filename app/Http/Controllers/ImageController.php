@@ -185,8 +185,14 @@ class ImageController extends Controller
 
         // ]);
         // try {
-            $user->update(['liked' => $request->propertyId]);
-            $image->update(['likes' => $request->userId]);
+            $user = User::find($request->userId)
+            $user->liked = $request->propertyId;
+            $user->save();
+
+            $image = Image::find($request->propertyId);
+            $image->likes = $request->userId;
+            $image->save();
+            
             return response()->json('Updated');
 
         // } catch( Exception $e) {
