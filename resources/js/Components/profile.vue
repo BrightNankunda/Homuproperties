@@ -10,10 +10,15 @@
         <div class="row facer mb-4 mt-2">
           <div class="col-lg-3 facee">
             <div v-if="profilePic">
-              <img :src="profilePic" class="bg-primary image" />
+              <img :src="profilePic" class="bg-primary image photo" />
+              photo
             </div>
-            <div v-if="photo" class="photo">
-              <img :src="'pics/' + photo.pic" style="height=fit-content; width: 130px;" />
+            <div v-if="photo">
+              <img
+                :src="'pics/' + photo.pic"
+                style="height=fit-content; width: 130px;"
+                class="image"
+              />
             </div>
             <div class="" v-if="!profilePic && !photo">
               <b-icon icon="person" scale="3" @click="$refs.pic.click()"></b-icon>
@@ -25,10 +30,14 @@
             </div>
           </div>
 
-          <button type="submit" class="button" @click="$refs.btn.click()"><b-icon icon="upload"></b-icon></button>
+          <button type="submit" class="button" @click="$refs.btn.click()">
+            <b-icon icon="upload"></b-icon>
+          </button>
         </div>
         <div class="row my-4">
-          <div class="border-top border-left border-right mt-3 col-md-10 details d-flex flex-row bg-light">
+          <div
+            class="border-top border-left border-right mt-3 col-md-10 details d-flex flex-row bg-light"
+          >
             <div class="col-md-4 my-2">{{ user.firstname + " " + user.lastname }}</div>
             <div class="col-md-4 my-2">{{ user.email }}</div>
             <div class="col-md-2 my-2">{{ user.phone }}</div>

@@ -179,6 +179,9 @@ class ImageController extends Controller
         $image = Image::where('id', $id)->first();
         return response()->json($image);
     }
+    public function like(Request $request) {
+        return response()->json($request->propertyId);
+    }
     public function approve() {
         // $approved = Image::where('id', $id)->first()
     }

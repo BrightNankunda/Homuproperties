@@ -5,8 +5,8 @@ let actions = {
     uploadProfileImage(context, data) {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
         if(context.getters.loggedIn) {
-        return new Promise((resolve, reject) => {
-        axiosf
+            return new Promise((resolve, reject) => {
+                axiosf
         .post("/api/pic", {
             pic: data.pic
         })
@@ -23,14 +23,14 @@ let actions = {
     },
     logout(context) {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
-
+        
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {
                 axios.post("api/logout")
                 .then( response => {
                     localStorage.removeItem("token")
                     context.commit('logout')
-
+                    
                     resolve(response)
                 })
                 .catch(err => {
@@ -40,6 +40,17 @@ let actions = {
                 })
             })
         }
+    },
+    like({commit}, data) {
+        console.log('DATA FROM VUEX', data.payload)
+        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+        axios.put('/api/like', 
+        {propertyId: data.payload.id, userId: data.payload.userId})
+        .then((res) => {
+            console.log(res.data)
+        }).catch(error => {
+            console.log(error.message)
+        })
     },
     countofproperties({commit}) {
         axios.get('/api/countofproperties')

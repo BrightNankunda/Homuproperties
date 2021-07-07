@@ -19,12 +19,18 @@
       <div class="card-footer d-flex justify-content-between">
         <h6 class="text-center text-success">Ugx:{{ " " + rent }}</h6>
         <div v-if="loggedIn" class="d-flex justify-content-between">
-          <b-icon-heart scale="1.2" class="mr-2" title="LIKE PROPERTY" />
+          <b-icon-heart
+            @click="like(id)"
+            scale="1.2"
+            class="mr-2"
+            title="LIKE PROPERTY"
+          />
           <b-icon-check
             scale="2"
             class="like-property-icon"
             variant="success"
             title="APPROVE PROPERTY"
+            @click="approve(id)"
           />
         </div>
       </div>
@@ -50,6 +56,18 @@ export default {
   computed: {
     loggedIn() {
       return this.$store.getters.loggedIn;
+    },
+  },
+  methods: {
+    like(id) {
+      console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);
+      this.$store.dispatch({
+        type: "like",
+        payload: { id: id, userId: this.$store.getters.user.id },
+      });
+    },
+    approve(id) {
+      console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);
     },
   },
 };

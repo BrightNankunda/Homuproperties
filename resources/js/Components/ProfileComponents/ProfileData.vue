@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loadingData" class=" ">
+    <div v-if="loadingData" class="d-flex justify-content-center w-100 mx-auto">
       <div
         class="w-100 d-flex justify-content-center align-content-center bg-light rounded-container-image my-5"
         style="width: 50%; height: 50vh"
@@ -16,11 +16,11 @@
       style="width: 100%; min-height: 30vh"
       class="d-flex justify-content-center"
     >
-      <div class="w-50">
+      <div class="d-flex justify-content-center mx-auto w-100">
         <img
           :src="'PersonalData/' + personalData.profileImage"
           alt=""
-          class="rounded-container-image w-100 h-100"
+          class="mx-auto rounded-container-image w-100 h-100"
         />
       </div>
     </div>
@@ -51,6 +51,14 @@
       <div class="row d-flex">
         <div class="col-5">
           <h5 class="m-3">Email</h5>
+        </div>
+        <div class="col-7">
+          <h5 class="m-3">{{ user.email }}</h5>
+        </div>
+      </div>
+      <div class="row d-flex">
+        <div class="col-5">
+          <h5 class="m-3">LIKES:</h5>
         </div>
         <div class="col-7">
           <h5 class="m-3">{{ user.email }}</h5>
@@ -212,7 +220,9 @@ export default {
   border-radius: 20px !important;
 }
 .rounded-container-image {
-  border-radius: 25px;
+  height: 150px !important;
+  width: 150px !important;
+  border-radius: 50%;
 }
 /* .rounded-sm > .border-bottom {
   width: 80%;

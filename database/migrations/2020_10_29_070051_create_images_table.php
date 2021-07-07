@@ -37,6 +37,7 @@ class CreateImagesTable extends Migration
             $table->string('imageone');
             $table->string('imagetwo');
             $table->string('secret');
+            $table->string('likes')->default('');
             $table->boolean('paid');
             $table->timestamps();
         });

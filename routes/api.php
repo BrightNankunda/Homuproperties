@@ -48,6 +48,9 @@ Route::get('/show/{id}', 'App\Http\Controllers\ImageController@show');
 Route::get('/countofproperties', 'App\Http\Controllers\ImageController@count');
 
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::put('/like', 'App\Http\Controllers\ImageController@like');
+    Route::put('/dislike', 'App\Http\Controllers\ImageController@dislike');
+
     Route::post('upload', 'App\Http\Controllers\ImageController@upload');
     Route::get('/see', 'App\Http\Controllers\ImageController@see');
     Route::get('/preferredlocation/{location}', 'App\Http\Controllers\ImageController@preferredlocation');
