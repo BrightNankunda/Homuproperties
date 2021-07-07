@@ -6,6 +6,7 @@ use illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 use App\Models\Image;
+use App\Models\User;
 
 class ImageController extends Controller
 {
@@ -179,8 +180,19 @@ class ImageController extends Controller
         $image = Image::where('id', $id)->first();
         return response()->json($image);
     }
-    public function like(Request $request) {
-        return response()->json($request->propertyId);
+    public function like(Request $request, User $user, Image $image) {
+        // $data = $request->validate([
+
+        // ]);
+        // try {
+            $user->update(['liked' => $request->propertyId]);
+            $image->update(['likes' => $request->userId]);
+            return response()->json('Updated');
+
+        // } catch( Exception $e) {
+        //     throw $e;
+
+        // }
     }
     public function approve() {
         // $approved = Image::where('id', $id)->first()

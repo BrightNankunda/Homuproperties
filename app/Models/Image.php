@@ -32,7 +32,8 @@ class Image extends Model
         'imageone',
         'imagetwo',
         'secret',
-        'paid'
+        'paid',
+        'likes'
     ];
 
     public function user()
