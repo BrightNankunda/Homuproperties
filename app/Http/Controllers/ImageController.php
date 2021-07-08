@@ -180,25 +180,27 @@ class ImageController extends Controller
         $image = Image::where('id', $id)->first();
         return response()->json($image);
     }
-    public function like(Request $request, User $user, Image $image) {
+    // public function like(Request $request, User $user, Image $image) {
+    public function like(Request $request) {
         // $data = $request->validate([
 
         // ]);
-        // try {
-            $user = User::find($request->userId)
+        try {
+            $user = User::findOrFail($request->userId);
             $user->liked = $request->propertyId;
             $user->save();
 
-            $image = Image::find($request->propertyId);
+            // $
+            $image = Image::findOrFail($request->propertyId);
             $image->likes = $request->userId;
             $image->save();
             
-            return response()->json('Updated');
+            return response()->json($image->getOriginal());
 
-        // } catch( Exception $e) {
-        //     throw $e;
+        } catch( Exception $e) {
+            throw $e;
 
-        // }
+        }
     }
     public function approve() {
         // $approved = Image::where('id', $id)->first()

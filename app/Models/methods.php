@@ -11,8 +11,8 @@ class methods extends Model
 
     protected $fillable = ['boss_id', 'mtn_no', 'airtel_no'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\Models\methods', 'boss_id');
+        return $this->belongsTo('App\Models\user', 'boss_id');
     }
 }
