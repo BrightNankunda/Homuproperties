@@ -17,17 +17,20 @@
     </router-link>
     <router-link
       v-else
-      :to="`/preferredlocation?location=allproperties`"
+      :to="`/allProperties`"
       class="nav-link text-white"
       active-class="active"
     >
       <span> ALL PROPERTIES</span></router-link
     >
+    <router-link to="/profile/likes" active-class="active" class="nav-link text-white"
+      >LIKED</router-link
+    >
     <router-link to="#" active-class="active" class="nav-link text-white"
       >NOTIFICATIONS</router-link
     >
     <div class="border-top my-1"></div>
-    <router-link to="/boss/client" class="nav-link text-white" active-class="active"
+    <router-link to="/read" class="nav-link text-white" active-class="active"
       >LIST A PROPERTY</router-link
     >
 

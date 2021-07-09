@@ -36,6 +36,8 @@ import UpdateClient from './components/SubComponents/UpdateClient.vue';
 import ViewClient from './components/SubComponents/ViewClient.vue';
 import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import PreferredProperties from './components/SubComponents/PreferredProperties';
+import Likers from './Components/Likers';
+import Likes from './Components/Likes'
 import { Store } from 'vuex';
 
 
@@ -98,6 +100,11 @@ export default {
                 {
                     path: 'home',
                     component: BossHome
+                },
+                {
+                    path: 'likers',
+                    component: Likers,
+                    requiresAuth: true
                 },
                 {
                     path: 'clients',
@@ -268,11 +275,17 @@ export default {
             },
             
         },
-                {
-                    path: '/profile/update',
-                    component: UpdateProfile,
-                }
-            ,        
+        {
+            path: '/profile/update',
+            component: UpdateProfile,
+            requiresAuth: true
+        },
+        {
+            path: '/profile/likes',
+            component: Likes,
+            requiresAuth: true
+        },  
+                      
         {
             path: '/logout',
             component: Logout,

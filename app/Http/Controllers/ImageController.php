@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller
 {
@@ -182,28 +183,22 @@ class ImageController extends Controller
     }
     // public function like(Request $request, User $user, Image $image) {
     public function like(Request $request) {
-        // $data = $request->validate([
-
-        // ]);
-        try {
+        
+        DB::transaction(function () use($request){
             $user = User::findOrFail($request->userId);
             $user->liked = $request->propertyId;
-            $user->save();
-
-            // $
-            $image = Image::findOrFail($request->propertyId);
+            $user->save();           
+            
+            $image = Image::findOrFail(request()->propertyId);
             $image->likes = $request->userId;
             $image->save();
-            
-            return response()->json($image->getOriginal());
-
-        } catch( Exception $e) {
-            throw $e;
-
-        }
+        });
+        
+        return response()->json(User::findOrFail(1)->liked);
+       
     }
-    public function approve() {
-        // $approved = Image::where('id', $id)->first()
-    }
+    // public function approve() {
+        // $approved = Image::where('id', $id)->first();
+    // }
     
 }

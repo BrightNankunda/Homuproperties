@@ -41,6 +41,12 @@ let actions = {
             })
         }
     },
+    getAllUsers() {
+        console.log('GET ALL USERS')
+    },
+    getAllProperties() {
+        console.log('GET ALL PROPERTIES')
+    },
     like({commit}, data) {
         console.log('DATA FROM VUEX', data.payload)
         // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
