@@ -102,7 +102,7 @@ export default {
                     component: BossHome
                 },
                 {
-                    path: 'likers',
+                    path: 'likers/:id',
                     component: Likers,
                     requiresAuth: true
                 },

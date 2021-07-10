@@ -69,7 +69,7 @@ export default {
   methods: {
     like(id) {
       console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);
-      console.log("PROPERTY LIKES", this.propertyLikers(id));
+      // console.log("PROPERTY LIKES", this.propertyLikers(id));
       // if (liked().trim !== "") {
       //   const userLiked = this.liked().split(",");
       //   const newLiked = userLiked.push(`, ${id}`);

@@ -61,6 +61,11 @@ class loginController extends Controller
         ]);
     }
 
+    public function users() {
+        $users = User::all();
+        return $users;
+    }
+
     public function dashboard()
     {
         return Auth::user();

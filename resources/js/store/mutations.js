@@ -49,6 +49,9 @@ let mutations = {
     getUploads(state, uploads) {
         return state.uploads = uploads
     },
+    allUsers(state, users) {
+        return state.allUsers = users
+    },
     fetchOfficial(state, official) {
         return state.official = official
     },

@@ -31,7 +31,7 @@ Route::get('/fone', 'App\Http\Controllers\ImageController@fone');
 Route::get('/ftwo', 'App\Http\Controllers\ImageController@ftwo');
 Route::get('/mukono', 'App\Http\Controllers\ImageController@fmukono');
 Route::get('/kira', 'App\Http\Controllers\ImageController@fkira');
-Route::get('uploads', 'App\Http\Controllers\ImageController@uploads');
+Route::get('/uploads', 'App\Http\Controllers\ImageController@uploads');
 Route::post('/signup', 'App\Http\Controllers\loginController@signup');
 Route::post('/login', 'App\Http\Controllers\loginController@login');
 Route::get('/late', 'App\Http\Controllers\ImageController@late');
@@ -48,6 +48,7 @@ Route::get('/show/{id}', 'App\Http\Controllers\ImageController@show');
 Route::get('/countofproperties', 'App\Http\Controllers\ImageController@count');
 
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/users', 'App\Http\Controllers\loginController@users');
     Route::put('/like', 'App\Http\Controllers\ImageController@like');
     Route::put('/dislike', 'App\Http\Controllers\ImageController@dislike');
 

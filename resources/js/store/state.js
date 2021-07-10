@@ -38,6 +38,7 @@ let state = {
     malls: [],
     rentals: [],
     officespace: [],
+    allUsers: [],
     uploads: [],
     properties: [],
     token: localStorage.getItem('token') || null,

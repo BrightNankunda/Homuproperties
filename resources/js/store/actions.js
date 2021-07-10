@@ -41,11 +41,17 @@ let actions = {
             })
         }
     },
-    getAllUsers() {
-        console.log('GET ALL USERS')
-    },
-    getAllProperties() {
-        console.log('GET ALL PROPERTIES')
+    getAllUsers({commit}) {
+        return new Promise((resolve, reject) => {
+            axios.get('/api/users').then(res => {
+                commit('allUsers', res.data)
+                resolve(res)
+            }).catch(err => {
+                console.log('ALL USERS VUEX ERROR', err)
+                reject(err)
+            })
+
+        })
     },
     like({commit}, data) {
         console.log('DATA FROM VUEX', data.payload)

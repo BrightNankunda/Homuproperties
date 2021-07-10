@@ -1,1 +1,2 @@
 Click Error => click method not defined ie that doesn't exist
+NULL/DEFINED CONDITIONAL IN THE if loop
