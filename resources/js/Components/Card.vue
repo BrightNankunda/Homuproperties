@@ -71,7 +71,9 @@ export default {
       console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);
       // console.log("PROPERTY LIKES", this.propertyLikers(id));
       // if (liked().trim !== "") {
-      //   const userLiked = this.liked().split(",");
+      // CHECK IF LIKED
+
+      this.liked.concat(`,${id}`);
       //   const newLiked = userLiked.push(`, ${id}`);
 
       //   this.$store.dispatch({
@@ -101,6 +103,8 @@ export default {
         .get("api/show/" + id)
         .then((response) => {
           console.log(response.data);
+          // NEW PROPERTY LIKERS
+          return this.response.data.likes.concat(`, ${this.$store.getters.user.id}`);
           // get the people that liked this property,
           const PropertyLikes = response.data.likes;
           if (this.PropertyLikes.trim !== "") {

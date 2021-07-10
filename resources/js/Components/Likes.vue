@@ -2,16 +2,13 @@
   <div class="w-100 bg-light">
     <h5 class="p-2 bg-white text-primary text-center">LIKES</h5>
     <div class="container">
-      <!-- <div v-for="likedProperty in likedProperties" :key="likedProperty.id"> -->
+      <div v-for="likedProperty in likedProperties" :key="likedProperty.id">
         <div class="shadow-sm d-flex mx-2 bg-white">
-          <button class="my-3 btn btn-primary" @click="getUserLikedProperties">
-            GET ALL PROPERTIES LIKED BY THE USER
-          </button>
-          <!-- <router-link to="/details/" + likedProperty.id>
-            <span>{{ likedProperty.name + " " + propertyLiker.location }}</span>
-          </router-link> -->
+          <router-link :to="`/details/${likedProperty.id}`">
+            <span>{{ likedProperty.name + " " + likedProperty.location }}</span>
+          </router-link>
         </div>
-      <!-- </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +23,14 @@ export default {
   },
   mounted() {
     // GET ALL PROPERTITIES
-    this.$store.dispatch("getUploads");
+    this.$store
+      .dispatch("getUploads")
+      .then((res) => {
+        this.getUserLikedProperties();
+      })
+      .catch((err) => {
+        console.log("LIKERS COMPONENT", err);
+      });
     //
   },
 
@@ -46,10 +50,11 @@ export default {
     //   RETURN ALL LIKED PROPERTIES SUCH THAT WE CAN EXTRACT THE NAMES AND THE ID
     getUserLikedProperties() {
       // we should have access to user id
-      console.log(this.allProperties());
-      //  console.log((this.likedProperties = this.allProperties.filter((property) =>
-      //     property.likes.contains(this.user.id)
-      //   )));
+
+      return (this.likedProperties = this.likedProperties = this.allProperties.filter(
+        (property) => property.likes.includes(this.user.id.toString())
+      ));
+
       // Get user likes
       // split them
     },

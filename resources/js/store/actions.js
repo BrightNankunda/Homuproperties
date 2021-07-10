@@ -259,13 +259,17 @@ let actions = {
             
         },
         getUploads(context) {
-            axios.get('api/uploads')
-            .then(response => {
-                console.log(response)
-                context.commit('getUploads', response.data)
-            })
-            .catch(err => {
-                console.log(err)
+            return new Promise((resolve, reject) => {
+                axios.get('api/uploads')
+                .then(response => {
+                    context.commit('getUploads', response.data.uploads)
+                    resolve(response)
+                })
+                .catch(err => {
+                    console.log(err)
+                    reject(err)
+                })
+
             })
         },
         apartments(context,) {
