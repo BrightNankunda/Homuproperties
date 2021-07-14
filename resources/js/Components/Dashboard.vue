@@ -263,7 +263,7 @@
       </div>
 
       <!--OFFICESPACE-->
-      <div v-if="countofoffices > 1" class="text-center my-4">
+      <div v-if="countofoffices > 0" class="text-center my-4">
         <router-link to="/officespace" class="btn btn-primary lead"
           >View All Office spaces <b-icon-arrow-right></b-icon-arrow-right
         ></router-link>

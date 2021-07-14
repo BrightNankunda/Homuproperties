@@ -1,7 +1,15 @@
 <template>
   <div class="fluid-container">
     <div class="my-5" v-if="loadingProperties">
-      <page-loader />
+      <div class="fluid-container d-flex justify-content-center">
+    <div
+      class="spinner-border spinner-border-sm"
+      style="width: 3rem; height: 3rem"
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
     </div>
     <div class="container" v-else>
       <div class="col-lg-4 mx-auto" v-for="property in properties" :key="property.id">
@@ -27,6 +35,7 @@
   </div>
 </template>
 <script>
+import PageLoader from '../Loaders/PageLoader';
 export default {
   data() {
     return {

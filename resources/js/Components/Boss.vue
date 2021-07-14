@@ -12,12 +12,7 @@
         >
         <div class="border-top my-1"></div>
 
-          <router-link
-          to="/boss/likers"
-          class="nav-link text-white"
-          v-if="loggedIn"
-          active-class="active">
-          LIKES</router-link>
+          
 
           <router-link
           to="/boss/clients"

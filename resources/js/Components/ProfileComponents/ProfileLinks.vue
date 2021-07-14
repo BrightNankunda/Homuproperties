@@ -5,9 +5,9 @@
     >
     <div class="border-top my-1"></div>
 
-    <router-link to="/boss/clients" class="nav-link text-white" active-class="active"
+    <!-- <router-link to="/boss/clients" class="nav-link text-white" active-class="active"
       >EDIT PROFILE</router-link
-    >
+    > -->
     <router-link
       v-if="location !== '_'"
       :to="`/preferredlocation?location=${location}`"
@@ -26,9 +26,9 @@
     <router-link to="/profile/likes" active-class="active" class="nav-link text-white"
       >LIKED</router-link
     >
-    <router-link to="#" active-class="active" class="nav-link text-white"
+    <!-- <router-link to="#" active-class="active" class="nav-link text-white"
       >NOTIFICATIONS</router-link
-    >
+    > -->
     <div class="border-top my-1"></div>
     <router-link to="/read" class="nav-link text-white" active-class="active"
       >LIST A PROPERTY</router-link

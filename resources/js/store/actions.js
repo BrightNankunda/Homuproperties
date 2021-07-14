@@ -53,11 +53,12 @@ let actions = {
 
         })
     },
-    like({commit}, data) {
+    like(context, data) {
         console.log('DATA FROM VUEX', data.payload)
-        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
         axios.put('/api/like', 
-        {propertyId: data.payload.id, userId: data.payload.userId})
+        {propertyId: data.payload.id, userId: data.payload.userId, 
+        newLikes: data.payload.newLikes, newLiked: data.payload.newLiked})
         .then((res) => {
             console.log(res.data)
         }).catch(error => {

@@ -53,6 +53,8 @@ export default {
   data() {
     return {
       currentProperty: null,
+      newLikers: null,
+      newLiked: null
     };
   },
   mounted() {
@@ -73,9 +75,28 @@ export default {
       // if (liked().trim !== "") {
       // CHECK IF LIKED
 
-      this.liked.concat(`,${id}`);
-      //   const newLiked = userLiked.push(`, ${id}`);
-
+      // console.log(this.liked.concat(`,${id}`));
+      // const newLikes = this.likes.concat(`,${id}`);
+      this.propertyLikers(id)
+        .then((response) => {
+        //    if(this.liked.trim() === '') {
+        //     return this.newLiked = this.liked.conact(`${id}`)
+        //   } else {
+        //     return this.newLiked = this.liked.concat()
+        //   }
+              this.$store.dispatch({
+                type: "like",
+                payload: {
+                  id: id,
+                  userId: this.$store.getters.user.id,
+                  newLiked: this.newLikedProperties(id),//(this.liked.trim() === '') ? this.liked.conact(`${id}`) : this.liked.concat(`,${id}`),
+                  newLikes: this.newLikers
+                },
+              });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       //   this.$store.dispatch({
       //     type: "like",
       //     payload: {
@@ -86,50 +107,53 @@ export default {
       //     },
       //   });
       // } else {
-      this.$store.dispatch({
-        type: "like",
-        payload: {
-          id: id,
-          userId: this.$store.getters.user.id,
-          // likedByUser: newLiked,
-          // propertyLikes: this.propertyLikers(id),
-        },
-      });
       // }
+    },
+    newLikedProperties(id) {
+      if(this.liked.trim() === '') {
+        return this.liked.concat(id)
+      } else {
+        return this.liked.concat(`,${id}`)
+      }
     },
     propertyLikers(id) {
       // find the property
-      axios
-        .get("api/show/" + id)
-        .then((response) => {
-          console.log(response.data);
-          // NEW PROPERTY LIKERS
-          return this.response.data.likes.concat(`, ${this.$store.getters.user.id}`);
-          // get the people that liked this property,
-          const PropertyLikes = response.data.likes;
-          if (this.PropertyLikes.trim !== "") {
-            if (PropertyLikes.search(",")) {
-              const AllPropertyLikes = PropertyLikes.split(",");
+      return new Promise((resolve, reject) => {
+        axios
+          .get("api/show/" + id)
+          .then((response) => {
+            // NEW PROPERTY LIKERS
+            this.newLikers = response.data.likes.concat(
+              `,${this.$store.getters.user.id}`
+            );
+            resolve(response);
+            // get the people that liked this property,
+            // const PropertyLikes = response.data.likes;
+            // if (this.PropertyLikes.trim !== "") {
+            //   if (PropertyLikes.search(",")) {
+            //     const AllPropertyLikes = PropertyLikes.split(",");
 
-              // append new like and send to the backend
-              const newPropertyLikes = AllPropertyLikes.push(
-                `, ${this.$store.getters.user.id}`
-              ).join(",");
-              return newPropertyLikes;
-            } else {
-              const newPropertyLikes = [
-                propertyLikes,
-                concat(",", this.$store.getters.user.id),
-              ];
-              return newPropertyLikes.join(",");
-            }
-          } else {
-            return `${this.$store.getters.user.id}, `;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+            //     // append new like and send to the backend
+            //     const newPropertyLikes = AllPropertyLikes.push(
+            //       `, ${this.$store.getters.user.id}`
+            //     ).join(",");
+            //     return newPropertyLikes;
+            //   } else {
+            //     const newPropertyLikes = [
+            //       propertyLikes,
+            //       concat(",", this.$store.getters.user.id),
+            //     ];
+            //     return newPropertyLikes.join(",");
+            //   }
+            // } else {
+            //   return `${this.$store.getters.user.id}, `;
+            // }
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
+      });
     },
     approve(id) {
       console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);

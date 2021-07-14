@@ -183,14 +183,13 @@ class ImageController extends Controller
     }
     // public function like(Request $request, User $user, Image $image) {
     public function like(Request $request) {
-        
         DB::transaction(function () use($request){
             $user = User::findOrFail($request->userId);
-            $user->liked = $request->propertyId;
+            $user->liked = $request->newLiked;
             $user->save();           
             
             $image = Image::findOrFail(request()->propertyId);
-            $image->likes = $request->userId;
+            $image->likes = $request->newLikes;
             $image->save();
         });
         

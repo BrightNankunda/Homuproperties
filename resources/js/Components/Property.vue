@@ -7,9 +7,15 @@
     </div>
     <div class="row" v-for="property in properties" :key="property.id" v-else>
       <div class="col-lg-8 col-xl-9 my-2">
+      <div class="d-flex justify-content-around">
         <h5 class="lead" v-if="property.paid === 0">
           Payment Status: <b-badge variant="danger">{{ property.paid }} </b-badge> Secret: <b-badge variant="warning">{{ property.secret }} </b-badge> Amount: {{ property.amount }}
         </h5>
+      
+        <router-link
+          :to="`/boss/likers/${property.id}`">
+          LIKES</router-link>
+      </div>
         <b-carousel id="carousel-1" v-model="slide" :interval="8000" controls indicators background="#ababab" @sliding-start="onSlideStart" @sliding-end="onSlideEnd">
           <!-- Slides with custom text -->
 
