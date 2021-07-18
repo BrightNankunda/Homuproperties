@@ -19,7 +19,7 @@
           ></search-component>
         </div>
         <div class="d-flex justify-content-center">
-          <router-link to="read" class="btn btn-primary">Get Started</router-link>
+          <router-link to="/read" class="btn btn-primary">Get Started</router-link>
         </div>
       </div>
       <div class="shadow second bg-light my-5 pb-2">

@@ -6,14 +6,14 @@
           type="text"
           v-model="keyword_Location"
           @keyup.enter="fetch"
-          placeholder="Location"
+          placeholder="Location..."
           class="form-control col-lg-5 mx-1"
         />
         <input
           type="text"
           v-model="keyword_name"
           @keyup.enter="fetch"
-          placeholder="name"
+          placeholder="Property Name..."
           class="form-control col-lg-5 mx-1"
         />
       </div>

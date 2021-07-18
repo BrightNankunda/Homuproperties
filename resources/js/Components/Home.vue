@@ -63,21 +63,24 @@
               active-class="active"
               >List Property</router-link
             >
-
             <router-link
               to="/login"
               v-if="!loggedIn"
-              class="text-white login my-2 px-2 border-right"
+              class="text-white login boder-right my-2 px-3 py-auto"
               active-class="active"
               >Login</router-link
             >
-            <router-link
-              to="/register"
-              v-if="!loggedIn"
-              class="text-white signin btn btn-success mx-2 px-2"
-              active-class="active"
-              >SignIn</router-link
+            <div
+              class="signin d-flex justify-content-center align-content-center py-auto"
             >
+              <router-link
+                to="/register"
+                v-if="!loggedIn"
+                class="mx-2 btn signin-btn px-2"
+                active-class="active"
+                >SignIn</router-link
+              >
+            </div>
 
             <b-nav-item-dropdown right v-if="loggedIn">
               <template #button-content>
@@ -217,6 +220,27 @@ export default {
   top: 3px;
   z-index: 10;
   border: none;
+}
+.login {
+}
+.signin {
+  color: green !important;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.signin:hover {
+  background: green !important;
+  cursor: pointer;
+}
+.signin-btn {
+  color: green !important;
+}
+.signin-btn:hover {
+  color: white !important;
 }
 .header {
   max-height: 45px;
