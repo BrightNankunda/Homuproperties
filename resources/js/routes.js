@@ -38,6 +38,7 @@ import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import PreferredProperties from './components/SubComponents/PreferredProperties';
 import Likers from './Components/Likers';
 import Likes from './Components/Likes'
+import NestedNavbar from './Components/NestedNavbar';
 import { Store } from 'vuex';
 
 
@@ -51,6 +52,10 @@ export default {
             meta: {
                 title: 'Dashboard'
             }
+        },
+        {
+            path: '/nestedNavbar',
+            component: NestedNavbar
         },
         {
             path: '/mid',

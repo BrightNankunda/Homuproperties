@@ -1,9 +1,9 @@
 <template>
   <div class="home w-100">
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="primary" class="shadow">
-        <router-link class="text-white px-3" to="/" active-class="active" exact
-          ><b-icon icon="house-fill" scale="1.6"></b-icon
+      <b-navbar toggleable="lg" type="" variant="" class="shadow-sm">
+        <router-link class="px-3" to="/" active-class="active" exact
+          ><b-icon icon="house-fill" variant="primary" scale="1.6"></b-icon
         ></router-link>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,39 +11,39 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/apartments"
               active-class="active"
               exact
               >Apartments</router-link
             >
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/arcades"
               active-class="active"
               >Arcades</router-link
             >
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/malls"
               active-class="active"
               >Malls</router-link
             >
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/rentals"
               active-class="active"
               >Rentals</router-link
             >
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/officespace"
               active-class="active"
               >Office</router-link
             >
 
             <router-link
-              class="nav-link text-white lead px-3"
+              class="nav-link text-primary lead px-3"
               to="/hostels"
               active-class="active"
               >Hostel</router-link
@@ -53,32 +53,30 @@
           <b-navbar-nav class="ml-auto">
             <router-link
               to="/read"
-              class="nav-link text-white lead px-3 d-none d-lg-block"
+              class="nav-link text-primary lead px-3 d-none d-lg-block"
               active-class="active"
               >List a Property</router-link
             >
-            <router-link
-              to="/read"
-              class="nav-link text-white px-3 d-none"
-              active-class="active"
-              >List Property</router-link
-            >
-            <router-link
-              to="/login"
-              v-if="!loggedIn"
-              class="text-white login boder-right my-2 px-3 py-auto"
-              active-class="active"
-              >Login</router-link
-            >
             <div
-              class="signin d-flex justify-content-center align-content-center py-auto"
+              class="mb-xs-2 mb-md-2 mb-lg-0 login d-flex justify-content-center align-content-center py-auto mr-4"
+            >
+              <router-link
+                to="/login"
+                v-if="!loggedIn"
+                class="w-100 py-2 px-3 btn login-btn"
+                active-class="active"
+                >Login</router-link
+              >
+            </div>
+            <div
+              class="signin d-flex justify-content-center align-content-center py-auto mr-4"
             >
               <router-link
                 to="/register"
                 v-if="!loggedIn"
-                class="mx-2 btn signin-btn px-2"
+                class="w-100 py-2 px-3 btn signin-btn"
                 active-class="active"
-                >SignIn</router-link
+                >Sign In</router-link
               >
             </div>
 
@@ -222,10 +220,22 @@ export default {
   border: none;
 }
 .login {
+  color: blue !important;
+  border: 1px solid blue;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.login:hover {
+  background: blue !important;
+  color: white;
+  cursor: pointer;
 }
 .signin {
   color: green !important;
-  border: 1px solid gray;
+  border: 1px solid green;
   border-radius: 10px;
   background: white;
   display: flex;
@@ -235,11 +245,20 @@ export default {
 .signin:hover {
   background: green !important;
   cursor: pointer;
+  color: white !important;
 }
 .signin-btn {
   color: green !important;
+  border-radius: 10px !important;
 }
 .signin-btn:hover {
+  color: white !important;
+}
+.login-btn {
+  color: blue !important;
+  border-radius: 10px !important;
+}
+.login-btn:hover {
   color: white !important;
 }
 .header {
@@ -283,7 +302,7 @@ export default {
         .nav-link:hover {
           text-decoration: underline;
           letter-spacing: 5px;
-        
+
         }
       }*/
 .conatct {
