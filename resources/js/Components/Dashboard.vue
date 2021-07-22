@@ -5,10 +5,9 @@
       <div class="banner">
         <div class="row search-container py-5 d-flex justify-content-center">
           <h1 class="text-primary text-center col-md-12 col-lg-8">
-            <span class="d-md-inline-block d-none">Advertise with us & remove</span>
-            <span class="d-md-none">Remove</span> the information gap about your property
+            <span class="d-md-inline-block d-none">Advertise with us </span>
             with
-            <span class="headeroff"><b>20% OFF</b></span>
+            <span class="headeroff"><b>20% DISCOUNT</b></span>
           </h1>
         </div>
         <div class="search-bars d-flex justify-content-center align-content-center">
@@ -22,13 +21,13 @@
           <router-link to="/read" class="btn btn-primary">Get Started</router-link>
         </div>
       </div>
-      <div class="shadow second bg-light my-5 pb-2">
+      <div class="shadow-sm second bg-light bg-light-trans mb-4 p-3 rounded">
         <div class="icons row d-flex my-3">
           <div class="col-lg-4">
             <div class="icon text-success d-flex justify-content-center my-4">
               <b-icon icon="house" scale="2"></b-icon>
             </div>
-            <div class="">
+            <div class="cursor-pointer">
               <h3 class="lead text-center">Real Estate Online Advertising</h3>
             </div>
           </div>
@@ -37,7 +36,7 @@
             <div class="icon text-success d-flex justify-content-center my-4">
               <b-icon icon="phone" scale="2"></b-icon>
             </div>
-            <div class="">
+            <div class="cursor-pointer">
               <h3 class="lead text-center">Adequate Marketing on all Online platforms</h3>
             </div>
           </div>
@@ -46,10 +45,74 @@
             <div class="icon text-success d-flex justify-content-center my-4">
               <b-icon icon="person-check" scale="2"></b-icon>
             </div>
-            <div class="">
+            <div class="cursor-pointer">
               <h3 class="lead text-center">
                 Real Estate Professional Search Support and advice.
               </h3>
+            </div>
+          </div>
+        </div>
+        <div class="my-2 bg-light py-2">
+          <div class="row d-flex justify-content-center my-4">
+            <h1 class="lead text-center text-success my-2">
+              Find your Dream home, safe place to stay!
+            </h1>
+          </div>
+
+          <div class="icons row d-flex my-2">
+            <div class="col-lg-4">
+              <div class="icon text-success d-flex justify-content-center my-2 py-2">
+                <h1 class="lead">Apartments</h1>
+              </div>
+              <div class="icon text-success d-flex justify-content-center my-4 py-2">
+                <b-icon icon="building" scale="2"></b-icon>
+              </div>
+              <div class="cursor-pointer">
+                <h3 class="lead text-center py-2">
+                  Are you looking for an apartment, single room. double or family
+                  apartment, navigate to apartments.
+                  <b-icon icon="arrow-up" variant="success"></b-icon>
+                </h3>
+                <!--<b-col md="6" class="mb-3">
+              <p>Cylon animation:</p>
+              <b-icon icon="three-dots" animation="cylon" variant="success" font-scale="4"></b-icon>
+            </b-col>-->
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div
+                class="icon cursor-pointer text-success d-flex justify-content-center my-2"
+              >
+                <h1 class="lead">Hostels and Rentals</h1>
+              </div>
+              <div class="icon text-success d-flex justify-content-center my-4">
+                <b-icon icon="house-door" scale="2"></b-icon>
+              </div>
+              <div class="cursor-pointer">
+                <h3 class="lead text-center py-2">
+                  Are you a student looking for an affordable hostel or rental safe for
+                  your studies, navigate through the Best Hostels and rentals.
+                  <router-link to="hostels" class="text-success"
+                    ><b-icon icon="binoculars"></b-icon
+                  ></router-link>
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="icon text-success d-flex justify-content-center my-2 py-2">
+                <h1 class="lead">Malls and Arcades</h1>
+              </div>
+              <div class="icon text-success d-flex justify-content-center my-4 py-2">
+                <b-icon icon="building" scale="2"></b-icon>
+              </div>
+              <div class="">
+                <h3 class="lead text-center py-2">
+                  Find the perfect place for your business entity with all the the
+                  required data in the palm of your hand.
+                </h3>
+              </div>
             </div>
           </div>
         </div>
@@ -84,7 +147,7 @@
         </div>
       </div>
 
-      <div class="my-4 bg-light shadow py-2">
+      <!-- <div class="my-4 bg-light shadow py-2">
         <div class="row d-flex justify-content-center text-success my-4">
           <h1 class="lead text-center my-2">Find your Dream home, safe place to stay!</h1>
         </div>
@@ -103,10 +166,10 @@
                 navigate to apartments.
                 <b-icon icon="arrow-up" variant="success"></b-icon>
               </h3>
-              <!--<b-col md="6" class="mb-3">
+              <b-col md="6" class="mb-3">
               <p>Cylon animation:</p>
               <b-icon icon="three-dots" animation="cylon" variant="success" font-scale="4"></b-icon>
-            </b-col>-->
+            </b-col>
             </div>
           </div>
 
@@ -143,7 +206,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--HOSTELS-->
       <div v-if="countofhostels > 0" class="text-center my-5">
         <router-link to="/hostel" class="btn btn-primary px-4 lead"
@@ -555,6 +618,7 @@ export default {
 .dashboard {
   font-family: sans-serif;
   box-sizing: border-box;
+  position: relative;
 }
 .banner {
   min-height: 90vh;
@@ -566,6 +630,9 @@ export default {
 /* .search-container {
   margin: auto 0;
 } */
+.cursor-pointer {
+  cursor: pointer;
+}
 #horizontal,
 #horizontalhostels,
 #horizontalRentals,
@@ -595,7 +662,12 @@ export default {
 }
 .second {
   border: none;
-  border-radius: 15px;
+  /* position: absolute; */
+  /* top: 500px !important; */
+  border-radius: 15px !important;
+}
+.bg-light-trans {
+  background: rgba(255, 255, 255, 0.6) !important;
 }
 .card {
   border: none !important;
@@ -609,12 +681,12 @@ export default {
 .card:hover {
   opacity: 0.8;
 }
-.bg-dark {
+/* .bg-dark {
   position: relative;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.3) !important;
   color: white !important;
-}
+} */
 img:hover {
   opacity: 0.8;
 }

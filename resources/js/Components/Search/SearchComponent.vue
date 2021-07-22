@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <div class="row mt-2" style="min-height: 10vh">
+    <div class="row mt-4" style="min-height: 10vh">
       <div class="w-100 d-flex justify-content-center">
         <input
           type="text"
           v-model="keyword_Location"
           @keyup.enter="fetch"
           placeholder="Location..."
-          class="form-control col-lg-5 mx-1"
+          class="form-control col-lg-5 mr-4"
         />
         <input
           type="text"

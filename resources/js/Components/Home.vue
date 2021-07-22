@@ -10,44 +10,45 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/apartments"
-              active-class="active"
-              exact
-              >Apartments</router-link
-            >
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/arcades"
-              active-class="active"
-              >Arcades</router-link
-            >
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/malls"
-              active-class="active"
-              >Malls</router-link
-            >
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/rentals"
-              active-class="active"
-              >Rentals</router-link
-            >
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/officespace"
-              active-class="active"
-              >Office</router-link
-            >
+            <b-nav-item-dropdown text="Apartments" right>
+              <b-dropdown-item to="/apartments/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/apartments/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/apartments/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/apartments/Central">Central</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown text="Arcades" right>
+              <b-dropdown-item to="/arcades/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/arcades/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/arcades/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/arcades/Central">Central</b-dropdown-item>
+            </b-nav-item-dropdown>
 
-            <router-link
-              class="nav-link text-primary lead px-3"
-              to="/hostels"
-              active-class="active"
-              >Hostel</router-link
-            >
+            <b-nav-item-dropdown text="Malls" right>
+              <b-dropdown-item to="/malls/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/malls/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/malls/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/malls/Central">Central</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown text="Rentals" right>
+              <b-dropdown-item to="/rentals/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/rentals/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/rentals/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/rentals/Central">Central</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown text="Offices" right>
+              <b-dropdown-item to="/offices/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/offices/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/offices/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/offices/Central">Central</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown text="Hostels" right>
+              <b-dropdown-item to="/hostels/kiu">KIU</b-dropdown-item>
+              <b-dropdown-item to="/hostels/Makerere">MAK</b-dropdown-item>
+              <b-dropdown-item to="/hostels/Kyambogo">Kyambogo</b-dropdown-item>
+              <b-dropdown-item to="/hostels/must">MUST</b-dropdown-item>
+            </b-nav-item-dropdown>
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto">
