@@ -1,16 +1,16 @@
 <template>
   <div class="home w-100">
     <div>
-      <b-navbar toggleable="lg" type="" variant="" class="shadow-sm">
+      <b-navbar toggleable="lg" type="light" variant="" class="shadow-sm">
         <router-link class="px-3" to="/" active-class="active" exact
-          ><b-icon icon="house-fill" variant="primary" scale="1.6"></b-icon
+          ><b-icon icon="house-fill" variant="dark" scale="1.6"></b-icon
         ></router-link>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item-dropdown text="Apartments" right>
+            <b-nav-item-dropdown text="Apartments" class="navbar-link" right>
               <b-dropdown-item to="/apartments/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kawempe">Kawempe</b-dropdown-item>
@@ -54,7 +54,7 @@
           <b-navbar-nav class="ml-auto">
             <router-link
               to="/read"
-              class="nav-link text-primary lead px-3 d-none d-lg-block"
+              class="nav-link text-dark lead px-3 d-none d-lg-block"
               active-class="active"
               >List a Property</router-link
             >
@@ -206,6 +206,9 @@ export default {
 .home {
   box-sizing: border-box;
   overflow: hidden;
+}
+.navbar-link {
+  color: rgb(30, 30, 30) !important;
 }
 .inp {
   position: relative;
