@@ -10,40 +10,40 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item-dropdown text="Apartments" class="navbar-link" right>
+            <b-nav-item-dropdown text="Apartments" class="mx-1" right>
               <b-dropdown-item to="/apartments/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/apartments/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item-dropdown text="Arcades" right>
+            <b-nav-item-dropdown text="Arcades" class="mx-1" right>
               <b-dropdown-item to="/arcades/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/arcades/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/arcades/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/arcades/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item-dropdown text="Malls" right>
+            <b-nav-item-dropdown text="Malls" class="mx-1" right>
               <b-dropdown-item to="/malls/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/malls/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/malls/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/malls/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item-dropdown text="Rentals" right>
+            <b-nav-item-dropdown text="Rentals" class="mx-1" right>
               <b-dropdown-item to="/rentals/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/rentals/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/rentals/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/rentals/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item-dropdown text="Offices" right>
+            <b-nav-item-dropdown text="Offices" class="mx-1" right>
               <b-dropdown-item to="/offices/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/offices/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/offices/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/offices/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item-dropdown text="Hostels" right>
+            <b-nav-item-dropdown text="Hostels" class="mx-1" right>
               <b-dropdown-item to="/hostels/kiu">KIU</b-dropdown-item>
               <b-dropdown-item to="/hostels/Makerere">MAK</b-dropdown-item>
               <b-dropdown-item to="/hostels/Kyambogo">Kyambogo</b-dropdown-item>
@@ -206,9 +206,6 @@ export default {
 .home {
   box-sizing: border-box;
   overflow: hidden;
-}
-.navbar-link {
-  color: rgb(30, 30, 30) !important;
 }
 .inp {
   position: relative;

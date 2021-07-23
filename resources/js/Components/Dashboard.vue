@@ -21,38 +21,40 @@
           <router-link to="/read" class="btn btn-primary">Get Started</router-link>
         </div>
       </div>
-      <div class="shadow-sm second bg-light bg-light-trans mb-4 p-3 rounded">
+      <div class="shadow-sm second bg-light-trans mb-4 p-3 rounded bg-danger">
         <div class="icons row d-flex my-3">
-          <div class="col-lg-4">
-            <div class="icon text-success d-flex justify-content-center my-4">
-              <b-icon icon="house" scale="2"></b-icon>
+          <div class="col-lg-4 cursor-pointer icon">
+            <div class="text-success d-flex justify-content-center my-4">
+              <b-icon icon="house" class="icon" scale="2"></b-icon>
             </div>
-            <div class="cursor-pointer">
-              <h3 class="lead text-center">Real Estate Online Advertising</h3>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="icon text-success d-flex justify-content-center my-4">
-              <b-icon icon="phone" scale="2"></b-icon>
-            </div>
-            <div class="cursor-pointer">
-              <h3 class="lead text-center">Adequate Marketing on all Online platforms</h3>
+            <div class="cursor-pointer icon">
+              <h3 class="lead text-center icon-text">Real Estate Online Advertising</h3>
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 cursor-pointer icon">
             <div class="icon text-success d-flex justify-content-center my-4">
-              <b-icon icon="person-check" scale="2"></b-icon>
+              <b-icon icon="phone" class="icon" scale="2"></b-icon>
             </div>
             <div class="cursor-pointer">
-              <h3 class="lead text-center">
+              <h3 class="lead text-center icon">
+                Adequate Marketing on all Online platforms
+              </h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 cursor-pointer">
+            <div class="text-success d-flex justify-content-center my-4">
+              <b-icon icon="person-check" class="icon" scale="2"></b-icon>
+            </div>
+            <div class="">
+              <h3 class="lead text-center icon">
                 Real Estate Professional Search Support and advice.
               </h3>
             </div>
           </div>
         </div>
-        <div class="my-2 bg-light py-2">
+        <div class="my-2 py-2">
           <div class="row d-flex justify-content-center my-4">
             <h1 class="lead text-center text-success my-2">
               Find your Dream home, safe place to stay!
@@ -60,18 +62,17 @@
           </div>
 
           <div class="icons row d-flex my-2">
-            <div class="col-lg-4">
-              <div class="icon text-success d-flex justify-content-center my-2 py-2">
-                <h1 class="lead">Apartments</h1>
+            <div class="col-lg-4 icon cursor-pointer">
+              <div class="text-success d-flex justify-content-center my-2 py-2">
+                <h1 class="lead icon">Apartments</h1>
               </div>
               <div class="icon text-success d-flex justify-content-center my-4 py-2">
-                <b-icon icon="building" scale="2"></b-icon>
+                <b-icon icon="building" class="icon" scale="2"></b-icon>
               </div>
               <div class="cursor-pointer">
-                <h3 class="lead text-center py-2">
+                <h3 class="lead text-center py-2 icon">
                   Are you looking for an apartment, single room. double or family
                   apartment, navigate to apartments.
-                  <b-icon icon="arrow-up" variant="success"></b-icon>
                 </h3>
                 <!--<b-col md="6" class="mb-3">
               <p>Cylon animation:</p>
@@ -80,35 +81,32 @@
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 icon cursor-pointer">
               <div
                 class="icon cursor-pointer text-success d-flex justify-content-center my-2"
               >
-                <h1 class="lead">Hostels and Rentals</h1>
+                <h1 class="lead icon">Hostels and Rentals</h1>
               </div>
               <div class="icon text-success d-flex justify-content-center my-4">
-                <b-icon icon="house-door" scale="2"></b-icon>
+                <b-icon icon="house-door" class="icon" scale="2"></b-icon>
               </div>
               <div class="cursor-pointer">
-                <h3 class="lead text-center py-2">
+                <h3 class="lead text-center py-2 icon">
                   Are you a student looking for an affordable hostel or rental safe for
                   your studies, navigate through the Best Hostels and rentals.
-                  <router-link to="hostels" class="text-success"
-                    ><b-icon icon="binoculars"></b-icon
-                  ></router-link>
                 </h3>
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 icon cursor-pointer">
               <div class="icon text-success d-flex justify-content-center my-2 py-2">
-                <h1 class="lead">Malls and Arcades</h1>
+                <h1 class="lead icon">Malls and Arcades</h1>
               </div>
               <div class="icon text-success d-flex justify-content-center my-4 py-2">
-                <b-icon icon="building" scale="2"></b-icon>
+                <b-icon icon="building" class="icon" scale="2"></b-icon>
               </div>
               <div class="">
-                <h3 class="lead text-center py-2">
+                <h3 class="lead text-center py-2 icon">
                   Find the perfect place for your business entity with all the the
                   required data in the palm of your hand.
                 </h3>
@@ -119,7 +117,7 @@
       </div>
 
       <!--APARTMENTS-->
-      <div v-if="countofapartments > 1" class="text-center my-5">
+      <div v-if="countofapartments > 1" class="text-center my-5 bg-dark">
         <router-link to="/apartments" class="btn btn-primary px-4 lead"
           >View all Apartments <b-icon-arrow-right></b-icon-arrow-right
         ></router-link>
@@ -620,6 +618,9 @@ export default {
   box-sizing: border-box;
   position: relative;
 }
+.icon-name {
+  color: blue;
+}
 .banner {
   min-height: 90vh;
   background-image: url("/front/house2.jpg");
@@ -640,6 +641,14 @@ export default {
 #horizontaloffice {
   text-align: center;
   font-family: sans-serif;
+}
+.icon-wrapper {
+  cursor: pointer;
+}
+.icon:hover,
+.icon-text:hover,
+.icon-wrapper:hover {
+  color: rgb(233, 35, 68) !important;
 }
 
 .left,
@@ -663,7 +672,7 @@ export default {
 .second {
   border: none;
   /* position: absolute; */
-  /* top: 500px !important; */
+  /* top: calc(100vh -150px) !important; */
   border-radius: 15px !important;
 }
 .bg-light-trans {
