@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <div class="card my-4 shadow">
+    <div class="card my-4 shadow-sm">
       <router-link :to="`/details/${id}`">
         <img
           :src="'images/' + front"
@@ -14,7 +14,7 @@
 
         <p class="lead">{{ location + "," + " " + street }}</p>
 
-        <h6 class="lead">{{ type }}</h6>
+        <p class="lead">{{ type }}</p>
       </div>
       <div class="card-footer d-flex justify-content-between">
         <h6 class="text-center text-success">Ugx:{{ " " + rent }}</h6>
@@ -88,11 +88,6 @@ export default {
       } else if (this.liked.trim().length === 1) {
         return this.liked.includes(propertyId) ? true : false;
       }
-      // if (this.liked.includes(propertyId)) {
-      //   console.log("LIKED THIS ONE");
-      // } else {
-      //   console.log("DOES NOT LIKE THIS ONE");
-      // }
     },
     like(id) {
       console.log("PROPERTY ID", id, "USER ID", this.$store.getters.user.id);
@@ -103,7 +98,7 @@ export default {
             payload: {
               id: id,
               userId: this.$store.getters.user.id,
-              newLiked: this.newLikedProperties(id), //(this.liked.trim() === '') ? this.liked.conact(`${id}`) : this.liked.concat(`,${id}`),
+              newLiked: this.newLikedProperties(id), 
               newLikes: this.newLikers,
             },
           });

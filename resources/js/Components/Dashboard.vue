@@ -145,66 +145,7 @@
         </div>
       </div>
 
-      <!-- <div class="my-4 bg-light shadow py-2">
-        <div class="row d-flex justify-content-center text-success my-4">
-          <h1 class="lead text-center my-2">Find your Dream home, safe place to stay!</h1>
-        </div>
-
-        <div class="icons row d-flex my-2">
-          <div class="col-lg-4">
-            <div class="icon text-success d-flex justify-content-center my-2 py-2">
-              <h1 class="lead">Apartments</h1>
-            </div>
-            <div class="icon text-success d-flex justify-content-center my-4 py-2">
-              <b-icon icon="building" scale="2"></b-icon>
-            </div>
-            <div class="">
-              <h3 class="lead text-center py-2">
-                Are you looking for an apartment, single room. double or family apartment,
-                navigate to apartments.
-                <b-icon icon="arrow-up" variant="success"></b-icon>
-              </h3>
-              <b-col md="6" class="mb-3">
-              <p>Cylon animation:</p>
-              <b-icon icon="three-dots" animation="cylon" variant="success" font-scale="4"></b-icon>
-            </b-col>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="icon text-success d-flex justify-content-center my-2">
-              <h1 class="lead">Hostels and Rentals</h1>
-            </div>
-            <div class="icon text-success d-flex justify-content-center my-4">
-              <b-icon icon="house-door" scale="2"></b-icon>
-            </div>
-            <div class="">
-              <h3 class="lead text-center py-2">
-                Are you a student looking for an affordable hostel or rental safe for your
-                studies, navigate through the Best Hostels and rentals.
-                <router-link to="hostels" class="text-success"
-                  ><b-icon icon="binoculars"></b-icon
-                ></router-link>
-              </h3>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="icon text-success d-flex justify-content-center my-2 py-2">
-              <h1 class="lead">Malls and Arcades</h1>
-            </div>
-            <div class="icon text-success d-flex justify-content-center my-4 py-2">
-              <b-icon icon="building" scale="2"></b-icon>
-            </div>
-            <div class="">
-              <h3 class="lead text-center py-2">
-                Find the perfect place for your business entity with all the the required
-                data in the palm of your hand.
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      
       <!--HOSTELS-->
       <div v-if="countofhostels > 0" class="text-center my-5">
         <router-link to="/hostel" class="btn btn-primary px-4 lead"
