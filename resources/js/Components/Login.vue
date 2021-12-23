@@ -6,11 +6,11 @@
       </div>
     </div>
     <div class="row form-container" v-else>
-      <div v-if="loginerr" class="col-lg-6 mx-auto alert alert-danger">
+      <div v-if="loginerr" class="col-lg-5 mx-auto alert alert-danger">
         <p class="text-center text-danger">{{ loginerr }}</p>
       </div>
 
-      <div class="col-lg-6 my-4">
+      <div class="col-lg-5 my-4">
         <div class="card my-2">
           <div class="card-header">
             <h1 class="lead">Welcome back, Login</h1>
@@ -29,6 +29,7 @@
                   class="form-control"
                   :class="{ err: emptyemail || emailerr }"
                   v-model="user.email"
+                  placeholder="Email Address"
                 />
                 <span class="icon"><b-icon icon="exaclamation"></b-icon></span>
                 <div class="" v-if="emailerr">
@@ -47,6 +48,7 @@
                   :class="{ err: passwordlength }"
                   class="form-control"
                   v-model="user.password"
+                  placeholder="******"
                 />
                 <div class="" v-if="passwordlength">
                   <p class="text-danger">Atleast 6 Characters for the password!</p>
@@ -59,8 +61,9 @@
                 <button type="submit" class="btn btn-primary m-auto px-4">Login</button>
               </div>
               <div class="d-flex justify-content-center">
-                <span>New? Create an account, </span>
-                <router-link to="/register" class="mx-2"> Sign Up</router-link>
+                <router-link to="/register" class="mx-2"
+                  ><span>New? Create an account, </span> Sign Up</router-link
+                >
               </div>
             </form>
           </div>
@@ -117,11 +120,13 @@ export default {
       this.validateemail();
       this.validatemail();
       this.validatepassword();
+
       if (this.emailerr || this.passwordlength || this.emptyemail) {
         console.log("ERRORS");
         setTimeout(this.removeerrs, 4000);
         return;
       }
+
       this.loading = true;
       this.$store
         .dispatch("loginUser", this.user)
@@ -144,7 +149,7 @@ export default {
 
 <style scoped>
 .form-group {
-  margin: 20px;
+  margin: 10px;
 }
 .form-container {
   display: flex;

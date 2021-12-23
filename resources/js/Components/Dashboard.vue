@@ -145,7 +145,6 @@
         </div>
       </div>
 
-      
       <!--HOSTELS-->
       <div v-if="countofhostels > 0" class="text-center my-5">
         <router-link to="/hostel" class="btn btn-primary px-4 lead"

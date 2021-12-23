@@ -18,39 +18,41 @@
           </div>
           <div class="card-body">
             <form method="POST" @submit.prevent="register">
-              <div class="form-group">
-                <label for="firstname">First Name:</label>
-                <input
-                  type="text"
-                  name="firstname"
-                  class="form-control"
-                  :class="{ err: fnameserr || flnameserr }"
-                  v-model="user.firstname"
-                  placeholder="First Name..."
-                />
-                <div class="" v-if="fnameserr">
-                  <p class="text-danger">First Name is required!</p>
+              <div class="d-flex justify-content-between w-full">
+                <div class="form-group w-full">
+                  <label for="firstname">First Name:</label>
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control"
+                    :class="{ err: fnameserr || flnameserr }"
+                    v-model="user.firstname"
+                    placeholder="First Name"
+                  />
+                  <div class="" v-if="fnameserr">
+                    <p class="text-danger">First Name is required!</p>
+                  </div>
+                  <div class="" v-if="flnameserr">
+                    <p class="text-danger">First Name is too Long!</p>
+                  </div>
                 </div>
-                <div class="" v-if="flnameserr">
-                  <p class="text-danger">First Name is too Long!</p>
-                </div>
-              </div>
 
-              <div class="form-group">
-                <label for="lastname">Last Name:</label>
-                <input
-                  type="text"
-                  name="lastname"
-                  class="form-control"
-                  :class="{ err: lnameserr || llnameserr }"
-                  v-model="user.lastname"
-                  placeholder="Last Name..."
-                />
-                <div class="" v-if="lnameserr">
-                  <p class="text-danger">Last Name is required!</p>
-                </div>
-                <div class="" v-if="llnameserr">
-                  <p class="text-danger">Last Name is too Long!</p>
+                <div class="form-group w-full">
+                  <label for="lastname">Last Name:</label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control"
+                    :class="{ err: lnameserr || llnameserr }"
+                    v-model="user.lastname"
+                    placeholder="Last Name..."
+                  />
+                  <div class="" v-if="lnameserr">
+                    <p class="text-danger">Last Name is required!</p>
+                  </div>
+                  <div class="" v-if="llnameserr">
+                    <p class="text-danger">Last Name is too Long!</p>
+                  </div>
                 </div>
               </div>
 
