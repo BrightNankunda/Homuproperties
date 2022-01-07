@@ -21,6 +21,11 @@
           <router-link to="/read" class="btn btn-primary">Get Started</router-link>
         </div>
       </div>
+
+      <div class="bg-light py-4 px-3 rounded-lg border-none w-100">
+          <h2>Homu Properties, Advertise with us and get 25% discount</h2>
+      </div>
+      
       <div class="shadow-sm second bg-light-trans mb-4 p-3 rounded bg-danger">
         <div class="icons row d-flex my-3">
           <div class="col-lg-4 cursor-pointer icon">
