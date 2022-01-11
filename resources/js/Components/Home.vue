@@ -1,7 +1,7 @@
 <template>
   <div class="home w-100">
     <div>
-      <b-navbar toggleable="lg" type="light" variant="" class="shadow-sm">
+      <b-navbar toggleable="lg" type="light" variant="light" class="shadow-sm">
         <router-link class="px-3" to="/" active-class="active" exact
           ><b-icon icon="house-fill" variant="dark" scale="1.6"></b-icon
         ></router-link>
@@ -10,12 +10,13 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item-dropdown text="Apartments" class="mx-1" right>
+            <b-nav-item-dropdown text="Apartments" class="nav-title text-dark mx-1" right>
               <b-dropdown-item to="/apartments/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kira">Kira</b-dropdown-item>
               <b-dropdown-item to="/apartments/Kawempe">Kawempe</b-dropdown-item>
               <b-dropdown-item to="/apartments/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
+
             <b-nav-item-dropdown text="Arcades" class="mx-1" right>
               <b-dropdown-item to="/arcades/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/arcades/Kira">Kira</b-dropdown-item>
@@ -23,12 +24,13 @@
               <b-dropdown-item to="/arcades/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item-dropdown text="Malls" class="mx-1" right>
-              <b-dropdown-item to="/malls/Kampala">Kampala</b-dropdown-item>
-              <b-dropdown-item to="/malls/Kira">Kira</b-dropdown-item>
-              <b-dropdown-item to="/malls/Kawempe">Kawempe</b-dropdown-item>
-              <b-dropdown-item to="/malls/Central">Central</b-dropdown-item>
+            <b-nav-item-dropdown text="Estates" class="mx-1" right>
+              <b-dropdown-item to="/estates/Kampala">Kampala</b-dropdown-item>
+              <b-dropdown-item to="/estates/Kira">Kira</b-dropdown-item>
+              <b-dropdown-item to="/estates/Kawempe">Kawempe</b-dropdown-item>
+              <b-dropdown-item to="/estates/Central">Central</b-dropdown-item>
             </b-nav-item-dropdown>
+
             <b-nav-item-dropdown text="Rentals" class="mx-1" right>
               <b-dropdown-item to="/rentals/Kampala">Kampala</b-dropdown-item>
               <b-dropdown-item to="/rentals/Kira">Kira</b-dropdown-item>
@@ -290,9 +292,19 @@ export default {
 }
 .nav-link {
   font-family: sans-serif;
-  transition: all 0.8s linear;
+  transition: all 0.2s linear;
   font-size: auto;
+  color: black;
 }
+/* .nav-title,
+.nav-text {
+  font-size: auto !important;
+  color: black !important;
+}
+
+.nav-text:hover {
+  color: blue !important;
+} */
 .nav-link:hover {
   text-decoration: underline;
 }

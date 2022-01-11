@@ -3,29 +3,93 @@
     <div class="dashboard w-100">
       <!-- BANNER -->
       <div class="banner">
-        <div class="row search-container py-5 d-flex justify-content-center">
-          <h1 class="text-primary text-center col-md-12 col-lg-8">
-            <span class="d-md-inline-block d-none">Advertise with us </span>
-            with
-            <span class="headeroff"><b>20% DISCOUNT</b></span>
-          </h1>
-        </div>
-        <div class="search-bars d-flex justify-content-center align-content-center">
+        <div class="banner-content w-100">
+          <h1 class="text-dark">List your Property to get more insights</h1>
+
+          <h3 class="">Check out the latest hot real estates deals in Uganda</h3>
           <!-- SEARCH -->
+          <!-- <div class="search-bars d-flex justify-content-center align-content-center">
           <search-component
             :loadingSearches="resultStyles"
             :EmptyResults="NoResultStyles"
           ></search-component>
+        </div> -->
+          <div class="d-flex justify-content-center">
+            <router-link to="/read" class="btn btn-primary">Get Started</router-link>
+          </div>
         </div>
-        <div class="d-flex justify-content-center">
-          <router-link to="/read" class="btn btn-primary">Get Started</router-link>
+      </div>
+      <div class="bg-light py-4 px-3 rounded-lg border-none w-100">
+        <div class="search-wrapper">
+          <div class="w-full d-flex justify-content-center">
+            <h2>Search</h2>
+          </div>
+          <form>
+            <div class="row w-100 d-flex flex-row">
+              <div class="col-4 p-2">
+                <h3>Details</h3>
+                <div class="form-group">
+                  <select name="propertyType" id="propertyType" class="form-control">
+                    <option value="" diabled>Choose Property Type</option>
+                    <option value="Apartments">Apartments</option>
+                    <option value="Estates">Estates</option>
+                    <option value="Rentals">Rentals</option>
+                    <option value="Arcades">Arcades</option>
+                    <option value="Hostels">Hostels</option>
+                    <option value="Malls">Malls</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Property Name" />
+                </div>
+              </div>
+              <div class="col-4 p-2">
+                <h3>Location</h3>
+                <div class="form-group">
+                  <select name="city" id="city" class="form-control">
+                    <option value="" diabled>Choose City</option>
+                    <option value="Kampala">Kampala</option>
+                    <option value="Mbarara">Mbarara</option>
+                    <option value="Mukono">Mukono</option>
+                    <option value="Wakiso">Wakiso</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select name="division" id="division" class="form-control">
+                    <option value="" diabled>Choose Division</option>
+                    <option value="Kampala">Kampala</option>
+                    <option value="Mbarara">Mbarara</option>
+                    <option value="Mukono">Mukono</option>
+                    <option value="Wakiso">Wakiso</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select name="street" id="street" class="form-control">
+                    <option value="" diabled>Choose Street</option>
+                    <option value="Kampala">Kampala</option>
+                    <option value="Mbarara">Mbarara</option>
+                    <option value="Mukono">Mukono</option>
+                    <option value="Wakiso">Wakiso</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4 p-2">
+                <h3>Rent</h3>
+                <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Minimum" />
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Maximum" />
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center py-3">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </form>
         </div>
       </div>
 
-      <div class="bg-light py-4 px-3 rounded-lg border-none w-100">
-          <h2>Homu Properties, Advertise with us and get 25% discount</h2>
-      </div>
-      
       <div class="shadow-sm second bg-light-trans mb-4 p-3 rounded bg-danger">
         <div class="icons row d-flex my-3">
           <div class="col-lg-4 cursor-pointer icon">
@@ -123,9 +187,11 @@
 
       <!--APARTMENTS-->
       <div v-if="countofapartments > 1" class="text-center my-5 bg-dark">
-        <router-link to="/apartments" class="btn btn-primary px-4 lead"
-          >View all Apartments <b-icon-arrow-right></b-icon-arrow-right
-        ></router-link>
+        <div class="w-full">
+          <router-link to="/apartments" class="btn btn-primary px-4"
+            >Apartments <b-icon-arrow-right></b-icon-arrow-right
+          ></router-link>
+        </div>
       </div>
       <div v-if="loadingApartments" class="text-center loader">
         <div class="spinner-border text-primary text-center" role="status">
@@ -568,10 +634,17 @@ export default {
 }
 .banner {
   min-height: 90vh;
-  background-image: url("/front/house2.jpg");
+  background-image: url("/front/house2.jpg") !important;
+  /* background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)); */
+  /* background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3))
+    url("/front/house2.jpg") transparent; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+}
+.banner-content {
+  min-height: 90vh;
+  background: rgba(0, 0, 0, 0.2);
 }
 /* .search-container {
   margin: auto 0;
