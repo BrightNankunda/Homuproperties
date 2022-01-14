@@ -37,6 +37,7 @@ import ViewClient from './components/SubComponents/ViewClient.vue';
 import UpdateProfile from './components/SubComponents/UpdateProfile.vue';
 import PreferredProperties from './components/SubComponents/PreferredProperties';
 import Likers from './Components/Likers';
+import tasks from './Components/tasks'
 import Likes from './Components/Likes'
 import { Store } from 'vuex';
 
@@ -55,6 +56,10 @@ export default {
         {
             path: '/mid',
             component: Mid
+        },
+        {
+            path: '/tasks',
+            component: tasks
         },
         
         {
