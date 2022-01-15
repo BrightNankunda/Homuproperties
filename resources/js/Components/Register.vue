@@ -169,7 +169,7 @@ export default {
       }
     },
     validatephone() {
-      if (this.user.phone.trim().length != 10) {
+      if (this.user.phone.trim().length < 10) {
         this.phoneerr = true;
       }
     },
@@ -209,8 +209,9 @@ export default {
       this.validatemail();
       this.validatepassword();
       if (this.emailerr || this.passwordlength || this.emptyemail || this.phoneerr) {
-        console.log("ERRORS");
-        setTimeout(this.removeerrs, 4000);
+        console.log("ERRORS", "Enter correct email or 10 phone digits");
+
+        setTimeout(this.removeerrs, 7000);
         return;
       }
       this.loading = true;

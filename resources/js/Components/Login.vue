@@ -123,7 +123,7 @@ export default {
 
       if (this.emailerr || this.passwordlength || this.emptyemail) {
         console.log("ERRORS");
-        setTimeout(this.removeerrs, 4000);
+        setTimeout(this.removeerrs, 7000);
         return;
       }
 

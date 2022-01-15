@@ -61,11 +61,11 @@
               >List a Property</router-link
             >
             <div
+              v-if="!loggedIn"
               class="nav-item mb-xs-2 mb-md-2 mb-lg-0 login d-flex justify-content-center align-content-center py-auto mr-4"
             >
               <router-link
                 to="/login"
-                v-if="!loggedIn"
                 class="nav-link w-100 py-2 px-3 btn login-btn"
                 active-class="active"
                 >Login</router-link

@@ -2,7 +2,12 @@
   <div class="bg-light">
     <div class="row justify-content-center">
       <div class="col-lg-5 data">
-        <form method="POST" @submit.prevent="upload" enctype="multipart/form-data">
+        <div v-if="loading" class="text-center loader">
+          <div class="spinner-border text-primary text-center" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <form v-else method="POST" @submit.prevent="upload" enctype="multipart/form-data">
           <div class="form-group">
             <label for="Name">Property Name:</label>
             <input
@@ -25,7 +30,7 @@
           <div class="form-group">
             <label for="type">Property Type:</label>
             <select v-model="type" class="form-control" :class="{ err: typeerr }">
-              <option disabled value="Pl">Please select one</option>
+              <option disabled value="">Please select one</option>
               <option>Apartment</option>
               <option>Hostel</option>
               <option>Arcade</option>
@@ -340,6 +345,7 @@ export default {
 
   data() {
     return {
+      loading: false,
       name: "",
       type: "",
       status: "",
@@ -541,6 +547,7 @@ export default {
         setTimeout(this.removeerrs, 4000);
         return;
       }
+      this.loading = true;
       let data = new FormData();
       data.append("name", this.name);
       data.append("type", this.type);
@@ -566,10 +573,12 @@ export default {
         .post("/api/upload", data)
         .then((success) => {
           console.log(success);
+          this.loading = false;
           this.$router.push("/pay");
         })
         .catch((err) => {
           console.log(err);
+          this.loading = false;
         });
     },
   },
