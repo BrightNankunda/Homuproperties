@@ -1,50 +1,20 @@
 <template>
   <div class="w-100">
-    <div class="card my-4 shadow-sm">
-      <router-link :to="`/details/${id}`">
-        <img
-          :src="'images/' + front"
-          alt="some photo"
-          style="height: 200px"
-          class="w-100"
-        />
-      </router-link>
-      <div class="card-body">
-        <h6 class="card-title">{{ name }}</h6>
+    <div class="card shadow-sm border-0 rounded">
+      <div class="card-body p-0">
+        <router-link :to="`/details/${id}`">
+          <img :src="'images/' + front" alt="" class="w-100 card-img-top" />
+        </router-link>
+        <div class="p-4">
+          <p class="font-italic lead small text-muted my-0 mb-0">{{ type }}</p>
+          <h6 class="mb-0">{{ name }}</h6>
 
-        <p class="lead">{{ location + "," + " " + street }}</p>
-
-        <p class="lead">{{ type }}</p>
-      </div>
-      <div class="card-footer d-flex justify-content-between">
-        <h6 class="text-center text-success">Ugx:{{ " " + rent }}</h6>
-        <div v-if="loggedIn" class="d-flex justify-content-between">
-          <b-icon-heart-fill
-            @click="dislike(id)"
-            v-if="likedThisProperty(id)"
-            scale="1.2"
-            class="mr-2"
-            variant="success"
-            title="DISLIKE PROPERTY"
-          />
-          <b-icon-heart
-            @click="like(id)"
-            v-else
-            scale="1.2"
-            class="mr-2"
-            variant="success"
-            title="LIKE PROPERTY"
-          />
-          <b-icon-check
-            scale="2"
-            class="like-property-icon"
-            variant="success"
-            title="APPROVE PROPERTY"
-            @click="likedThisProperty(id)"
-          />
+          <p class="lead small text-muted">{{ location + "," + " " + street }}</p>
+          <h6 class="mb-0 text-success">Ush {{ " " + rent }}</h6>
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 <script>
@@ -98,7 +68,7 @@ export default {
             payload: {
               id: id,
               userId: this.$store.getters.user.id,
-              newLiked: this.newLikedProperties(id), 
+              newLiked: this.newLikedProperties(id),
               newLikes: this.newLikers,
             },
           });
