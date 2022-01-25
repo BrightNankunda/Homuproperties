@@ -723,7 +723,9 @@ img:hover {
   /*background-size: cover;*/
 }
 /* Card css for your next trip */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: Raleway, Helvetica, sans-serif;
 }
 h2 {
@@ -736,14 +738,14 @@ h2 {
   padding: 100px 0;
 }
 .wrapper-grey {
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 .avatar {
   width: 30px;
   border-radius: 50%;
 }
 .avatar-bordered {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: white 1px solid;
 }
 .avatar-large {
@@ -772,7 +774,7 @@ h2 {
 
 .card {
   height: 250px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   background-size: cover !important;
   color: white;
   position: relative;
@@ -806,11 +808,11 @@ h2 {
   top: 0;
   bottom: 0;
   width: 100%;
-  z-index:2;
+  z-index: 2;
   background: black;
   opacity: 0;
 }
-.card-link:hover{
+.card-link:hover {
   opacity: 0.1;
 }
 .features img {
